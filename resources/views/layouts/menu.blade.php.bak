@@ -1,0 +1,37 @@
+<li class="{{ Request::is('admins*') ? 'active' : '' }}">
+    <a href="{!! route('admins.index') !!}"><i class="fa fa-edit"></i><span>Admins</span></a>
+</li>
+<li class="{{ Request::is('customers*') ? 'active' : '' }}">
+    <a href="{!! route('customers.index') !!}"><i class="fa fa-edit"></i><span>Admins</span></a>
+</li>
+<li class="{{ Request::is('products*') ? 'active' : '' }}">
+    <a href="{!! route('products.index') !!}"><i class="fa fa-edit"></i><span>Products</span></a>
+</li>
+<li class="{{ Request::is('news*') ? 'active' : '' }}">
+    <a href="{!! route('news.index') !!}"><i class="fa fa-edit"></i><span>News</span></a>
+</li>
+<li class="{{ Request::is('couriers*') ? 'active' : '' }}">
+    <a href="{!! route('couriers.index') !!}"><i class="fa fa-edit"></i><span>Couriers</span></a>
+</li>
+<li class="{{ Request::is('addresses*') ? 'active' : '' }}">
+    <a href="{!! route('addresses.index') !!}"><i class="fa fa-edit"></i><span>Addresses</span></a>
+</li>
+<li class="{{ Request::is('orders*') ? 'active' : '' }}">
+    <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Orders</span></a>
+</li>
+
+<li class="{{ Request::is('promotions*') ? 'active' : '' }}">
+    <a href="{!! route('promotions.index') !!}"><i class="fa fa-edit"></i><span>Promotions</span></a>
+</li>
+
+<li class="{{ Request::is('shipmentMethods*') ? 'active' : '' }}">
+    <a href="{!! route('shipmentMethods.index') !!}"><i class="fa fa-edit"></i><span>Shipment Methods</span></a>
+</li>
+
+<li class="{{ Request::is('shippingCosts*') ? 'active' : '' }}">
+    <a href="{!! route('shippingCosts.index') !!}"><i class="fa fa-edit"></i><span>Shipping Costs</span></a>
+</li>
+
+<li class="{{ Request::is('deliveryOrders*') ? 'active' : '' }}">
+    <a href="{!! route('deliveryOrders.index') !!}"><i class="fa fa-edit"></i><span>Delivery Orders</span></a>
+</li>
