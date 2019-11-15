@@ -28,7 +28,7 @@ Route::get('/front/products/{product}', "FrontController@product")->name('produc
 Route::get('/front/login', "Auth\CustomerAuthController@showRegistrationForm")->name('cutomerRegisterForm');
 Route::post('/front/register', "Auth\CustomerAuthController@register")->name('cutomerRegister');
 Route::post('/front/login', "Auth\CustomerAuthController@loginCustomer")->name('cutomerLogin');
-Route::post('/front/logout', "Auth\CustomerAuthController@logout")->name('cutomerLogout');
+Route::get('/front/logout', "Auth\CustomerAuthController@logout")->name('cutomerLogout');
 
 Route::get('/front/cart/', "FrontController@getCart")->name('cart');
 Route::post('/front/cart/', "FrontController@addToCart")->name('addToCart');
