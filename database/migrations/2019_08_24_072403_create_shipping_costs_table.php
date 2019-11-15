@@ -16,12 +16,12 @@ class CreateShippingCostsTable extends Migration
         Schema::create('shipping_costs', function (Blueprint $table) {
             $table->increments('id');
             $table->float('price');
-            $table->integer('shipping_method_id')->unsigned();
+            $table->integer('shipment_method_id')->unsigned();
             $table->integer('courier_id')->unsigned();
             $table->integer('district_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('shipping_method_id')->references('id')->on('shipping_methods');
+            $table->foreign('shipment_method_id')->references('id')->on('shipment_methods');
             $table->foreign('courier_id')->references('id')->on('couriers');
             $table->foreign('district_id')->references('id')->on('districts');
         });
