@@ -26,7 +26,7 @@ class CreateProductsTable extends Migration
             $table->string('image4')->nullable();
             $table->float('weight');
             $table->integer('category_id')->unsigned();
-            $table->integer('sub_category_id')->unsigned()->nullable();
+            $table->integer('sub_category_id')->unsigned();
             $table->integer('brand_id')->unsigned();
             $table->integer('admin_id')->unsigned();
             $table->timestamps();
