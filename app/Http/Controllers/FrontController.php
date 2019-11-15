@@ -16,7 +16,7 @@ class FrontController extends Controller
 {
     public function home()
     {
-      $featured_products = Product::all()
+      $featured_products = Product::all();
       $featured_laptops = Product::where('category_id', 2)->get();
       $featured_cpus = Product::where('category_id', 4)->get();
 
