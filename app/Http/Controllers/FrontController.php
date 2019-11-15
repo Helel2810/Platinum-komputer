@@ -16,12 +16,13 @@ class FrontController extends Controller
 {
     public function home()
     {
+      $featured_products = Product::all()
       $featured_laptops = Product::where('category_id', 2)->get();
       $featured_cpus = Product::where('category_id', 4)->get();
 
       $data =
       [
-        "featured_products" => Product::all()->random(12),
+        "featured_products" => $featured_products->random($featured_products->count() < 12 ? $featured_products->count() : 12),
         "featured_products_laptops" => $featured_laptops->random($featured_laptops->count() < 12 ? $featured_laptops->count() : 12),
         "featured_products_cpus" => $featured_cpus->random($featured_cpus->count() < 12 ? $featured_cpus->count() : 12),
         "bestseller_products" => Product::all()->random(12),
