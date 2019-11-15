@@ -12,7 +12,7 @@
 
    <meta charset="UTF-8">
 
-   <title>Tyrion</title>
+   <title>Platinum</title>
 
    <link rel="shortcut icon" type="image/x-icon" href="{{asset("images/favicon.png")}}"/>
 
