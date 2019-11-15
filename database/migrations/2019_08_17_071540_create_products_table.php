@@ -32,7 +32,7 @@ class CreateProductsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('category_id')->references('id')->on('categories');
-            $table->foreign('sub_category_id')->references('id')->on('sub_categories_id');
+            $table->foreign('sub_category_id')->references('id')->on('sub_categories');
             $table->foreign('brand_id')->references('id')->on('brands');
             $table->foreign('admin_id')->references('id')->on('admins');
         });
