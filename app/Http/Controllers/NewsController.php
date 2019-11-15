@@ -65,6 +65,15 @@ class NewsController extends AppBaseController
     {
         $input = $request->all();
 
+        if ($files = $request->file('image')) {
+            $destinationPath = public_path('images'); // upload path
+            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage);
+            $input['image'] = asset('images/'.$profileImage);
+         }
+
+         $input['admin_id'] = 1;
+
         $news = $this->newsRepository->create($input);
 
         Flash::success('News saved successfully.');
@@ -110,6 +119,8 @@ class NewsController extends AppBaseController
           'newsCategories' => $newsCategories->pluck('name', 'id'),
         ];
 
+        $input['admin_id'] = 1;
+
         if (empty($news)) {
             Flash::error('News not found');
 
@@ -137,7 +148,18 @@ class NewsController extends AppBaseController
             return redirect(route('news.index'));
         }
 
-        $news = $this->newsRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        if ($files = $request->file('image')) {
+            $destinationPath = public_path('images'); // upload path
+            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage);
+            $input['image'] = asset('images/'.$profileImage);
+         }
+
+
+
+        $news = $this->newsRepository->update($input, $id);
 
         Flash::success('News updated successfully.');
 

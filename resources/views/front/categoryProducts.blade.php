@@ -4,6 +4,7 @@
   <!-- MAIN -->
   @php
     $categories = App\Models\Category::all();
+    $brands = App\Models\Brand::all();
   @endphp
 
 
@@ -125,7 +126,7 @@
 
                                   <div class="product-infomation">
 
-                                    {{$product->description}}
+                                    {!!$product->description!!}
 
                                   </div>
 
@@ -217,22 +218,14 @@
 
                               <div class="filter-options-item filter-brand">
 
-                                  <div class="filter-options-title">Brand</div>
+                                  <div class="filter-options-title">Brands</div>
 
                                   <div class="filter-options-content">
 
                                       <ul>
-
-                                          <li><label class="inline" ><input type="checkbox"><span class="input"></span>Cameras</label></li>
-
-                                          <li><label class="inline" ><input type="checkbox"><span class="input"></span>Smartphone</label></li>
-
-                                          <li><label class="inline" ><input type="checkbox"><span class="input"></span>Printer & Ink</label></li>
-
-                                          <li><label class="inline" ><input type="checkbox"><span class="input"></span>Game & Consoles</label></li>
-
-                                          <li><label class="inline" ><input type="checkbox"><span class="input"></span>Sound & Speaker</label></li>
-
+                                          @foreach($brands as $brand)
+                                            <li><label class="inline" ><input type="checkbox" value="{{$brand->id}}"><span class="input"></span>{{$brand->name}}</label></li>
+                                          @endforeach
                                       </ul>
 
                                   </div>

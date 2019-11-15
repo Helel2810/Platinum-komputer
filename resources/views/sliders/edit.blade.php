@@ -3,7 +3,7 @@
 @section('content')
     <section class="content-header">
         <h1>
-            News
+            Slider
         </h1>
    </section>
    <div class="content">
@@ -11,9 +11,9 @@
        <div class="box box-primary">
            <div class="box-body">
                <div class="row">
-                   {!! Form::model($news, ['route' => ['news.update', $news->id], 'files' => true, 'method' => 'patch']) !!}
+                   {!! Form::model($slider, ['route' => ['sliders.update', $slider->id], 'method' => 'patch']) !!}
 
-                        @include('news.fields')
+                        @include('sliders.fields')
 
                    {!! Form::close() !!}
                </div>

@@ -56,12 +56,12 @@ class ProductController extends AppBaseController
     {
         $categories = $this->categoryRepository->all();
         $subCategories = $this->subCategoryRepository->all();
-        $brand = $this->brandRepository->all();
+        $brands = $this->brandRepository->all();
         $data =
         [
           'categories' => $categories->pluck('name', 'id'),
           'subCategories' => $subCategories->pluck('name', 'id'),
-          'brands' => $brand->pluck('name', 'id'),
+          'brands' => $brands->pluck('name', 'id'),
         ];
         return view('products.create')->with($data);
     }

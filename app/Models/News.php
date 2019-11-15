@@ -22,7 +22,7 @@ class News extends Model
     use SoftDeletes;
 
     public $table = 'news';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -62,8 +62,7 @@ class News extends Model
         'source' => 'required',
         'period' => 'required',
         'news_category_id' => 'required',
-        'admin_id' => 'required'
     ];
 
-    
+
 }

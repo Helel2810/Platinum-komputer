@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 @php
   $categories = App\Models\Category::all();
+  $brands = App\Models\Brand::all();
   $cart = Cart::getContent();
 @endphp
 <html lang="en">
@@ -198,7 +199,7 @@
 
                                        <select data-placeholder="All Categories" class="chosen-select categori-search-option">
                                            <option value="">All Categories</option>
-                                           
+
                                        </select>
 
                                    </div>
@@ -379,7 +380,7 @@
 
                                    <li class="menu-item-has-children arrow">
 
-                                       <a href="#" class="dropdown-toggle">Shop</a>
+                                       <a href="#" class="dropdown-toggle">Categories</a>
 
                                        <span class="toggle-submenu hidden-md"></span>
 
@@ -398,27 +399,20 @@
 
                                    <li class="menu-item-has-children arrow">
 
-                                       <a href="#" class="dropdown-toggle">Shop</a>
+                                       <a href="#" class="dropdown-toggle">Brands</a>
+                                       <ul class="submenu parent-megamenu">
+                                         <li class="menu-item">
+                                             <a href="{{route('categoryProducts')}}">All Products</a>
+                                         </li>
+                                         @foreach($brands as $brand)
+                                           <li class="menu-item">
+                                               <a href="{{route('categoryProducts', ['brand_id' => $brand->id])}}">{{$brand->name}}</a>
+                                           </li>
+                                         @endforeach
+                                       </ul>
 
                                        <span class="toggle-submenu hidden-md"></span>
 
-                                       <ul class="submenu parent-megamenu">
-                                           <li class="menu-item">
-                                               <a href="grid-product.html">Grid Product</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="list-product.html">List Product</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="list-product-right.html">List Product Right</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="grid-product-right.html">Grid Product Right</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="detail.html">Detail Product</a>
-                                           </li>
-                                       </ul>
 
                                    </li>
 

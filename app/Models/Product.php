@@ -82,6 +82,7 @@ class Product extends Model
         'stock' => 'required|numeric',
         'sku' => 'required',
         'weight' => 'required',
+        'description' => 'required',
         /*
         'image1' => 'image|mimes:jpeg,png,jpg,gif',
         'image2' => 'image|mimes:jpeg,png,jpg,gif',

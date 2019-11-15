@@ -7,14 +7,41 @@ use Darryldecode\Cart\Facades\CartFacade as Cart;
 
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\Brand;
+use App\Models\News;
+
 
 
 class FrontController extends Controller
 {
     public function home()
     {
-      return view('front.home');
+      $featured_laptops = Product::where('category_id', 2)->get();
+      $featured_cpus = Product::where('category_id', 4)->get();
+
+      $data =
+      [
+        "featured_products" => Product::all()->random(12),
+        "featured_products_laptops" => $featured_laptops->random($featured_laptops->count() < 12 ? $featured_laptops->count() : 12),
+        "featured_products_cpus" => $featured_cpus->random($featured_cpus->count() < 12 ? $featured_cpus->count() : 12),
+        "bestseller_products" => Product::all()->random(12),
+        "latest_products" => Product::orderBy('created_at', 'desc')->take(12)->get(),
+        "news" => News::orderBy('created_at', 'desc')->take(4)->get()
+      ];
+      return view('front.home')->with($data);
     }
+
+    public function contactUs()
+    {
+      return view('front.contactUs');
+    }
+
+    public function news()
+    {
+      $news = News::all();
+      return view('front.news')->with('news', $news);
+    }
+
 
     public function category(Request $request)
     {
@@ -23,6 +50,11 @@ class FrontController extends Controller
       {
         $products = $products->where('category_id', $request->category_id);
       }
+      if($request->has('brand_id'))
+      {
+        $products = $products->where('brand_id', $request->brand_id);
+      }
+
       return view('front.categoryProducts')->with('products', $products);
     }
 

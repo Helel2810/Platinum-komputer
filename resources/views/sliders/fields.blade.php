@@ -1,14 +1,9 @@
-<!-- Name Field -->
+<!-- Image Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('name', 'Name:') !!}
-    {!! Form::text('name', null, ['class' => 'form-control']) !!}
+    {!! Form::label('image', 'Image:') !!}
+    {!! Form::file('image') !!}
 </div>
-
-<!-- Nominal Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('nominal', 'Nominal:') !!}
-    {!! Form::number('nominal', null, ['class' => 'form-control']) !!}
-</div>
+<div class="clearfix"></div>
 
 <!-- Start Date Field -->
 <div class="form-group col-sm-6">
@@ -16,22 +11,27 @@
     {!! Form::date('start_date', null, ['class' => 'form-control','id'=>'start_date']) !!}
 </div>
 
-
 <!-- End Date Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('end_date', 'End Date:') !!}
     {!! Form::date('end_date', null, ['class' => 'form-control','id'=>'end_date']) !!}
 </div>
 
-
-<!-- Status Field -->
+<!-- Product Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::label('product_id', 'Product Id:') !!}
+    {!! Form::select('product_id', $products, null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Brand Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('brand_id', 'Brand Id:') !!}
+    {!! Form::select('brand_id', $brands, null, ['class' => 'form-control']) !!}
+</div>
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{!! route('coupons.index') !!}" class="btn btn-default">Cancel</a>
+    <a href="{!! route('sliders.index') !!}" class="btn btn-default">Cancel</a>
 </div>

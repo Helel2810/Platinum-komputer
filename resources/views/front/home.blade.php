@@ -15,16 +15,6 @@
 
                       <div class="container">
 
-                          <div class="slide-desc slide-desc-1">
-
-                              <div class="p-primary">Dangerous Alone Unstoppable Together.</div>
-
-                              <p>All New Trail Shoe</p>
-
-                              <a href="" class="btn-shop-now">Shop Now</a>
-
-                          </div>
-
                       </div>
 
                   </div>
@@ -33,16 +23,6 @@
 
                       <div class="container">
 
-                          <div class="slide-desc slide-desc-2">
-
-                              <div class="p-primary">Tablets, Purses & More !</div>
-
-                              <p>Timeless Fashion</p>
-
-                              <a href="" class="btn-shop-now">Shop Now</a>
-
-                          </div>
-
                       </div>
 
                   </div>
@@ -50,18 +30,6 @@
                   <div class="item-slide item-slide-3">
 
                       <div class="container">
-
-                          <div class="slide-desc slide-desc-3">
-
-                              <div class="p-primary">Complete Your Look</div>
-
-                              <p>Fashion for Any Occasion</p>
-
-                              <p class="p-second">Up to 50% Off</p>
-
-                              <a href="" class="btn-shop-now">Shop Now</a>
-
-                          </div>
 
                       </div>
 
@@ -413,382 +381,58 @@
                         <div class="block-latest-roducts-content">
 
                             <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
-                                <div class="owl-ones-row">
-
+                              @foreach($latest_products->chunk(4) as $chunk)
+                              <div class="owl-ones-row">
+                                  @foreach($chunk as $product)
                                     <div class="product-item style1">
 
-                                        <div class="product-inner">
+                                      <div class="product-inner">
 
-                                            <div class="product-thumb">
+                                          <div class="product-thumb">
 
-                                                <div class="thumb-inner">
+                                              <div class="thumb-inner">
 
-                                                    <a href=""><img src="{{asset("images/blog/p1.jpg")}}" alt="p1"></a>
+                                                  <a href=""><img src="{{$product->image1}}" alt="p1"></a>
 
-                                                </div>
+                                              </div>
 
-                                            </div>
+                                          </div>
 
-                                            <div class="product-innfo">
+                                          <div class="product-innfo">
 
-                                                <div class="product-name"><a href="">Leather Chelsea Boots</a></div>
+                                              <div class="product-name"><a href="">{{$product->name}}</a></div>
 
-                                                <span class="price">
+                                              <span class="price">
 
-                                                    <ins>$229.00</ins>
+                                                  <ins>Rp. {{$product->price}}</ins>
 
-                                                    <del>$259.00</del>
+                                                  <del>Rp. {{$product->price+5}}</del>
 
-                                                </span>
+                                              </span>
 
-                                                <span class="star-rating">
+                                              <span class="star-rating">
 
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                  <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                  <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                  <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                  <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                  <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                    <span class="review">5 Review(s)</span>
+                                                  <span class="review">5 Review(s)</span>
 
-                                                </span>
+                                              </span>
 
-                                            </div>
+                                          </div>
 
-                                        </div>
-                                    </div>
-                                    <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href=""><img src="{{asset("images/blog/p2.jpg")}}" alt="p2"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="">2750 Cotu Classic Sneakers</a></div>
-
-                                                <span class="price">
-
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href=""><img src="{{asset("images/blog/p3.jpg")}}" alt="p3"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                <span class="price price-dark">
-
-                                                        <ins>$229.00</ins>
-
-                                                    </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href=""><img src="{{asset("images/blog/p4.jpg")}}" alt="p4"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="">Pullover Hoodie - Mens</a></div>
-
-                                                <span class="price">
-
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
-                                <div class="owl-ones-row">
-
-                                    <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href=""><img src="{{asset("images/blog/p1.jpg")}}" alt="p1"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="">Leather Chelsea Boots</a></div>
-
-                                                <span class="price">
-
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href=""><img src="{{asset("images/blog/p2.jpg")}}" alt="p2"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="">2750 Cotu Classic Sneakers</a></div>
-
-                                                <span class="price">
-
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href=""><img src="{{asset("images/blog/p3.jpg")}}" alt="p3"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                <span class="price price-dark">
-
-                                                        <ins>$229.00</ins>
-
-                                                    </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href=""><img src="{{asset("images/blog/p4.jpg")}}" alt="p4"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="">Pullover Hoodie - Mens</a></div>
-
-                                                <span class="price">
-
-                                                    <ins>$229.00</ins>
-
-                                                    <del>$259.00</del>
-
-                                                </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-
+                                      </div>
+                                  </div>
+                                  @endforeach
+                              </div>
+                              @endforeach
                             </div>
 
                         </div>
@@ -800,6 +444,34 @@
                   <div class="title-of-section">From The Blog</div>
 
                   <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="30" data-responsive='{"0":{"items":1},"480":{"items":2},"600":{"items":2},"768":{"items":1}}'>
+
+                      @foreach($news as $one_news)
+                        <div class="blog-item">
+
+                          <div class="post-thumb">
+
+                              <a href=""><img src="{{$one_news->image}}" alt="blog"></a>
+
+                          </div>
+
+                          <div class="post-item-info">
+
+                              <h3 class="post-name"><a href="">Lorem Ipsum</a></h3>
+
+                              <div class="post-metas">
+
+                                  <span class="author">Post by: <span>Admin</span></span>
+
+                                  <span class="comment"><i class="fa fa-comment" aria-hidden="true"></i>36 Comments</span>
+
+                              </div>
+                                    <div>
+                                        {{str_limit($one_news->content)}}
+                                    </div>
+                          </div>
+
+                      </div>
+                      @endforeach
 
                       <div class="blog-item">
 
@@ -1111,488 +783,76 @@
                               <div id="tab-1" class="tab-panel active">
 
                                   <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"480":{"items":2},"768":{"items":2},"992":{"items":3},"1200":{"items":4}}'>
-                                            <div class="owl-one-row">
-                                          <div class="product-item style1">
+                                    @foreach($featured_products->chunk(2) as $chunk)
+                                    <div class="owl-one-row">
+                                      @foreach($chunk as $product)
+                                      <div class="product-item style1">
+                                        <div class="product-inner equal-elem">
 
-                                              <div class="product-inner equal-elem">
+                                            <div class="product-thumb">
 
-                                                  <div class="product-thumb">
+                                                <div class="thumb-inner">
 
-                                                      <div class="thumb-inner">
+                                                    <a href=""><img src="{{$product->image1}}" alt="f5"></a>
 
-                                                          <a href=""><img src="{{asset("images/home3/f1.jpg")}}" alt="f1"></a>
-
-                                                      </div>
-
-                                                      <a href="" class="quick-view">Quick View</a>
-
-                                                  </div>
-
-                                                  <div class="product-innfo">
-
-                                                      <div class="product-name"><a href="">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                      <span class="price price-dark">
-
-                                                          <ins>$229.00</ins>
-
-                                                      </span>
-
-                                                      <span class="star-rating">
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <span class="review">5 Review(s)</span>
-
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
-                                                </div>
-                                                <div class="product-item style1">
-
-                                              <div class="product-inner equal-elem">
-
-                                                  <div class="product-thumb">
-
-                                                      <div class="thumb-inner">
-
-                                                          <a href=""><img src="{{asset("images/home3/f5.jpg")}}" alt="f5"></a>
-
-                                                      </div>
-
-                                                      <span class="onsale">-50%</span>
-
-                                                      <a href="" class="quick-view">Quick View</a>
-
-                                                  </div>
-
-                                                  <div class="product-innfo">
-
-                                                      <div class="product-name"><a href="">Leather Cortez Sneakers</a></div>
-
-                                                      <span class="price price-dark">
-
-                                                          <ins>$229.00</ins>
-
-                                                      </span>
-
-                                                      <span class="star-rating">
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <span class="review">5 Review(s)</span>
-
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
-                                          </div>
-                                            </div>
-                                            <div class="owl-one-row">
-                                          <div class="product-item style1">
-
-                                              <div class="product-inner equal-elem">
-
-                                                  <div class="product-thumb">
-
-                                                      <div class="thumb-inner">
-
-                                                          <a href=""><img src="{{asset("images/home3/f2.jpg")}}" alt="f2"></a>
-
-                                                      </div>
-
-                                                       <span class="onsale">-50%</span>
-
-                                                       <a href="" class="quick-view">Quick View</a>
-
-                                                  </div>
-
-                                                  <div class="product-innfo">
-
-                                                      <div class="product-name"><a href="">Knitted Melange T-Shirt</a></div>
-
-                                                      <span class="price">
-
-                                                          <ins>$229.00</ins>
-
-                                                          <del>$259.00</del>
-
-                                                      </span>
-
-                                                      <span class="star-rating">
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <span class="review">5 Review(s)</span>
-
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
                                                 </div>
 
-                                                <div class="product-item style1">
+                                                <span class="onsale">-50%</span>
 
-                                              <div class="product-inner equal-elem">
+                                                <a href="" class="quick-view">Quick View</a>
 
-                                                  <div class="product-thumb">
-
-                                                      <div class="thumb-inner">
-
-                                                          <a href=""><img src="{{asset("images/home3/f6.jpg")}}" alt="f6"></a>
-
-                                                      </div>
-
-                                                      <a href="" class="quick-view">Quick View</a>
-
-                                                  </div>
-
-                                                  <div class="product-innfo">
-
-                                                      <div class="product-name"><a href="">Trucker Hat with Patches </a></div>
-
-                                                      <span class="price">
-
-                                                          <ins>$229.00</ins>
-
-                                                          <del>$259.00</del>
-
-                                                      </span>
-
-                                                      <span class="star-rating">
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <span class="review">5 Review(s)</span>
-
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
-                                          </div>
                                             </div>
-                                            <div class="owl-one-row">
 
-                                          <div class="product-item style1">
+                                            <div class="product-innfo">
 
-                                              <div class="product-inner equal-elem">
+                                                <div class="product-name"><a href="">{{$product->name}}</a></div>
 
-                                                  <div class="product-thumb">
+                                                <span class="price price-dark">
 
-                                                      <div class="thumb-inner">
+                                                    <ins>Rp. {{$product->price}}</ins>
 
-                                                          <a href=""><img src="{{asset("images/home3/f3.jpg")}}" alt="f3"></a>
+                                                    <del>Rp. {{$product->price+5}}</del>
 
-                                                      </div>
 
-                                                       <a href="" class="quick-view">Quick View</a>
+                                                </span>
 
-                                                  </div>
+                                                <span class="star-rating">
 
-                                                  <div class="product-innfo">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                      <div class="product-name"><a href="">Trucker Hat with Patches </a></div>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                      <span class="price">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                          <ins>$229.00</ins>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                          <del>$259.00</del>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
 
-                                                      </span>
+                                                    <span class="review">5 Review(s)</span>
 
-                                                      <span class="star-rating">
+                                                </span>
 
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                                <div class="group-btn-hover">
 
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <div class="inner">
 
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
 
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <a href="" class="add-to-cart">Add to cart</a>
 
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
+                                                        <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 
-                                                          <span class="review">5 Review(s)</span>
+                                                    </div>
 
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
-                                                </div>
-                                                <div class="product-item style1">
-
-                                              <div class="product-inner equal-elem">
-
-                                                  <div class="product-thumb">
-
-                                                      <div class="thumb-inner">
-
-                                                          <a href=""><img src="{{asset("images/home3/f7.jpg")}}" alt="f7"></a>
-
-                                                      </div>
-
-                                                      <a href="" class="quick-view">Quick View</a>
-
-                                                      <span class="onsale">-50%</span>
-
-                                                  </div>
-
-                                                  <div class="product-innfo">
-
-
-
-                                                      <div class="product-name"><a href="">Pullover Hoodie - Mens</a></div>
-
-                                                      <span class="price">
-
-                                                          <ins>$229.00</ins>
-
-                                                          <del>$259.00</del>
-
-                                                      </span>
-
-                                                      <span class="star-rating">
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                          <span class="review">5 Review(s)</span>
-
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
-
-                                          </div>
-                                            </div>
-                                            <div class="owl-one-row">
-                                          <div class="product-item style1">
-
-                                              <div class="product-inner equal-elem">
-
-                                                  <div class="product-thumb">
-
-                                                      <div class="thumb-inner">
-
-                                                          <a href=""><img src="{{asset("images/home3/f4.jpg")}}" alt="f4"></a>
-
-                                                      </div>
-
-                                                      <span class="onsale">-50%</span>
-
-                                                      <a href="" class="quick-view">Quick View</a>
-
-                                                  </div>
-
-                                                  <div class="product-innfo">
-
-                                                      <div class="product-name"><a href="">2750 Cotu Classic Sneakers</a></div>
-
-                                                      <span class="price">
-
-                                                          <ins>$229.00</ins>
-
-                                                          <del>$259.00</del>
-
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
                                                 </div>
 
-                                                <div class="product-item style1">
-
-                                              <div class="product-inner equal-elem">
-
-                                                  <div class="product-thumb">
-
-                                                      <div class="thumb-inner">
-
-                                                          <a href=""><img src="{{asset("images/home3/f8.jpg")}}" alt="f8"></a>
-
-                                                      </div>
-
-                                                      <a href="" class="quick-view">Quick View</a>
-
-                                                  </div>
-
-                                                  <div class="product-innfo">
-
-                                                      <div class="product-name"><a href="">Leather Chelsea Boots</a></div>
-
-                                                      <span class="price">
-
-                                                          <ins>$229.00</ins>
-
-                                                          <del>$259.00</del>
-
-                                                      </span>
-
-                                                      <div class="group-btn-hover">
-
-                                                          <div class="inner">
-
-                                                              <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                              <a href="" class="add-to-cart">Add to cart</a>
-
-                                                              <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                          </div>
-
-                                                      </div>
-
-                                                  </div>
-
-                                              </div>
-                                          </div>
                                             </div>
+
+                                        </div>
+                                      </div>
+                                      @endforeach
+                                    </div>
+                                    @endforeach
                                   </div>
 
                               </div>
@@ -2128,8 +1388,10 @@
                   <div class="title-of-section style2">BestSeller Products</div>
 
                   <div class="owl-carousel nav-style2 equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="20" data-responsive='{"0":{"items":1},"480":{"items":2},"1000":{"items":2}}'>
-                            <div class="owl-one-row">
-                                <div class="product-item style2">
+                            @foreach($bestseller_products->chunk(2) as $chunk)
+                              <div class="owl-one-row">
+                                @foreach($chunk as $product)
+                                  <div class="product-item style2">
 
                                     <div class="product-inner equal-elem">
 
@@ -2137,7 +1399,7 @@
 
                                             <div class="thumb-inner">
 
-                                                <a href=""><img src="{{asset("images/home3/b1.jpg")}}" alt="b1"></a>
+                                                <a href=""><img src="{{$product->image1}}" alt="b3"></a>
 
                                             </div>
 
@@ -2145,63 +1407,13 @@
 
                                         <div class="product-innfo">
 
-                                            <div class="product-name"><a href="">Tablets Collection for Women New Style.</a></div>
+                                            <div class="product-name"><a href="">{{$product->name}}</a></div>
 
                                             <span class="price">
 
-                                                <ins>$229.00</ins>
+                                                <ins>Rp. {{$product->price}}</ins>
 
-                                                <del>$259.00</del>
-
-                                                <span class="onsale">-50%</span>
-
-                                            </span>
-
-                                            <span class="star-rating">
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <span class="review">5 Review(s)</span>
-
-                                            </span>
-
-                                            <a href="" class="btn-add-to-cart">Add to cart</a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="product-item style2">
-
-                                    <div class="product-inner equal-elem">
-
-                                        <div class="product-thumb style1">
-
-                                            <div class="thumb-inner">
-
-                                                <a href=""><img src="{{asset("images/home3/b3.jpg")}}" alt="b3"></a>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="product-innfo">
-
-                                            <div class="product-name"><a href="">Tablets Collection for Women New Style.</a></div>
-
-                                            <span class="price">
-
-                                                <ins>$229.00</ins>
-
-                                                <del>$259.00</del>
+                                                <del>Rp. {{$product->price+5}}</del>
 
                                                 <span class="onnew">new</span>
 
@@ -2229,107 +1441,9 @@
 
                                     </div>
                                 </div>
+                                @endforeach
                             </div>
-                            <div class="owl-one-row">
-                                <div class="product-item style2">
-
-                                    <div class="product-inner equal-elem">
-
-                                        <div class="product-thumb style1">
-
-                                            <div class="thumb-inner">
-
-                                                <a href=""><img src="{{asset("images/home3/b2.jpg")}}" alt="b2"></a>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="product-innfo">
-
-                                            <div class="product-name"><a href="">Tablets Collection for Women New Style.</a></div>
-
-                                            <span class="price">
-
-                                                <ins>$229.00</ins>
-
-                                                <del>$259.00</del>
-
-                                                <span class="onnew">new</span>
-
-                                            </span>
-
-                                            <span class="star-rating">
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <span class="review">5 Review(s)</span>
-
-                                            </span>
-
-                                            <a href="" class="btn-add-to-cart">Add to cart</a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div class="product-item style2">
-
-                                    <div class="product-inner equal-elem">
-
-                                        <div class="product-thumb style1">
-
-                                            <div class="thumb-inner">
-
-                                                <a href=""><img src="{{asset("images/home3/b4.jpg")}}" alt="b4"></a>
-
-                                            </div>
-
-                                        </div>
-
-                                        <div class="product-innfo">
-
-                                            <div class="product-name"><a href="">Tablets Collection for Women New Style.</a></div>
-
-                                            <span class="price">
-
-                                                <ins>$229.00</ins>
-
-                                                <del>$259.00</del>
-
-                                            </span>
-
-                                            <span class="star-rating">
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <span class="review">5 Review(s)</span>
-
-                                            </span>
-
-                                            <a href="" class="btn-add-to-cart">Add to cart</a>
-
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
+                            @endforeach
 
                         </div>
 

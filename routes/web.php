@@ -17,6 +17,10 @@ Route::get('/', function () {
 
 
 Route::get('/front', "FrontController@home")->name('front');
+Route::get('/front/contact-us', "FrontController@contactUs")->name('contactUs');
+Route::get('/front/news', "FrontController@news")->name('frontNews');
+
+
 
 Route::get('/front/products', "FrontController@category")->name('categoryProducts');
 Route::get('/front/products/{product}', "FrontController@product")->name('productDetail');
@@ -195,3 +199,6 @@ Route::get('/ongkir-isi', function(){
   return json_encode($provinces);
 
 });
+
+
+Route::resource('sliders', 'SliderController');

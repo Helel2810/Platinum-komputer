@@ -79,3 +79,7 @@
 <li class="{{ Request::is('coupons*') ? 'active' : '' }}">
     <a href="{!! route('coupons.index') !!}"><i class="fa fa-edit"></i><span>Coupons</span></a>
 </li>
+<li class="{{ Request::is('sliders*') ? 'active' : '' }}">
+    <a href="{!! route('sliders.index') !!}"><i class="fa fa-edit"></i><span>Sliders</span></a>
+</li>
+

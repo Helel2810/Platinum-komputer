@@ -14,7 +14,7 @@ $factory->define(Product::class, function (Faker $faker) {
         'price' => $faker->randomDigitNotNull,
         'stock' => $faker->randomDigitNotNull,
         'sku' => $faker->word,
-        'description' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+        'description' => $faker->paragraph($nbSentences = 15, $variableNbSentences = true),
         'weight' => $faker->randomDigitNotNull,
         'image1' => $faker->randomElement(["https://www.placecage.com/400/400", "https://www.placecage.com/c/400/400"]),
         'image2' => $faker->randomElement(["https://www.placecage.com/400/400", "https://www.placecage.com/c/400/400"]),

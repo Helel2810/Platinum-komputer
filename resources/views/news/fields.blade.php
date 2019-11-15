@@ -23,15 +23,6 @@
     {!! Form::date('period', null, ['class' => 'form-control','id'=>'period']) !!}
 </div>
 
-@section('scripts')
-    <script type="text/javascript">
-        $('#period').datetimepicker({
-            format: 'YYYY-MM-DD HH:mm:ss',
-            useCurrent: false
-        })
-    </script>
-@endsection
-
 <!-- News Category Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('news_category_id', 'News Category Id:') !!}

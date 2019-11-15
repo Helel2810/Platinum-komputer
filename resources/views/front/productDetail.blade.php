@@ -97,7 +97,7 @@
 
                             <div class="product-infomation">
 
-                                {{$product->description}}
+                                {!!$product->description!!}
 
                             </div>
 
@@ -192,7 +192,7 @@
 
                         <div class="box-content">
 
-                          {{$product->description}}
+                          {!!$product->description!!}
 
                         </div>
 
