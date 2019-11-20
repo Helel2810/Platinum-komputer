@@ -40,8 +40,15 @@ class FrontController extends Controller
     public function news()
     {
       $news = News::all();
+
       return view('front.news')->with('news', $news);
     }
+
+    public function newsDetail(News $news)
+    {
+      return view('front.newsDetail')->with('news', $news);
+    }
+
 
 
     public function category(Request $request)

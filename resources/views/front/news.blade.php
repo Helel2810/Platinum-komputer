@@ -32,7 +32,7 @@
 
                                     <a href=""><img src="{{$one_news->image}}" alt="post-image"></a>
 
-                                    <span class="date">12<span>Dec</span></span>
+                                    <span class="date">{{$one_news->created_at->day}}<span>{{$one_news->created_at->shortEnglishMonth}}</span></span>
 
                                 </div>
 
@@ -49,9 +49,9 @@
                                     </div>
 
                                     <div class="post-content">
-                                        {!!str_limit($one_news->content)!!}
+                                        {!!str_limit($one_news->content, 200)!!}
 
-                                        <a href="" class="read-more">Read more</a>
+                                        <a href="{{route('frontNewsDetail', $one_news->id)}}" class="read-more">Read more</a>
 
                                     </div>
 

@@ -19,6 +19,8 @@ Route::get('/', function () {
 Route::get('/front', "FrontController@home")->name('front');
 Route::get('/front/contact-us', "FrontController@contactUs")->name('contactUs');
 Route::get('/front/news', "FrontController@news")->name('frontNews');
+Route::get('/front/news/{news}', "FrontController@newsDetail")->name('frontNewsDetail');
+
 
 
 

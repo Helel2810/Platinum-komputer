@@ -447,23 +447,11 @@
 
                                    </li>
 
-                                   <li class="menu-item-has-children arrow">
+                                   <li>
 
-                                       <a href="#" class="dropdown-toggle">Blog</a>
+                                       <a href="{{route('frontNews')}}" class="dropdown-toggle">News</a>
 
                                        <span class="toggle-submenu hidden-md"></span>
-
-                                       <ul class="submenu parent-megamenu">
-                                           <li class="menu-item">
-                                               <a href="blog-grid.html">Blog Grid</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="blog-list.html">Blog List</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="blog-single.html">Blog Single</a>
-                                           </li>
-                                       </ul>
 
                                    </li>
 
@@ -529,15 +517,15 @@
 
                                    <h3 class="contacts-title">Address</h3>
 
-                                   <span class="contacts-info">218 Fifth Avenue, HeavenTower NewYork City</span>
+                                   <span class="contacts-info">Jl. Bawal Raya No. 6</span>
 
                                    <h3 class="contacts-title">Phone</h3>
 
-                                   <span class="contacts-info">(+68) 123 456 7890</span>
+                                   <span class="contacts-info">(+62) 8190 8340 874</span>
 
                                    <h3 class="contacts-title">Email</h3>
 
-                                   <span class="contacts-info">Hot-Support@Tyrion.com</span>
+                                   <span class="contacts-info">Support@Gravity.com</span>
 
                                </div>
 
@@ -610,95 +598,7 @@
 
                <div class="footer-bottom">
 
-                   <div class="container">
 
-                       <div class="links">
-
-                       <h3 class="quick-link">Quick Links</h3>
-
-                       <ul>
-
-                           <li><a href="" class="links-primary">Tablets:</a></li>
-
-                           <li><a href="">Windows Tablets</a></li>
-
-                           <li><a href="">Android Tablets</a></li>
-
-                           <li><a href="">Micromax Tablets</a></li>
-
-                           <li><a href="">HCL Tablets </a></li>
-
-                           <li><a href="">Samsung Tablets</a></li>
-
-                           <li><a href="">Lenovo Tablets</a></li>
-
-                           <li><a href="">Asus Tablets</a></li>
-
-                           <li><a href="">Apple Tablets </a></li>
-
-                           <li><a href="">HCL Tablets</a></li>
-
-                           <li><a href="">Samsung Tablets </a></li>
-
-                           <li><a href="">Lenovo Tablets</a></li>
-
-                       </ul>
-
-                       <ul>
-
-                           <li><a href="" class="links-primary">Mobiles:</a></li>
-
-                           <li><a href="">Moto E</a></li>
-
-                           <li><a href="">Samsung Mobile</a></li>
-
-                           <li><a href="">Micromax Mobile</a></li>
-
-                           <li><a href="">Nokia Mobile</a></li>
-
-                           <li><a href="">HTC Mobile</a></li>
-
-                           <li><a href="">Sony Mobile</a></li>
-
-                           <li><a href="">Apple Mobile</a></li>
-
-                           <li><a href="">LG Mobile</a></li>
-
-                           <li><a href="">Karbonn Mobile</a></li>
-
-                           <li><a href="">Furniture</a></li>
-
-                           <li><a href="">Lenovo A7000</a></li>
-
-                           <li><a href="">Home Store</a></li>
-
-                       </ul>
-
-                       <ul>
-
-                           <li><a href="" class="links-primary">Watches:</a></li>
-
-                           <li><a href="">The Big Billion Days</a></li>
-
-                           <li><a href="">MOTO X Play</a></li>
-
-                           <li><a href="">Furniture</a></li>
-
-                           <li><a href="">Lenovo A7000</a></li>
-
-                           <li><a href="">Home Store</a></li>
-
-                           <li><a href="">Electronic Sale</a></li>
-
-                           <li><a href="">Offers</a></li>
-
-                       </ul>
-
-                   </div>
-
-
-
-                   </div>
 
                </div>
 
