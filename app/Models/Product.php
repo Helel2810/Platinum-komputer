@@ -102,4 +102,10 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Category');
     }
+
+    public function purchase_invoices()
+    {
+        return $this->belongsToMany('App\Models\PurchaseInvoice');
+    }
+
 }

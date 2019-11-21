@@ -19,7 +19,7 @@ class Supplier extends Model
     use SoftDeletes;
 
     public $table = 'suppliers';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -53,5 +53,10 @@ class Supplier extends Model
         'status' => 'required'
     ];
 
-    
+    public function purchase_invoices()
+    {
+        return $this->hasMany('App\Models\PurchaseInvoice');
+    }
+
+
 }

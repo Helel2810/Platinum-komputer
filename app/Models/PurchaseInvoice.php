@@ -20,7 +20,7 @@ class PurchaseInvoice extends Model
     use SoftDeletes;
 
     public $table = 'purchase_invoices';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -56,5 +56,16 @@ class PurchaseInvoice extends Model
         'product_id' => 'required'
     ];
 
-    
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Product');
+    }
+
+    public function supplier()
+    {
+        return $this->belongsTo('App\Models\Supplier');
+    }
+
+
+
 }

@@ -1,7 +1,7 @@
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('status', ['open' => 'open', 'close' => 'close'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Note Field -->
@@ -13,13 +13,13 @@
 <!-- Supplier Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('supplier_id', 'Supplier Id:') !!}
-    {!! Form::select('supplier_id', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('supplier_id', $suppliers, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Product Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('product_id', 'Product Id:') !!}
-    {!! Form::select('product_id', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('product_id', $products, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

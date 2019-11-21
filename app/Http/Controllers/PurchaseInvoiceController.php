@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreatePurchaseInvoiceRequest;
 use App\Http\Requests\UpdatePurchaseInvoiceRequest;
 use App\Repositories\PurchaseInvoiceRepository;
+use App\Repositories\ProductRepository;
+use App\Repositories\SupplierRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -14,10 +16,15 @@ class PurchaseInvoiceController extends AppBaseController
 {
     /** @var  PurchaseInvoiceRepository */
     private $purchaseInvoiceRepository;
+    private $productRepository;
+    private $supplierRepository;
 
-    public function __construct(PurchaseInvoiceRepository $purchaseInvoiceRepo)
+    public function __construct(PurchaseInvoiceRepository $purchaseInvoiceRepo, ProductRepository $productRepo, SupplierRepository $supplierRepo)
     {
         $this->purchaseInvoiceRepository = $purchaseInvoiceRepo;
+        $this->productRepository = $productRepo;
+        $this->supplierRepository = $supplierRepo;
+
     }
 
     /**
@@ -42,7 +49,14 @@ class PurchaseInvoiceController extends AppBaseController
      */
     public function create()
     {
-        return view('purchase_invoices.create');
+        $products = $this->productRepository->all();
+        $suppliers = $this->supplierRepository->all();
+        $data =
+        [
+            'products' => $products->pluck('name', 'id'),
+            'suppliers' => $suppliers->pluck('name', 'id')
+        ];
+        return view('purchase_invoices.create')->with($data);
     }
 
     /**
@@ -100,7 +114,17 @@ class PurchaseInvoiceController extends AppBaseController
             return redirect(route('purchaseInvoices.index'));
         }
 
-        return view('purchase_invoices.edit')->with('purchaseInvoice', $purchaseInvoice);
+        $products = $this->productRepository->all();
+        $suppliers = $this->supplierRepository->all();
+        $data =
+        [
+            'purchaseInvoice' => $purchaseInvoice,
+            'products' => $products->pluck('name', 'id'),
+            'suppliers' => $suppliers->pluck('name', 'id')
+        ];
+
+
+        return view('purchase_invoices.edit')->with($data);
     }
 
     /**

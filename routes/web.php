@@ -21,7 +21,11 @@ Route::get('/front/contact-us', "FrontController@contactUs")->name('contactUs');
 Route::get('/front/news', "FrontController@news")->name('frontNews');
 Route::get('/front/news/{news}', "FrontController@newsDetail")->name('frontNewsDetail');
 
-
+Route::get('/front/profile/', "FrontController@newsDetail")->name('frontProfile');
+Route::get('/front/profile/edit', "FrontController@newsDetail")->name('frontProfileEditForm');
+Route::post('/front/profile/edit', "FrontController@newsDetail")->name('frontProfileEdit');
+Route::get('/front/profile/address', "FrontController@addressForm")->name('frontAddressForm');
+Route::post('/front/profile/address', "FrontController@newsDetail")->name('frontAddressAdd');
 
 
 Route::get('/front/products', "FrontController@category")->name('categoryProducts');

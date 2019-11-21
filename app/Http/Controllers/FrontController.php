@@ -89,4 +89,10 @@ class FrontController extends Controller
       return back();
     }
 
+    public function addressForm(Request $request)
+    {
+      return view('front.addressForm');
+    }
+
+
 }
