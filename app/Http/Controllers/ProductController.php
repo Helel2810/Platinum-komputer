@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests\CreateProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use App\Repositories\ProductRepository;
@@ -105,7 +107,7 @@ class ProductController extends AppBaseController
                $input['image4'] = asset('images/'.$profileImage);
             }
 
-        $input['admin_id'] = 1;
+        $input['admin_id'] = Auth::guard('admin')->user()->id;
 
         $product = $this->productRepository->create($input);
 
@@ -214,8 +216,7 @@ class ProductController extends AppBaseController
                $input['image4'] = asset('images/'.$profileImage);
             }
 
-        $input['admin_id'] = 1;
-
+        $input['admin_id'] = Auth::guard('admin')->user()->id;
         $product = $this->productRepository->update($input, $id);
 
         Flash::success('Product updated successfully.');
