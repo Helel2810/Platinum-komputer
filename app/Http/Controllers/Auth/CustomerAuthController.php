@@ -96,7 +96,7 @@ class CustomerAuthController extends Controller
     public function logout()
     {
         Auth::guard()->logout();
-        return redirect()->route('cutomerRegisterForm');
+        return redirect()->route('front');
     }
 
 }

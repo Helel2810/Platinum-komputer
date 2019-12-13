@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateAdminRequest;
 use App\Http\Requests\UpdateAdminRequest;
 use App\Repositories\AdminRepository;
+use App\Repositories\AdminRoleRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -14,10 +15,12 @@ class AdminController extends AppBaseController
 {
     /** @var  AdminRepository */
     private $adminRepository;
+    private $adminRoleRepository;
 
-    public function __construct(AdminRepository $adminRepo)
+    public function __construct(AdminRepository $adminRepo, AdminRoleRepository $adminRoleRepo)
     {
         $this->adminRepository = $adminRepo;
+        $this->adminRoleRepository = $adminRoleRepo;
     }
 
     /**
@@ -42,7 +45,8 @@ class AdminController extends AppBaseController
      */
     public function create()
     {
-        return view('admins.create');
+        $admin_roles = $this->adminRoleRepository->all();
+        return view('admins.create')->with('admin_roles', $admin_roles->pluck('admin_role', 'id'));
     }
 
     /**
@@ -100,7 +104,14 @@ class AdminController extends AppBaseController
             return redirect(route('admins.index'));
         }
 
-        return view('admins.edit')->with('admin', $admin);
+        $admin_roles = $this->adminRoleRepository->all();
+
+        $data = [
+          'admin' => $admin,
+          'admin_roles' => $admin_roles->pluck('admin_role', 'id')
+        ];
+
+        return view('admins.edit')->with($data);
     }
 
     /**

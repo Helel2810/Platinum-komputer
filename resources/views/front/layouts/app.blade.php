@@ -74,7 +74,7 @@
 
                    <ul class="nav-top-left" >
 
-                       <li><a href="">Welcome to Tyrion - Always free delivery</a></li>
+                       <li><a href="">Welcome to Platinum</a></li>
 
                    </ul><!-- hotline -->
 
@@ -99,30 +99,6 @@
 
                                </li>
 
-                               <li class="switcher-option">
-
-                                   <a href="" class="flag"><img src="{{asset("images/general/l2.jpg")}}" alt="flag">Hungary</a>
-
-                               </li>
-
-                               <li class="switcher-option">
-
-                                   <a href="" class="flag"><img src="{{asset("images/general/l3.jpg")}}" alt="flag">German</a>
-
-                               </li>
-
-                               <li class="switcher-option">
-
-                                   <a href="" class="flag"><img src="{{asset("images/general/l4.jpg")}}" alt="flag">French</a>
-
-                               </li>
-
-                               <li class="switcher-option">
-
-                                   <a href="" class="flag"><img src="{{asset("images/general/l5.jpg")}}" alt="flag">Canada</a>
-
-                               </li>
-
                            </ul>
 
                        </li>
@@ -131,7 +107,7 @@
 
                            <a href="#" class="dropdown-toggle">
 
-                               <span>Dollar (US)</span><i class="fa fa-angle-down" aria-hidden="true"></i>
+                               <span>Rupiah (IDR)</span><i class="fa fa-angle-down" aria-hidden="true"></i>
 
                            </a>
 
@@ -143,17 +119,15 @@
 
                                </li>
 
-                               <li class="switcher-option">
-
-                                   <a href="" class="switcher-flag icon">Dollar (USD)</a>
-
-                               </li>
-
                            </ul>
 
                        </li>
 
-                       <li><a href="{{route('cutomerLogin')}}"><i class="fa fa-user" aria-hidden="true"></i>Register / Sign in</a></li>
+                       @if(Auth::check())
+                       <li><a href="{{route('cutomerLogout')}}"><i class="fa fa-user" aria-hidden="true">welcome, {{Auth::user()->user_name}}</i></a></li>
+                       @else
+                        <li><a href="{{route('cutomerLogin')}}"><i class="fa fa-user" aria-hidden="true"></i>Register / Sign in</a></li>
+                       @endif
 
                    </ul><!-- heder links -->
 

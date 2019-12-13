@@ -33,9 +33,9 @@
                             @csrf
                             <p class="form-row form-row-wide">
 
-                                <label>Username or Email Address:<span class="required"></span></label>
+                                <label>Email Address:<span class="required"></span></label>
 
-                                <input type="text" value="" name="user_name" placeholder="Type your username or email address" class="input-text">
+                                <input type="text" value="" name="email" placeholder="Type your email address" class="input-text">
 
                             </p>
 

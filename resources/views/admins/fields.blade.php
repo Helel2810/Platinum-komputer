@@ -19,13 +19,13 @@
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('status', ['active' => 'active', 'inactive' => 'inactive'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Admin Role Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('admin_role_id', 'Admin Role Id:') !!}
-    {!! Form::select('admin_role_id', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('admin_role_id', $admin_roles, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
