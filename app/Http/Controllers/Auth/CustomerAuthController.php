@@ -48,27 +48,25 @@ class CustomerAuthController extends Controller
         return view('front.login');
     }
 
-    public function register(Request $request)
-    {
-
-        event(new Registered($user = $this->create($request->all())));
-
-        Auth::guard()->login($user);
-
-        return $this->registered($request, $user)
-                        ?: redirect($this->redirectPath());
-    }
-
-
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \App\User
      */
-    protected function create(array $data)
+    protected function create(Request $request)
     {
-        return Customer::create([
+        $this->validate($request, [
+          'user_name' => 'required|unique:customers',
+          'password' => 'required|confirmed|min:6',
+          'email' => 'required|email|unique:customers',
+          'gender' => 'required',
+          'telephone' => 'required|numeric',
+          'full_name' => 'required',
+          'status' => 'required'
+      ]);
+        $data = $request->all();
+        Customer::create([
             'user_name' => $data['user_name'],
             'email' => $data['email'],
             'gender' => $data['gender'],
@@ -77,6 +75,8 @@ class CustomerAuthController extends Controller
             'status' => 'active',
             'password' => Hash::make($data['password']),
         ]);
+
+        return redirect()->intended(route('front'));
     }
 
     public function loginCustomer(Request $request)

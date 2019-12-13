@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateProductPurchaseInvoicesTable extends Migration
+class CreateProductPurchaseInvoiceTable extends Migration
 {
 
     /**
@@ -13,13 +13,11 @@ class CreateProductPurchaseInvoicesTable extends Migration
      */
     public function up()
     {
-        Schema::create('product_purchase_invoices', function (Blueprint $table) {
+        Schema::create('product_purchase_invoice', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('product_id')->unsigned();
             $table->integer('purchase_invoice_id')->unsigned();
             $table->integer('qty');
-            $table->float('price');
-            $table->float('total_price');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('product_id')->references('id')->on('products');
@@ -34,6 +32,6 @@ class CreateProductPurchaseInvoicesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('product_purchase_invoices');
+        Schema::drop('product_purchase_invoice');
     }
 }

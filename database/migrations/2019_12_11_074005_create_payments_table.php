@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePromotionsTable extends Migration
+class CreatePaymentsTable extends Migration
 {
 
     /**
@@ -13,16 +13,16 @@ class CreatePromotionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('promotions', function (Blueprint $table) {
+        Schema::create('payments', function (Blueprint $table) {
             $table->increments('id');
-            $table->float('nominal');
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
+            $table->date('payment_date');
             $table->string('status');
-            $table->integer('product_id')->unsigned();
+            $table->string('payment_method');
+            $table->string('bank_account');
+            $table->integer('order_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
-            $table->foreign('product_id')->references('id')->on('products');
+            $table->foreign('order_id')->references('id')->on('orders');
         });
     }
 
@@ -33,6 +33,6 @@ class CreatePromotionsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('promotions');
+        Schema::drop('payments');
     }
 }

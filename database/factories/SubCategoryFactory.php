@@ -3,6 +3,7 @@
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
 use App\Models\SubCategory;
+use App\Models\Category;
 use Faker\Generator as Faker;
 
 $factory->define(SubCategory::class, function (Faker $faker) {

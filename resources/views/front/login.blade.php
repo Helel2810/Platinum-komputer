@@ -74,45 +74,50 @@
 
                         <form class="register" method="post" action="{{route("cutomerRegister")}}">
                             @csrf
-                            <p class="form-row form-row-wide col-md-6">
+                            <div class="row">
+                              <p class="form-row form-row-wide col-md-6">
 
-                                <label>Full Name<span class="required"></span></label>
+                                  <label>Full Name<span class="required"></span></label>
 
-                                <input type="text" value="" name="full_name" placeholder="Full Name" class="input-text">
+                                  <input type="text" value="" name="full_name" placeholder="Full Name" class="input-text">
 
-                            </p>
+                              </p>
 
-                            <p class="form-row form-row-wide col-md-6">
+                              <p class="form-row form-row-wide col-md-6">
 
-                                <label>Username<span class="required">*</span></label>
+                                  <label>Username<span class="required">*</span></label>
 
-                                <input type="text" name="user_name" placeholder="Username" class="input-text">
+                                  <input type="text" name="user_name" placeholder="Username" class="input-text">
 
-                            </p>
+                              </p>
 
-                            <p class="form-row form-row-wide col-md-6">
+                              <p class="form-row form-row-wide col-md-6">
 
-                                <label>Gender</label>
-                                <select class="select" name="gender">
-                                    <option value="male">Male</option>
-                                    <option value="female">Female</option>
-                                </select>
+                                  <label>Gender</label>
+                                  <select class="select" name="gender">
+                                      <option value="male">Male</option>
+                                      <option value="female">Female</option>
+                                  </select>
 
-                            </p>
+                              </p>
 
-                            <p class="form-row form-row-wide col-md-6">
+                              <p class="form-row form-row-wide col-md-6">
 
-                                <label>Email Address<span class="required">*</span></label>
+                                  <label>Email Address<span class="required">*</span></label>
 
-                                <input type="email" name="email" placeholder="Email address" class="input-text">
+                                  <input type="email" name="email" placeholder="Email address" class="input-text">
 
-                            </p>
+                              </p>
 
-                            <ul>
+                              <p class="form-row form-row-wide col-md-6">
 
-                                <li><label class="inline" ><input type="checkbox"><span class="input"></span>Sign Up for Newsletter</label></li>
+                                  <label>telephone<span class="required">*</span></label>
 
-                            </ul>
+                                  <input type="tel" name="telephone" placeholder="" class="input-text">
+
+                              </p>
+
+                            </div>
 
                             <h5 class="title-login title-login-bottom">Login Information</h5>
 

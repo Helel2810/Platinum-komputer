@@ -98,3 +98,7 @@
 <li class="{{ Request::is('sliders*') ? 'active' : '' }}">
     <a href="{!! route('sliders.index') !!}"><i class="fa fa-edit"></i><span>Sliders</span></a>
 </li>
+<li class="{{ Request::is('payments*') ? 'active' : '' }}">
+    <a href="{!! route('payments.index') !!}"><i class="fa fa-edit"></i><span>Payments</span></a>
+</li>
+

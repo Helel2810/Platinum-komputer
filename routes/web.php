@@ -32,7 +32,7 @@ Route::get('/front/products', "FrontController@category")->name('categoryProduct
 Route::get('/front/products/{product}', "FrontController@product")->name('productDetail');
 
 Route::get('/front/login', "Auth\CustomerAuthController@showRegistrationForm")->name('cutomerRegisterForm');
-Route::post('/front/register', "Auth\CustomerAuthController@register")->name('cutomerRegister');
+Route::post('/front/register', "Auth\CustomerAuthController@create")->name('cutomerRegister');
 Route::post('/front/login', "Auth\CustomerAuthController@loginCustomer")->name('cutomerLogin');
 Route::get('/front/logout', "Auth\CustomerAuthController@logout")->name('cutomerLogout');
 
@@ -208,3 +208,6 @@ Route::get('/ongkir-isi', function(){
 
 
 Route::resource('sliders', 'SliderController');
+
+
+Route::resource('payments', 'PaymentController');

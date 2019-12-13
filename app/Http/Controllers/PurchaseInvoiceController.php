@@ -24,7 +24,6 @@ class PurchaseInvoiceController extends AppBaseController
         $this->purchaseInvoiceRepository = $purchaseInvoiceRepo;
         $this->productRepository = $productRepo;
         $this->supplierRepository = $supplierRepo;
-
     }
 
     /**
@@ -69,8 +68,15 @@ class PurchaseInvoiceController extends AppBaseController
     public function store(CreatePurchaseInvoiceRequest $request)
     {
         $input = $request->all();
+        unset($input['product_id']);
+
+        $input2 = array_combine($request->product_id ,array_map(function($arr2){
+          return ['qty' => $arr2];
+        },  $request->qty));
 
         $purchaseInvoice = $this->purchaseInvoiceRepository->create($input);
+
+        $purchaseInvoice->products()->attach($input2);
 
         Flash::success('Purchase Invoice saved successfully.');
 
@@ -145,7 +151,16 @@ class PurchaseInvoiceController extends AppBaseController
             return redirect(route('purchaseInvoices.index'));
         }
 
-        $purchaseInvoice = $this->purchaseInvoiceRepository->update($request->all(), $id);
+        $input = $request->all();
+        unset($input['product_id']);
+
+        $input2 = array_combine($request->product_id ,array_map(function($arr2){
+          return ['qty' => $arr2];
+        },  $request->qty));
+
+        $purchaseInvoice = $this->purchaseInvoiceRepository->update($input, $id);
+
+        $purchaseInvoice->products()->attach($input2);
 
         Flash::success('Purchase Invoice updated successfully.');
 
