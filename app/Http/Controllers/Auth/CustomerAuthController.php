@@ -62,8 +62,7 @@ class CustomerAuthController extends Controller
           'email' => 'required|email|unique:customers',
           'gender' => 'required',
           'telephone' => 'required|numeric',
-          'full_name' => 'required',
-          'status' => 'required'
+          'full_name' => 'required'
       ]);
         $data = $request->all();
         Customer::create([
