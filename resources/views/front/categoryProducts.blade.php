@@ -154,7 +154,12 @@
 
                                   <div class="single-add-to-cart">
 
-                                      <a href="" class="btn-add-to-cart">Add to cart</a>
+                                      <form class="" action="{{route("addToCart")}}" method="post">
+                                        @csrf
+                                        <input type="hidden" value="1" name="qty" title="Qty" class="input-text qty text" size="1">
+                                        <input type="hidden" name="id" value="{{$product->id}}">
+                                        <button href="" type="submit" class="btn-add-to-cart">Add to cart</button>
+                                      </form>
 
                                       <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
 
