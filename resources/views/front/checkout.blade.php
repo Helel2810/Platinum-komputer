@@ -1,6 +1,10 @@
 @extends('front.layouts.app')
 <!-- MAIN -->
 @section('content')
+  @php
+    $cart = Cart::getContent();
+  @endphp
+
   <main class="site-main checkout">
 
           <div class="container">
@@ -87,6 +91,14 @@
 
                       </div>
 
+                      <div class="form-group payment col-md-6">
+
+                          <span class="grand-total">Grand Total<span>Rp. {{Cart::getTotal()}}</span></span>
+
+                          <button type="submit" class="btn-order">Place Order Now</button>
+
+                      </div>
+
                       <div class="form-group shipping col-md-6">
 
                           <ul>
@@ -99,9 +111,7 @@
 
                           <h4 class="title-checkout">Shipping method</h4>
 
-                          <p>Flat Rate</p>
-
-                          <p>Fixed $50.00</p>
+                          <p>Rp. 100000</p>
 
                           <h4 class="discount">Discount Codes</h4>
 
@@ -112,33 +122,6 @@
                           <button type="submit" class="btn-apply">Apply</button>
 
                       </div>
-
-                      <div class="form-group payment col-md-6">
-
-                          <h4 class="title-checkout">Payment Method</h4>
-
-                          <p>Check / Money order</p>
-
-                          <p>Credit Cart (saved)</p>
-
-                          <ul>
-
-                              <li><label class="inline" ><input type="checkbox"><span class="input"></span>Direct Bank Transder</label></li>
-
-                              <li><label class="inline" ><input type="checkbox"><span class="input"></span>Cash on Delivery</label></li>
-
-                              <li><label class="inline" ><input type="checkbox"><span class="input"></span>Paypal</label></li>
-
-                          </ul>
-
-                          <p class="credit">You can pay with your credit<br> card if you don't have a paypal account</p>
-
-                          <span class="grand-total">Grand Total<span>$100.00</span></span>
-
-                          <button type="submit" class="btn-order">Place Order Now</button>
-
-                      </div>
-
 
 
                   </div>
