@@ -39,6 +39,9 @@ Route::get('/front/logout', "Auth\CustomerAuthController@logout")->name('cutomer
 Route::get('/front/cart/', "FrontController@getCart")->name('cart');
 Route::post('/front/cart/', "FrontController@addToCart")->name('addToCart');
 
+Route::get('/front/checkout/', "FrontController@getCheckout")->name('getCheckout');
+
+
 
 
 Route::get('/home', 'HomeController@index')->name('home');

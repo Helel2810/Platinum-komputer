@@ -89,6 +89,12 @@ class FrontController extends Controller
       return back();
     }
 
+    public function getCheckout()
+    {
+      return view('front.checkout');
+    }
+
+
     public function addressForm(Request $request)
     {
       return view('front.addressForm');
