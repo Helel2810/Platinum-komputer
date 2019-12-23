@@ -26,6 +26,8 @@ Route::get('/front/profile/edit', "FrontController@newsDetail")->name('frontProf
 Route::post('/front/profile/edit', "FrontController@newsDetail")->name('frontProfileEdit');
 Route::get('/front/profile/address', "FrontController@addressForm")->name('frontAddressForm');
 Route::post('/front/profile/address', "FrontController@newsDetail")->name('frontAddressAdd');
+Route::get('/front/profile/orders', "FrontController@getOrders")->name('getOrders');
+Route::get('/front/profile/orders/sample', "FrontController@getOrderDetail")->name('getOrderDetail');
 
 
 Route::get('/front/products', "FrontController@category")->name('categoryProducts');

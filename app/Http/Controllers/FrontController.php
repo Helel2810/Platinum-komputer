@@ -80,6 +80,15 @@ class FrontController extends Controller
       return view('front.cart');
     }
 
+    public function getOrders(Request $request)
+    {
+      return view('front.orders');
+    }
+
+    public function getOrderDetail(Request $request)
+    {
+      return view('front.orderDetail');
+    }
 
     public function addToCart(Request $request)
     {
