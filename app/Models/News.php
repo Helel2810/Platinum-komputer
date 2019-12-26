@@ -29,6 +29,7 @@ class News extends Model
 
     public $fillable = [
         'image',
+        'title',
         'content',
         'source',
         'period',
@@ -43,6 +44,7 @@ class News extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'title' => 'string',
         'image' => 'string',
         'content' => 'string',
         'source' => 'string',
@@ -58,6 +60,7 @@ class News extends Model
      */
     public static $rules = [
         'image' => 'required',
+        'title' => 'required',
         'content' => 'required',
         'source' => 'required',
         'period' => 'required',
