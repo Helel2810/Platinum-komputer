@@ -72,7 +72,7 @@ class NewsController extends AppBaseController
             $input['image'] = asset('images/'.$profileImage);
          }
 
-         $input['admin_id'] = 1;
+         $input['admin_id'] = Auth::guard('admin')->user()->id;
 
         $news = $this->newsRepository->create($input);
 
