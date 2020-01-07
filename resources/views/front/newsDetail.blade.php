@@ -37,7 +37,7 @@
 
                                 <div class="post-item-info">
 
-                                    <h3 class="post-name"><a href="">lorem ipsum</a></h3>
+                                    <h3 class="post-name"><a href="">{{$news->title}}</a></h3>
 
                                     <div class="post-metas">
 
