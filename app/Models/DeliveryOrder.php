@@ -20,7 +20,7 @@ class DeliveryOrder extends Model
     use SoftDeletes;
 
     public $table = 'delivery_orders';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -56,5 +56,11 @@ class DeliveryOrder extends Model
         'order_id' => 'required'
     ];
 
-    
+    public function order()
+    {
+        return $this->belongsTo('App\Models\Order');
+    }
+
+
+
 }

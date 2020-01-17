@@ -61,7 +61,9 @@
                                 <input type="submit" value="Login" name="Login" class="button-submit">
 
                             </p>
-
+                            @if($errors->any())
+                              {!! implode('', $errors->all('<div>:message</div>')) !!}
+                            @endif
                         </form>
 
                     </div>

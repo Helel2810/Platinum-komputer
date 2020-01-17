@@ -21,93 +21,27 @@
 
           <div class="container">
 
-              <form action="#" class="checkout" method="post" name="checkout">
-
-                  <h4 class="title-checkout">Biiling Address</h4>
+              <form action="{{route('postCheckout')}}" class="checkout" method="post" name="checkout">
+                  @csrf
+                  <h4 class="title-checkout">Choose Address</h4>
 
                   <div class="row">
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">First Name*</label>
-
-                          <input type="text" class="form-control" id="forFName" placeholder="Your name" >
-
+                    <div class="col-md-6">
+                      <div class="row">
+                        <div class="form-group col-md-6">
+                          @if(count(Auth::user()->addresses)>0)
+                            @foreach(Auth::user()->addresses as $address)
+                            <div class="radio">
+                              <label><input type="radio" name="address" value="{{$address->id}}" checked>{{$address->address}}<br>{{$address->recipient_name}}<br>{{$address->phone}}</label>
+                            </div>
+                            @endforeach
+                          @else
+                          <a href="{{route('frontAddressForm')}}" class="button">Add new address</a>
+                          @endif
+                        </div>
                       </div>
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">Last Name*</label>
-
-                          <input type="text" class="form-control" id="forLName" placeholder="Your last name" >
-
-                      </div>
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">Email Addreess:</label>
-
-                          <input type="email" class="form-control" id="forEmail" placeholder="Type your email" >
-
-                      </div>
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">Phone numbber*</label>
-
-                          <input type="text" class="form-control" placeholder="10 digits format">
-
-                      </div>
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">Address:</label>
-
-                          <input type="text" class="form-control" placeholder="Street at apartment number">
-
-                      </div>
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">Country*</label>
-
-                          <input type="text" class="form-control" placeholder="United States">
-
-                      </div>
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">Postcode / ZIP:</label>
-
-                          <input type="text" class="form-control" placeholder="Your postal code">
-
-                      </div>
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">Town / City*</label>
-
-                          <input type="text" class="form-control" placeholder="City name">
-
-                      </div>
-
-                      <div class="form-group payment col-md-6">
-
-                          <span class="grand-total">Grand Total<span>Rp. {{Cart::getTotal()}}</span></span>
-
-                          <button type="submit" class="btn-order">Place Order Now</button>
-
-                      </div>
-
+                    </div>
                       <div class="form-group shipping col-md-6">
-
-                          <ul>
-
-                              <li><label class="inline" ><input type="checkbox"><span class="input"></span>Create an account?</label></li>
-
-                              <li><label class="inline" ><input type="checkbox"><span class="input"></span>Ship to a different address?</label></li>
-
-                          </ul>
 
                           <h4 class="title-checkout">Shipping method</h4>
 
@@ -123,7 +57,16 @@
 
                       </div>
 
+                  </div>
 
+                  <div class="row">
+                    <div class="form-group payment col-md-6">
+
+                        <span class="grand-total">Grand Total<span>Rp. {{Cart::getTotal()}}</span></span>
+
+                        <button type="submit" class="btn-order">Place Order Now</button>
+
+                    </div>
                   </div>
 
               </form>

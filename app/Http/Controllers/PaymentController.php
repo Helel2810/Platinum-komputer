@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+use App\Models\Payment;
+use App\Models\Order;
+
+
 class PaymentController extends AppBaseController
 {
     /** @var  PaymentRepository */
@@ -153,4 +157,54 @@ class PaymentController extends AppBaseController
 
         return redirect(route('payments.index'));
     }
+
+    public function approvePayment($id)
+    {
+        $payment = Payment::find($id);
+
+        if (empty($payment)) {
+            Flash::error('Payment not found');
+
+            return redirect(route('payments.index'));
+        }
+
+        if (empty($payment->proof)) {
+            Flash::error('Payment have not been done');
+
+            return redirect(route('payments.index'));
+        }
+
+        $payment->status = "Approved";
+        $payment->save();
+
+        $order = $payment->order;
+
+        $order->deliveryOrder()->create([
+          "status" => "Processing",
+        ]);
+
+        Flash::success('Payment Approved.');
+
+        return redirect()->back();
+    }
+
+    public function rejectPayment($id)
+    {
+        $payment = Payment::find($id);
+
+        if (empty($payment)) {
+            Flash::error('Payment not found');
+
+            return redirect(route('payments.index'));
+        }
+
+        $payment->status = "Rejected";
+        $payment->save();
+
+        Flash::success('Payment Rejected.');
+
+        return redirect()->back();
+    }
+
+
 }

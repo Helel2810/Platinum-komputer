@@ -70,5 +70,16 @@ class Address extends Model
         return $this->belongsTo('App\Models\Customer');
     }
 
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+
+    public function district()
+    {
+        return $this->belongsTo('App\Models\District');
+    }
+
+
 
 }

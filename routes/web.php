@@ -25,10 +25,10 @@ Route::get('/front/profile/', "FrontController@newsDetail")->name('frontProfile'
 Route::get('/front/profile/edit', "FrontController@newsDetail")->name('frontProfileEditForm');
 Route::post('/front/profile/edit', "FrontController@newsDetail")->name('frontProfileEdit');
 Route::get('/front/profile/address', "FrontController@addressForm")->name('frontAddressForm');
-Route::post('/front/profile/address', "FrontController@newsDetail")->name('frontAddressAdd');
+Route::post('/front/profile/address', "FrontController@postAddress")->name('frontAddressAdd');
 Route::get('/front/profile/orders', "FrontController@getOrders")->name('getOrders');
-Route::get('/front/profile/orders/sample', "FrontController@getOrderDetail")->name('getOrderDetail');
-
+Route::get('/front/profile/orders/{id}', "FrontController@getOrderDetail")->name('getOrderDetail');
+Route::post('/front/profile/orders/{id}/confirm-payment', "FrontController@postPaymentProof")->name('postPaymentProof');
 
 Route::get('/front/products', "FrontController@category")->name('categoryProducts');
 Route::get('/front/products/{product}', "FrontController@product")->name('productDetail');
@@ -42,6 +42,7 @@ Route::get('/front/cart/', "FrontController@getCart")->name('cart');
 Route::post('/front/cart/', "FrontController@addToCart")->name('addToCart');
 
 Route::get('/front/checkout/', "FrontController@getCheckout")->name('getCheckout');
+Route::post('/front/checkout/', "FrontController@postCheckout")->name('postCheckout');
 
 
 
@@ -53,10 +54,16 @@ Route::post('/login', "Auth\AdminAuthController@loginAdmin")->name('adminLogin')
 Route::get('/register', "Auth\AdminAuthController@showRegisterForm")->name('adminRegisterForm');
 Route::post('/register', "Auth\AdminAuthController@create")->name('adminRegister');
 
-
-
-
 Route::get('/logut', 'Auth\AdminAuthController@logout')->name('adminLogout');
+
+Route::get('/orders/{id}/approve', "OrderController@approveOrder")->name('approveOrder');
+Route::get('/orders/{id}/reject', "OrderController@rejectOrder")->name('rejectOrder');
+
+Route::get('/payments/{id}/approve', "PaymentController@approvePayment")->name('approvePayment');
+Route::get('/payments/{id}/reject', "PaymentController@rejectPayment")->name('rejectPayment');
+
+Route::get('/delivery/{id}/send', "DeliveryOrderController@sendDeliveryOrder")->name('sendDeliveryOrder');
+
 
 Route::resource('adminRoles', 'AdminRoleController');
 
@@ -98,6 +105,11 @@ Route::resource('deliveryOrders', 'DeliveryOrderController');
 
 Route::resource('coupons', 'CouponController');
 
+Route::resource('sliders', 'SliderController');
+
+Route::resource('payments', 'PaymentController');
+
+
 Route::get('/ongkir-isi', function(){
 
   $auth_data =
@@ -128,7 +140,7 @@ Route::get('/ongkir-isi', function(){
     ->asJson()
     ->get();
 
-    $propinsi = new App\Province();
+    $propinsi = new App\Models\Province();
 
     $propinsi->name = $province->name;
 
@@ -137,7 +149,7 @@ Route::get('/ongkir-isi', function(){
     foreach ($city->data as $key => $value)
     {
 
-      $kabupaten = new App\City();
+      $kabupaten = new App\Models\City();
 
       $kabupaten->name = $value->name;
 
@@ -210,9 +222,3 @@ Route::get('/ongkir-isi', function(){
   return json_encode($provinces);
 
 });
-
-
-Route::resource('sliders', 'SliderController');
-
-
-Route::resource('payments', 'PaymentController');

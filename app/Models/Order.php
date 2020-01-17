@@ -19,7 +19,7 @@ class Order extends Model
     use SoftDeletes;
 
     public $table = 'orders';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -27,7 +27,9 @@ class Order extends Model
     public $fillable = [
         'status',
         'customer_id',
-        'admin_id'
+        'admin_id',
+        'shipping_cost_id',
+        'address_id'
     ];
 
     /**
@@ -39,7 +41,10 @@ class Order extends Model
         'id' => 'integer',
         'status' => 'string',
         'customer_id' => 'integer',
-        'admin_id' => 'integer'
+        'admin_id' => 'integer',
+        'shipping_cost_id' => 'integer',
+        'address_id' => 'integer'
+
     ];
 
     /**
@@ -52,5 +57,33 @@ class Order extends Model
         'customer_id' => 'required'
     ];
 
-    
+    public function payment()
+    {
+        return $this->hasOne('App\Models\Payment');
+    }
+
+    public function deliveryOrder()
+    {
+        return $this->hasOne('App\Models\DeliveryOrder');
+    }
+
+    public function products()
+    {
+        return $this->belongsToMany('App\Models\Product')->withPivot('qty');
+    }
+
+    public function customer()
+    {
+      return $this->belongsTo('App\Models\Customer');
+    }
+
+    public function address()
+    {
+        return $this->belongsTo('App\Models\Address');
+    }
+
+
+
+
+
 }

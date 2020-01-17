@@ -21,7 +21,7 @@ class Payment extends Model
     use SoftDeletes;
 
     public $table = 'payments';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -54,8 +54,14 @@ class Payment extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function order()
+    {
+        return $this->belongsTo('App\Models\Order');
+    }
+
+
+
 }

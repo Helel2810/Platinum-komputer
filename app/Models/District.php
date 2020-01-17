@@ -50,7 +50,12 @@ class District extends Model
 
     public function city()
     {
-      return $this->belongsTo('City');
+      return $this->belongsTo('App\Models\City');
+    }
+
+    public function addresses()
+    {
+      return $this->hasMany('App\Models\Address');
     }
 
 

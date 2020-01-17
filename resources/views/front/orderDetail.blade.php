@@ -64,7 +64,10 @@
                   									</div>
                                     <div class="row">
                                       <div class="col-xs-12">
-                                        <h3>Status: Waiting Payment</h3>
+                                        <h3>Order Status: {{$order->status}}</h3>
+                                        @if($order->payment->status == "Approved")
+                                          Delivery Status: {{$order->deliveryOrder->status}}
+                                        @endif
                                       </div>
                                     </div>
 
@@ -73,20 +76,11 @@
                   								<div class="row">
                   									<div class="col-xs-6">
                   										<address>
-                  											<strong>Billed To:</strong><br>
-                  											Twitter, Inc.<br>
-                  											795 Folsom Ave, Suite 600<br>
-                  											San Francisco, CA 94107<br>
-                  											<abbr title="Phone">P:</abbr> (123) 456-7890
-                  										</address>
-                  									</div>
-                  									<div class="col-xs-6 text-right">
-                  										<address>
                   											<strong>Shipped To:</strong><br>
-                  											Elaine Hernandez<br>
-                  											P. Sherman 42,<br>
-                  											Wallaby Way, Sidney<br>
-                  											<abbr title="Phone">P:</abbr> (123) 345-6789
+                  											{{$order->address->recipient_name}}<br>
+                  											{{$order->address->address}},<br>
+                  											{{$order->address->district->name}}, {{$order->address->district->city->name}}<br>
+                  											<abbr title="Phone">P:</abbr> {{$order->address->phone}}
                   										</address>
                   									</div>
                   								</div>
@@ -94,13 +88,13 @@
                   									<div class="col-xs-6">
                   										<address>
                   											<strong>Email:</strong><br>
-                  											h.elaine@gmail.com<br>
+                  											{{$order->customer->email}}<br>
                   										</address>
                   									</div>
                   									<div class="col-xs-6 text-right">
                   										<address>
                   											<strong>Order Date:</strong><br>
-                  											17/06/14
+                  											{{$order->created_at->format('d/m/Y')}}
                   										</address>
                   									</div>
                   								</div>
@@ -111,37 +105,25 @@
                   											<thead>
                   												<tr class="line">
                   													<td><strong>#</strong></td>
-                  													<td class="text-center"><strong>PROJECT</strong></td>
+                  													<td class="text-center"><strong>Item</strong></td>
                   													<td class="text-center"><strong>QTY</strong></td>
                   													<td class="text-right"><strong>RATE</strong></td>
                   													<td class="text-right"><strong>SUBTOTAL</strong></td>
                   												</tr>
                   											</thead>
                   											<tbody>
+                                          @foreach($order->products as $key => $product)
                   												<tr>
-                  													<td>1</td>
-                  													<td><strong>Mouse</strong></td>
-                  													<td class="text-center">1</td>
-                  													<td class="text-center">Rp. 250000</td>
-                  													<td class="text-right">Rp. 250000</td>
+                  													<td>{{$key+1}}</td>
+                  													<td class="text-center"><strong>{{$product->name}}</strong></td>
+                  													<td class="text-center">{{$product->pivot->qty}}</td>
+                  													<td class="text-right">Rp. {{$product->price}}</td>
+                  													<td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
                   												</tr>
-                  												<tr>
-                  													<td>2</td>
-                  													<td><strong>VGA card</strong></td>
-                  													<td class="text-center">1</td>
-                  													<td class="text-center">Rp. 5400000</td>
-                  													<td class="text-right">Rp. 5400000</td>
-                  												</tr>
-                  												<tr class="line">
-                  													<td>3</td>
-                  													<td><strong>Ram Memory</strong></td>
-                  													<td class="text-center">4</td>
-                  													<td class="text-center">Rp. 500000</td>
-                  													<td class="text-right">Rp. 2000000</td>
-                  												</tr>
+                                          @endforeach
                   												<tr>
                   													<td colspan="3"></td>
-                  													<td class="text-right"><strong>Taxes</strong></td>
+                  													<td class="text-right"><strong>Shipping</strong></td>
                   													<td class="text-right"><strong>N/A</strong></td>
                   												</tr>
                   												<tr>
@@ -153,11 +135,13 @@
                   										</table>
                   									</div>
                   								</div>
+                                  @if($order->payment->status != "Approved")
                   								<div class="row">
                   									<div class="col-md-12 float-right">
                                       <button class="btn btn-primary float-right" type="button" data-toggle="modal" data-target="#myModal">pay</button>
                   									</div>
                   								</div>
+                                  @endif
                   							</div>
                   						</div>
                   					</div>
@@ -172,7 +156,7 @@
       </div>
 
       <div class="modal fade" id="myModal" role="dialog">
-        <form method="post" enctype="multipart/form-data" action="a.html">
+        <form method="post" enctype="multipart/form-data" action="{{route('postPaymentProof', $order->payment->id)}}">
           {{csrf_field()}}
           <div class="modal-dialog">
             <!-- Modal content-->
@@ -186,7 +170,7 @@
                     <div class="col-md-6">
                       <div class="form-group">
                         <label for="sku">Account</label>
-                        <input type="text" class="form-control" id="sku" name="account" placeholder="Enter account">
+                        <input type="text" class="form-control" id="sku" name="bank_account" placeholder="Enter account">
                       </div>
                     </div>
 

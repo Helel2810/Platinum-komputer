@@ -10,6 +10,8 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+use App\Models\DeliveryOrder;
+
 class DeliveryOrderController extends AppBaseController
 {
     /** @var  DeliveryOrderRepository */
@@ -153,4 +155,24 @@ class DeliveryOrderController extends AppBaseController
 
         return redirect(route('deliveryOrders.index'));
     }
+
+    public function sendDeliveryOrder($id)
+    {
+        $deliveryOrder = DeliveryOrder::find($id);
+
+        if (empty($deliveryOrder)) {
+            Flash::error('Delivery Order not found');
+
+            return redirect(route('deliveryOrders.index'));
+        }
+
+        $deliveryOrder->status = "Shipped";
+        $deliveryOrder->send_date = \Carbon\Carbon::now();
+        $deliveryOrder->save();
+
+        Flash::success('Delivery Order deleted successfully.');
+
+        return redirect(route('deliveryOrders.index'));
+    }
+
 }

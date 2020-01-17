@@ -3,12 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 
 use App\Models\Product;
+use App\Models\Address;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\News;
+use App\Models\Order;
+use App\Models\Payment;
+use App\Models\Customer;
+
+
 
 
 
@@ -85,9 +92,10 @@ class FrontController extends Controller
       return view('front.orders');
     }
 
-    public function getOrderDetail(Request $request)
+    public function getOrderDetail($id)
     {
-      return view('front.orderDetail');
+      $order = Order::find($id);
+      return view('front.orderDetail')->with('order', $order);
     }
 
     public function addToCart(Request $request)
@@ -103,10 +111,90 @@ class FrontController extends Controller
       return view('front.checkout');
     }
 
+    public function postCheckout(Request $request)
+    {
+      $cartCollection = Cart::getContent();
+
+      $conditions = Cart::getConditions();
+
+      $order = new Order();
+
+      $order->status = "Pending";
+
+      $order->customer_id = Auth::id();
+      $order->address_id = $request->address;
+
+      /*
+      foreach ($conditions as $key => $condition)
+      {
+        $coupon = Coupon::where("code" ,$condition->getName())->first();
+        $order->coupon_id = $coupon->id;
+      }
+      */
+
+
+      $order->save();
+
+      Cart::clearCartConditions();
+
+      $total = 0;
+      $total_quantity = 0;
+      foreach ($cartCollection as $product)
+      {
+        $order->products()->attach($product->id, ['qty' => $product->quantity]);
+
+        $modifier = Product::find($product->id);
+        $modifier->stock = $modifier->stock - $product->quantity;
+        $modifier->save();
+      }
+
+
+      Cart::clear();
+
+      return redirect(route('front'));
+    }
+
+
 
     public function addressForm(Request $request)
     {
       return view('front.addressForm');
+    }
+
+    public function postAddress(Request $request)
+    {
+      Address::create([
+        'address' => $request->address,
+        'recipient_name' => $request->recipient_name,
+        'phone' => $request->phone,
+        'customer_id' => Auth::id(),
+        'district_id' => $request->district_id,
+        'post_code' => $request->post_code,
+      ]);
+      return redirect()->back();
+    }
+
+    public function postPaymentProof(Request $request, $id)
+    {
+      $order = Order::find($id);
+      if ($files = $request->file('image')) {
+          $destinationPath = public_path('images'); // upload path
+          $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+          $files->move($destinationPath, $profileImage);
+          $proof = asset('images/'.$profileImage);
+       }
+       else
+       {
+         Flash::error('Paymentproof not found');
+
+         return redirect(route('orders.index'));
+       }
+      $order->payment()->update([
+        "proof" => $proof,
+        "bank_account" => $request->bank_account,
+        "payment_date"=> $request->payment_date,
+      ]);
+      return redirect()->back();
     }
 
 

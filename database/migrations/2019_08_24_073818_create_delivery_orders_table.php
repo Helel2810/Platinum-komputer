@@ -15,7 +15,7 @@ class CreateDeliveryOrdersTable extends Migration
     {
         Schema::create('delivery_orders', function (Blueprint $table) {
             $table->increments('id');
-            $table->dateTime('send_date');
+            $table->dateTime('send_date')->nullable();
             $table->dateTime('receive_date')->nullable();
             $table->string('status');
             $table->integer('order_id')->unsigned();

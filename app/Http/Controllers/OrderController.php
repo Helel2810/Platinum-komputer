@@ -10,6 +10,10 @@ use Illuminate\Http\Request;
 use Flash;
 use Response;
 
+use App\Models\Payment;
+use App\Models\Order;
+
+
 class OrderController extends AppBaseController
 {
     /** @var  OrderRepository */
@@ -72,7 +76,7 @@ class OrderController extends AppBaseController
      */
     public function show($id)
     {
-        $order = $this->orderRepository->find($id);
+        $order = Order::find($id);
 
         if (empty($order)) {
             Flash::error('Order not found');
@@ -153,4 +157,47 @@ class OrderController extends AppBaseController
 
         return redirect(route('orders.index'));
     }
+
+    /**
+     * Change Status and create payment.
+     *
+     * @param int $id
+     *
+     *
+     *
+     * @return Response
+     */
+    public function approveOrder($id)
+    {
+        $order = Order::find($id);
+        if (empty($order)) {
+            Flash::error('Order not found');
+
+            return redirect(route('orders.index'));
+        }
+        $order->status = "Approved";
+        $order->save();
+        $order->payment()->create([
+          "status" => "Waiting Payment",
+          "payment_method" => "Transfer"
+        ]);
+
+        return redirect(route('orders.show', $id));
+    }
+
+    public function rejectOrder($id)
+    {
+        $order = Order::find($id);
+        if (empty($order)) {
+            Flash::error('Order not found');
+
+            return redirect(route('orders.index'));
+        }
+        $order->status = "Rejected";
+        $order->save();
+
+        return redirect(route('orders.show', $id));
+    }
+
+
 }

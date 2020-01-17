@@ -50,12 +50,12 @@ class City extends Model
 
     public function province()
     {
-      return $this->belongsTo('Province');
+      return $this->belongsTo('App\Models\Province');
     }
 
     public function districts()
     {
-      return $this->hasMany('District');
+      return $this->hasMany('App\Models\District');
     }
 
 

@@ -108,4 +108,10 @@ class Product extends Model
         return $this->belongsToMany('App\Models\PurchaseInvoice');
     }
 
+    public function orders()
+    {
+        return $this->belongsToMany('App\Models\Order')->withPivot('qty');
+    }
+
+
 }
