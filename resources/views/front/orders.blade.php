@@ -58,15 +58,17 @@
                   </tr>
                 </thead>
                 <tbody>
+                  @foreach($orders as $order)
                   <tr>
-                    <td>1</td>
-                    <td>Waiting Payment</td>
-                    <td>2019-06-06 </td>
+                    <td>{{$order->id}}</td>
+                    <td>{{$order->status}}</td>
+                    <td>{{$order->created_at->format('d/m/Y')}}</td>
                     <td>Rp. 500000</td>
                     <td>
-                      <a href="{{route('getOrderDetail')}}">view</a>
+                      <a href="{{route('getOrderDetail', $order->id)}}">view</a>
                     </td>
                   </tr>
+                  @endforeach
                 </tbody>
 
               </table>

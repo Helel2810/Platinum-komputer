@@ -89,7 +89,8 @@ class FrontController extends Controller
 
     public function getOrders(Request $request)
     {
-      return view('front.orders');
+      $orders = Order::where('customer_id', Auth::id());
+      return view('front.orders')->with('orders', $orders->get());
     }
 
     public function getOrderDetail($id)

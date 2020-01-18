@@ -423,6 +423,15 @@
 
                                    <li>
 
+                                       <a href="{{route('getOrders')}}" class="dropdown-toggle">Profile</a>
+
+                                       <span class="toggle-submenu hidden-md"></span>
+
+                                   </li>
+
+
+                                   <li>
+
                                        <a href="{{route('frontNews')}}" class="dropdown-toggle">News</a>
 
                                        <span class="toggle-submenu hidden-md"></span>
