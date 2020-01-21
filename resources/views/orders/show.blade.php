@@ -48,10 +48,8 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  <b>Invoice #007612</b><br>
-                  <br>
-                  <b>Order ID:</b> 4F3S8J<br>
-                  <b>Payment Due:</b> 2/22/2014<br>
+                  <b>Order ID:</b> Plt{{$order->id}}<br>
+                  <b>Payment Due:</b> {{$order->created_at->addDay(3)->format('d/m/Y')}}<br>
                   <b>Account:</b> 968-34567
                 </div>
                 <!-- /.col -->
@@ -66,10 +64,10 @@
                   <table class="table table-striped">
                     <thead>
                     <tr>
-                      <th>Qty</th>
                       <th>Product</th>
                       <th>Serial #</th>
-                      <th>Description</th>
+                      <th>Category</th>
+                      <th>Qty</th>
                       <th class="text-right">Subtotal</th>
                     </tr>
                     </thead>
@@ -79,10 +77,10 @@
                         $subtotal += $product->pivot->qty*$product->price;
                     ?>
                     <tr>
-                      <td>{{$product->pivot->qty}}</td>
                       <td>{{$product->name}}</td>
                       <td>{{$product->id}}</td>
-                      <td>{{$product->description}}</td>
+                      <td>{{$product->category->name}}</td>
+                      <td>{{$product->pivot->qty}}</td>
                       <td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
                     </tr>
                     @endforeach
@@ -111,7 +109,7 @@
               <div class="row">
                 <!-- /.col -->
                 <div class="col-6">
-                  <p class="lead">Amount Due 2/22/2014</p>
+                  <p class="lead">Amount Due {{$order->created_at->addDay(3)->format('d/m/Y')}}</p>
                 </div>
                 <!-- /.col -->
               </div>

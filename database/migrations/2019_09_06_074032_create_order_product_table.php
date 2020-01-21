@@ -18,12 +18,10 @@ class CreateOrderProductTable extends Migration
             $table->integer('order_id')->unsigned();
             $table->integer('product_id')->unsigned();
             $table->integer('qty');
-            $table->integer('coupon_id')->unsigned()->nullable();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('order_id')->references('id')->on('orders');
             $table->foreign('product_id')->references('id')->on('products');
-            $table->foreign('coupon_id')->references('id')->on('coupons');
         });
     }
 
