@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CreateShippingCostRequest;
 use App\Http\Requests\UpdateShippingCostRequest;
 use App\Repositories\ShippingCostRepository;
+use App\Repositories\CourierRepository;
+use App\Repositories\ShipmentMethodRepository;
+use App\Repositories\DistrictRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
 use Flash;
@@ -14,10 +17,16 @@ class ShippingCostController extends AppBaseController
 {
     /** @var  ShippingCostRepository */
     private $shippingCostRepository;
+    private $courierRepository;
+    private $districtRepository;
 
-    public function __construct(ShippingCostRepository $shippingCostRepo)
+
+    public function __construct(ShippingCostRepository $shippingCostRepo, CourierRepository $courierRepo, ShipmentMethodRepository $shipmentMethodRepo, DistrictRepository $districtRepo)
     {
         $this->shippingCostRepository = $shippingCostRepo;
+        $this->courierRepository = $courierRepo;
+        $this->shipmentMethodRepository = $shipmentMethodRepo;
+        $this->districtRepository = $districtRepo;
     }
 
     /**
@@ -42,7 +51,15 @@ class ShippingCostController extends AppBaseController
      */
     public function create()
     {
-        return view('shipping_costs.create');
+        $courier = $this->courierRepository->all();
+        $shipmentMethod = $this->shipmentMethodRepository->all();
+        $district = $this->districtRepository->all();
+        $data = [
+          'courier' => $courier->pluck('name', 'id'),
+          'shipmentMethod' => $shipmentMethod->pluck('name', 'id'),
+          'district' => $district->pluck('name', 'id')
+        ];
+        return view('shipping_costs.create')->with($data);
     }
 
     /**
@@ -100,7 +117,18 @@ class ShippingCostController extends AppBaseController
             return redirect(route('shippingCosts.index'));
         }
 
-        return view('shipping_costs.edit')->with('shippingCost', $shippingCost);
+        $courier = $this->courierRepository->all();
+        $shipmentMethod = $this->shipmentMethodRepository->all();
+        $district = $this->districtRepository->all();
+        $data = [
+          'shippingCost' => $shippingCost,
+          'courier' => $courier->pluck('name', 'id'),
+          'shipmentMethod' => $shipmentMethod->pluck('name', 'id'),
+          'district' => $district->pluck('name', 'id')
+        ];
+
+
+        return view('shipping_costs.edit')->with($data);
     }
 
     /**
