@@ -6,8 +6,8 @@
 
 <!-- Shipping Method Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('shipping_method_id', 'Shipping Method Id:') !!}
-    {!! Form::select('shipping_method_id', $shipmentMethod, null, ['class' => 'form-control']) !!}
+    {!! Form::label('shipment_method_id', 'Shipment Method Id:') !!}
+    {!! Form::select('shipment_method_id', $shipmentMethod, null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Courier Id Field -->
@@ -19,7 +19,7 @@
 <!-- District Id Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('district_id', 'District Id:') !!}
-    {!! Form::select('district_id', $district, null, ['class' => 'form-control']) !!}
+    {!! Form::select('district_id', $district, null, ['class' => 'form-control select2form']) !!}
 </div>
 
 <!-- Submit Field -->
