@@ -2,25 +2,24 @@
 
 namespace App\Repositories;
 
-use App\Models\ShippingCost;
+use App\Models\ProductComment;
 use App\Repositories\BaseRepository;
 
 /**
- * Class ShippingCostRepository
+ * Class ProductCommentRepository
  * @package App\Repositories
- * @version August 24, 2019, 7:24 am UTC
+ * @version January 22, 2020, 6:12 am UTC
 */
 
-class ShippingCostRepository extends BaseRepository
+class ProductCommentRepository extends BaseRepository
 {
     /**
      * @var array
      */
     protected $fieldSearchable = [
-        'price',
-        'shipment_method_id',
-        'courier_id',
-        'district_id'
+        'stars',
+        'content',
+        'product_id'
     ];
 
     /**
@@ -38,6 +37,6 @@ class ShippingCostRepository extends BaseRepository
      **/
     public function model()
     {
-        return ShippingCost::class;
+        return ProductComment::class;
     }
 }

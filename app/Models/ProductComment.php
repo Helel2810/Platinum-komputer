@@ -6,30 +6,30 @@ use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
- * Class Promotion
+ * Class ProductComment
  * @package App\Models
- * @version August 24, 2019, 7:09 am UTC
+ * @version January 22, 2020, 6:12 am UTC
  *
- * @property float nominal
- * @property string start_date
- * @property string end_date
- * @property string status
+ * @property integer stars
+ * @property string content
+ * @property integer product_id
  */
-class Promotion extends Model
+class ProductComment extends Model
 {
     use SoftDeletes;
 
-    public $table = 'promotions';
+    public $table = 'product_comments';
 
 
     protected $dates = ['deleted_at'];
 
 
+
     public $fillable = [
-        'nominal',
-        'start_date',
-        'end_date',
-        'status'
+        'stars',
+        'content',
+        'product_id',
+        'customer_id'
     ];
 
     /**
@@ -39,10 +39,9 @@ class Promotion extends Model
      */
     protected $casts = [
         'id' => 'integer',
-        'nominal' => 'float',
-        'start_date' => 'datetime',
-        'end_date' => 'datetime',
-        'status' => 'string'
+        'stars' => 'integer',
+        'content' => 'string',
+        'product_id' => 'integer'
     ];
 
     /**
@@ -51,16 +50,19 @@ class Promotion extends Model
      * @var array
      */
     public static $rules = [
-        'nominal' => 'required|numeric',
-        'start_date' => 'required|date',
-        'end_date' => 'required|date',
-        'status' => 'required'
     ];
 
     public function product()
     {
         return $this->belongsTo('App\Models\Product');
     }
+
+    public function customer()
+    {
+        return $this->belongsTo('App\Models\Customer');
+    }
+
+
 
 
 }

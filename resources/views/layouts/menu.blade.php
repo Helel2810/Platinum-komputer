@@ -102,3 +102,7 @@
     <a href="{!! route('payments.index') !!}"><i class="fa fa-edit"></i><span>Payments</span></a>
 </li>
 
+<li class="{{ Request::is('productComments*') ? 'active' : '' }}">
+    <a href="{{ route('productComments.index') }}"><i class="fa fa-edit"></i><span>Product Comments</span></a>
+</li>
+

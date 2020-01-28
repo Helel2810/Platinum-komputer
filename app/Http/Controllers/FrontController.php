@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Auth;
 use Darryldecode\Cart\Facades\CartFacade as Cart;
 
 use App\Models\Product;
-use App\Models\Address;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\News;
@@ -15,7 +14,10 @@ use App\Models\Order;
 use App\Models\Payment;
 use App\Models\Customer;
 
-
+use App\Models\Address;
+use App\Models\Province;
+use App\Models\ShipmentMethod;
+use App\Models\ShippingCost;
 
 
 
@@ -82,6 +84,17 @@ class FrontController extends Controller
       return view('front.productDetail')->with($data);
     }
 
+    public function productPostComment(Product $product, Request $request)
+    {
+      $product->productComments()->create([
+        'stars' => $request->stars,
+        'content' => $request->content,
+        'customer_id' => Auth::id()
+      ]);
+      return redirect()->back();
+    }
+
+
     public function getCart(Request $request)
     {
       return view('front.cart');
@@ -109,14 +122,19 @@ class FrontController extends Controller
 
     public function getCheckout()
     {
-      return view('front.checkout');
+      $shipmentMethods = ShipmentMethod::all();
+      $products = Cart::getContent();
+
+      $data = [
+        "shipmentMethods" => $shipmentMethods,
+        "products" => $products
+      ];
+      return view('front.checkout')->with($data);
     }
 
     public function postCheckout(Request $request)
     {
       $cartCollection = Cart::getContent();
-
-      $conditions = Cart::getConditions();
 
       $order = new Order();
 
@@ -125,21 +143,22 @@ class FrontController extends Controller
       $order->customer_id = Auth::id();
       $order->address_id = $request->address;
 
-      /*
-      foreach ($conditions as $key => $condition)
+      $shippingCost = ShippingCost::where('district_id', $order->address->district_id)->where('shipment_method_id', $request->shipmentMethod)->first();
+      $order->shipping_cost_id = $shippingCost->id;
+      if($request->filled('coupon'))
       {
-        $coupon = Coupon::where("code" ,$condition->getName())->first();
+        $coupon = Coupon::where("name" ,$request->coupon)->first();
+        if(empty($coupon))
+        {
+          Flash::error('Incorrect coupon code');
+
+          return redirect(route('getCheckout'));
+        }
         $order->coupon_id = $coupon->id;
       }
-      */
-
 
       $order->save();
 
-      Cart::clearCartConditions();
-
-      $total = 0;
-      $total_quantity = 0;
       foreach ($cartCollection as $product)
       {
         $order->products()->attach($product->id, ['qty' => $product->quantity]);
@@ -159,7 +178,8 @@ class FrontController extends Controller
 
     public function addressForm(Request $request)
     {
-      return view('front.addressForm');
+      $provinces = Province::all();
+      return view('front.addressForm')->with('provinces', $provinces);
     }
 
     public function postAddress(Request $request)
@@ -188,7 +208,7 @@ class FrontController extends Controller
        {
          Flash::error('Paymentproof not found');
 
-         return redirect(route('orders.index'));
+         return redirect(route('getCheckout'));
        }
       $order->payment()->update([
         "proof" => $proof,

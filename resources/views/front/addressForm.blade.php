@@ -20,7 +20,8 @@
 
           <div class="container">
 
-              <form action="#" class="checkout" method="post" name="checkout">
+              <form action="{{route('frontAddressAdd')}}" class="checkout" method="post" name="checkout">
+                @csrf
 
                   <h4 class="title-checkout">Address</h4>
 
@@ -30,7 +31,7 @@
 
                           <label class="title">Recipient Name</label>
 
-                          <input type="text" class="form-control" id="forFName" placeholder="Your name" >
+                          <input type="text" class="form-control" name="recipient_name" id="forFName" placeholder="Your name" >
 
                       </div>
 
@@ -38,7 +39,7 @@
 
                           <label class="title">Phone numbber*</label>
 
-                          <input type="tel" class="form-control" placeholder="08114566654">
+                          <input type="tel" class="form-control" name="phone" placeholder="08114566654">
 
                       </div>
 
@@ -46,7 +47,7 @@
 
                           <label class="title">Address:</label>
 
-                          <input type="text" class="form-control" placeholder="Street at apartment number">
+                          <input type="text" class="form-control" name="address" placeholder="Street at apartment number">
 
                       </div>
 
@@ -58,9 +59,10 @@
 
                           <label class="title">Province*</label>
 
-                          <select class="form-control" name="">
-                            <option value="volvo">DKI JKT</option>
-                            <option value="saab">Jawa Barat</option>
+                          <select class="form-control" name="" id="province_list" onchange="getCity()">
+                            @foreach($provinces as $province)
+                              <option value="{{$province->id}}">{{$province->name}}</option>
+                            @endforeach
                           </select>
 
                       </div>
@@ -69,9 +71,7 @@
 
                           <label class="title">Town / City*</label>
 
-                          <select class="form-control" name="">
-                            <option value="volvo">Jakarta Utara</option>
-                            <option value="saab">Bandung</option>
+                          <select class="form-control" name="" id="cities_list" onchange="getDistrict()">
                           </select>
 
                       </div>
@@ -81,9 +81,7 @@
 
                           <label class="title">District*</label>
 
-                          <select class="form-control" name="">
-                            <option value="volvo">Sunter</option>
-                            <option value="saab">Tj. Priok</option>
+                          <select class="form-control" name="district_id" id="districts_list">
                           </select>
 
                       </div>
@@ -93,7 +91,7 @@
 
                           <label class="title">Postcode / ZIP:</label>
 
-                          <input type="text" class="form-control" placeholder="Your postal code">
+                          <input type="text" name="post_code" class="form-control" placeholder="Your postal code">
 
                       </div>
 

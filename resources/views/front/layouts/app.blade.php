@@ -663,6 +663,89 @@
 
    <script type="text/javascript" src="{{asset("js/jquery.countdown.js")}}"></script>
 
+   <script type="text/javascript">
+
+   function getCity() {
+     var provinceList = document.getElementById("province_list");
+     var cities = document.getElementById("cities_list");
+     var selProvince = provinceList.options[provinceList.selectedIndex].value;
+     while (cities.options.length) {
+         cities.remove(0);
+     }
+
+     (
+       function($){
+       var post = $.post( "{{ route('api.apiCities') }}", { province_id : selProvince} );
+
+       post.done(function( data ) {
+         //var content = $( data ).find( "#content" );
+         //console.log(data.regions)
+         data.cities.forEach(function(t){
+           var city = new Option(t.name, t.id);
+           cities.options.add(city);
+         })
+
+       });
+      }(jQuery))
+     }
+
+     function getDistrict() {
+       var citiesList = document.getElementById("cities_list");
+       var districts = document.getElementById("districts_list");
+       var selCity = citiesList.options[citiesList.selectedIndex].value;
+       while (districts.options.length) {
+           districts.remove(0);
+       }
+
+
+       (
+         function($){
+         var post = $.post( "{{route('api.apiDistrict')}}", { city_id : selCity} );
+
+         post.done(function( data ) {
+           //var content = $( data ).find( "#content" );
+           //console.log(data.regions)
+           data.districts.forEach(function(t){
+             var district = new Option(t.name, t.id);
+             districts.options.add(district);
+           })
+
+         });
+        }(jQuery))
+       }
+
+       function getShippingCost() {
+
+         var shipCost = document.getElementById("shipping_cost");
+         var totalCost = document.getElementById("total_cost");
+         var subtotal = document.getElementById("subtotal");
+
+         (
+           function($){
+             var address = $('input[name="address"]:checked').val();
+             var shipmentMethod = $('input[name="shipmentMethod"]:checked').val();
+
+             var post1 = $.post("{{route('api.apiAddressDistrict')}}", {address_id : address});
+             post1.done(function(data){
+               var district = data.district_id;
+               var post2 = $.post( "{{route('api.apiShippingCost')}}", { district_id : district, shipment_method_id: shipmentMethod} );
+               post2.done(function( data ) {
+                 //var content = $( data ).find( "#content" );
+                 //console.log(data.regions)
+                 var cost = data.shippingCost.price;
+                 var total = cost + Number(subtotal.innerHTML.replace(/[^0-9]+/g,""));
+                 shipCost.innerHTML = 'Rp. '+cost.toLocaleString('en');
+                 totalCost.innerHTML = 'Rp. '+total.toLocaleString('en');
+               });
+             });
+
+
+          }(jQuery))
+         }
+
+
+   </script>
+
 </body>
 
 </html>

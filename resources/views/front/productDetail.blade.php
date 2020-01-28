@@ -202,21 +202,11 @@
 
                         <div class="box-content">
 
-                            <p>ipsum dolor sit amet, consectetur adipiscing elit. Vivamus non nulla ullamcorper, interdum dolor vel, dictum justo. Vivamus finibus lorem id auctor
-
-                                placerat. Ut fermentum nulla lectus, in laoreet metus ultrices ac. Integer eleifend urna ultricies enim facilisis, vel fermentum eros porta.
-
-                            </p>
-
                             <span>Weights & Dimensions</span>
 
                             <div class="parameter">
 
-                                <p>Overall: 40" H x 35.5" L x 35.5" W</p>
-
-                                <p>Bar height:40"</p>
-
-                                <p>Overall Product Weight: 88 lbs</p>
+                                <p>Overall Product Weight: {{$product->weight}} gr</p>
 
                             </div>
 
@@ -228,33 +218,30 @@
 
                         <div class="box-content">
 
-                            <form method="post" action="#"  class="new-review-form">
+                          <div class="rows">
+                            @foreach($product->productComments as $productComment)
+                            <div class="rows">
+                              <div class="">
+                                <span class="bold">{{$productComment->customer->user_name}}</span>
+                              </div>
+                              <div class="">
+                                {{$productComment->content}}
+                              </div>
+                            </div>
+                            @endforeach
+                          </div>
 
-                                <a href="#" class="form-title">Write a review</a>
+                          <br>
 
+                            <form method="post" action="{{route('productPostComment', $product->id)}}"  class="new-review-form">
+                                @csrf
                                 <div class="form-content">
 
                                     <p class="form-row form-row-wide">
 
-                                        <label>Name</label>
+                                        <label>Stars<span class="required">*</span></label>
 
-                                        <input type="text" value="" name="text" placeholder="Enter your name" class="input-text">
-
-                                    </p>
-
-                                    <p class="form-row form-row-wide">
-
-                                        <label>Email</label>
-
-                                        <input type="text" name="text" placeholder="admin@example.com" class="input-text">
-
-                                    </p>
-
-                                    <p class="form-row form-row-wide">
-
-                                        <label>Review Title<span class="required">*</span></label>
-
-                                        <input type="email" name="email" placeholder="Give your review a title" class="input-text">
+                                        <input type="number" name="stars" min="1" max="5" class="input">
 
                                     </p>
 
@@ -262,7 +249,7 @@
 
                                         <label>Body of Review (1500)</label>
 
-                                        <textarea aria-invalid="false" class="textarea-control" rows="5" cols="40" name="message"></textarea>
+                                        <textarea aria-invalid="false" class="textarea-control" rows="5" cols="40" name="content"></textarea>
 
                                     </p>
 

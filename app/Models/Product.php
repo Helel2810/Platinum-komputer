@@ -113,5 +113,17 @@ class Product extends Model
         return $this->belongsToMany('App\Models\Order')->withPivot('qty');
     }
 
+    public function productComments()
+    {
+        return $this->hasMany('App\Models\ProductComment');
+    }
+
+    public function prmmotion()
+    {
+        return $this->hasOne('App\Models\Promotion');
+    }
+
+
+
 
 }

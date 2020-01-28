@@ -92,12 +92,12 @@
                     <tr>
                       <td colspan="3"></td>
                       <th class="text-right">Shipping:</th>
-                      <td class="text-right">Rp. 10000</td>
+                      <td class="text-right">Rp. {{$order->shippingCost->price}}</td>
                     </tr>
                     <tr>
                       <td colspan="3"></td>
                       <th class="text-right">Total:</th>
-                      <td class="text-right">Rp. {{$subtotal+10000}}</td>
+                      <td class="text-right">Rp. {{$subtotal+$order->shippingCost->price}}</td>
                     </tr>
                     </tbody>
                   </table>

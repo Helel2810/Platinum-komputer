@@ -13,7 +13,7 @@
         @foreach($shippingCosts as $shippingCost)
             <tr>
                 <td>{!! $shippingCost->price !!}</td>
-            <td>{!! $shippingCost->shipping_method_id !!}</td>
+            <td>{!! $shippingCost->shipment_method_id !!}</td>
             <td>{!! $shippingCost->courier_id !!}</td>
             <td>{!! $shippingCost->district_id !!}</td>
                 <td>

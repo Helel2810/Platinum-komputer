@@ -20,14 +20,14 @@ class ShippingCost extends Model
     use SoftDeletes;
 
     public $table = 'shipping_costs';
-    
+
 
     protected $dates = ['deleted_at'];
 
 
     public $fillable = [
         'price',
-        'shipping_method_id',
+        'shipment_method_id',
         'courier_id',
         'district_id'
     ];
@@ -40,7 +40,7 @@ class ShippingCost extends Model
     protected $casts = [
         'id' => 'integer',
         'price' => 'float',
-        'shipping_method_id' => 'integer',
+        'shipment_method_id' => 'integer',
         'courier_id' => 'integer',
         'district_id' => 'integer'
     ];
@@ -52,10 +52,15 @@ class ShippingCost extends Model
      */
     public static $rules = [
         'price' => 'required',
-        'shipping_method_id' => 'required',
+        'shipment_method_id' => 'required',
         'courier_id' => 'required',
         'district_id' => 'required'
     ];
 
-    
+    public function orders()
+    {
+      return $this->hasMany('App\Models\Order');
+    }
+
+
 }

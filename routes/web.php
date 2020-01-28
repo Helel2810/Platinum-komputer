@@ -32,6 +32,7 @@ Route::post('/front/profile/orders/{id}/confirm-payment', "FrontController@postP
 
 Route::get('/front/products', "FrontController@category")->name('categoryProducts');
 Route::get('/front/products/{product}', "FrontController@product")->name('productDetail');
+Route::post('/front/products/{product}/comment', "FrontController@productPostComment")->name('productPostComment');
 
 Route::get('/front/login', "Auth\CustomerAuthController@showRegistrationForm")->name('cutomerRegisterForm');
 Route::post('/front/register', "Auth\CustomerAuthController@create")->name('cutomerRegister');
@@ -108,6 +109,9 @@ Route::resource('coupons', 'CouponController');
 Route::resource('sliders', 'SliderController');
 
 Route::resource('payments', 'PaymentController');
+
+Route::resource('productComments', 'ProductCommentController');
+
 
 
 Route::get('/ongkir-isi', function(){

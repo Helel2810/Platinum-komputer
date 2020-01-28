@@ -62,6 +62,12 @@ class Order extends Model
         return $this->hasOne('App\Models\Payment');
     }
 
+    public function shippingCost()
+    {
+        return $this->belongsTo('App\Models\ShippingCost');
+    }
+
+
     public function deliveryOrder()
     {
         return $this->hasOne('App\Models\DeliveryOrder');
