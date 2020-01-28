@@ -118,7 +118,7 @@ class Product extends Model
         return $this->hasMany('App\Models\ProductComment');
     }
 
-    public function prmmotion()
+    public function promotion()
     {
         return $this->hasOne('App\Models\Promotion');
     }

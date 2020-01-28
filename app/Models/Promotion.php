@@ -29,7 +29,8 @@ class Promotion extends Model
         'nominal',
         'start_date',
         'end_date',
-        'status'
+        'status',
+        'product_id'
     ];
 
     /**
@@ -42,7 +43,8 @@ class Promotion extends Model
         'nominal' => 'float',
         'start_date' => 'datetime',
         'end_date' => 'datetime',
-        'status' => 'string'
+        'status' => 'string',
+        'product_id' => 'integer'
     ];
 
     /**

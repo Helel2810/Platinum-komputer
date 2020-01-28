@@ -19,8 +19,15 @@
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('status', ['active' => 'active', 'disbled' => 'disabled', 'scheduled' => 'scheduled'], null, ['class' => 'form-control']) !!}
 </div>
+
+<!-- Product Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('product_id', 'Product:') !!}
+    {!! Form::select('product_id', $products, null, ['class' => 'form-control']) !!}
+</div>
+
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

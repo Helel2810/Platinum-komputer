@@ -146,9 +146,12 @@
 
                                   <span class="price">
 
-                                      <ins>Rp. {{$product->price}}</ins>
-
-                                      <del>Rp. {{$product->price}}</del>
+                                    @if($product->promotion()->exists())
+                                    <ins>Rp. {{$product->promotion->nominal}}</ins>
+                                    <del>Rp. {{$product->price}}</del>
+                                    @else
+                                    <ins>Rp. {{$product->price}}</ins>
+                                    @endif
 
                                   </span>
 

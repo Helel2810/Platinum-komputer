@@ -468,29 +468,6 @@
 
                        <div class="row">
 
-                         <div class="col-md-3 col-sm-6">
-
-                               <div class="links">
-
-                               <h3 class="title-of-section">My account</h3>
-
-                               <ul>
-
-                                   <li><a href="">Sign In</a></li>
-
-                                   <li><a href="">View Cart</a></li>
-
-                                   <li><a href="">My Wishlist</a></li>
-
-                                   <li><a href="">Track My Order</a></li>
-
-                                   <li><a href="">Help</a></li>
-
-                               </ul>
-
-                               </div>
-
-                           </div>
 
                            <div class="col-md-3 col-sm-6">
 
