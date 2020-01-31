@@ -68,6 +68,8 @@
                       <th>Serial #</th>
                       <th>Category</th>
                       <th>Qty</th>
+                      <th class="text-right">Price</th>
+                      <th class="text-right">Promotion Discount</th>
                       <th class="text-right">Subtotal</th>
                     </tr>
                     </thead>
@@ -81,21 +83,39 @@
                       <td>{{$product->id}}</td>
                       <td>{{$product->category->name}}</td>
                       <td>{{$product->pivot->qty}}</td>
+                      <td class="text-right">Rp. {{$product->price}}</td>
+                      <td class="text-right">
+                        @if($product->promotion()->exists())
+                        Rp. {{$product->promotion->nominal}}
+                        @else
+                        -
+                        @endif
+                      </td>
                       <td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
                     </tr>
                     @endforeach
                     <tr>
-                      <td colspan="3"></td>
+                      <td colspan="5"></td>
                       <th class="text-right">Subtotal:</th>
                       <td class="text-right">Rp. {{$subtotal}}</td>
                     </tr>
                     <tr>
-                      <td colspan="3"></td>
+                      <td colspan="5"></td>
                       <th class="text-right">Shipping:</th>
                       <td class="text-right">Rp. {{$order->shippingCost->price}}</td>
                     </tr>
+                    @if($order->coupon()->exists())
                     <tr>
-                      <td colspan="3"></td>
+                      <td colspan="5"></td>
+                      <th class="text-right">Discount Coupon</th>
+                      <td class="text-right">Rp. {{$order->coupon->nominal}}</td>
+                    </tr>
+                    <?php
+                      $subtotal -= $order->coupon->nominal;
+                    ?>
+                    @endif
+                    <tr>
+                      <td colspan="5"></td>
                       <th class="text-right">Total:</th>
                       <td class="text-right">Rp. {{$subtotal+$order->shippingCost->price}}</td>
                     </tr>

@@ -11,6 +11,7 @@ use App\Models\Category;
 use App\Models\Brand;
 use App\Models\News;
 use App\Models\Order;
+use App\Models\Coupon;
 use App\Models\Payment;
 use App\Models\Customer;
 
@@ -58,7 +59,14 @@ class FrontController extends Controller
       return view('front.newsDetail')->with('news', $news);
     }
 
-
+    public function newsPostComment(News $news, Request $request)
+    {
+      $news->newsComments()->create([
+        'content' => $request->content,
+        'customer_id' => Auth::id()
+      ]);
+      return redirect()->back();
+    }
 
     public function category(Request $request)
     {
@@ -174,6 +182,11 @@ class FrontController extends Controller
       return redirect(route('front'));
     }
 
+    public function editProfileForm(Request $request)
+    {
+      $user = Auth::user();
+      return view('front.profileForm')->with('user', $user);
+    }
 
 
     public function addressForm(Request $request)

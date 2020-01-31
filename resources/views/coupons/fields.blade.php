@@ -27,7 +27,7 @@
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', ['a' => 'a', 'b' => 'b', 'c' => 'c'], null, ['class' => 'form-control']) !!}
+    {!! Form::select('status', ['active' => 'active', 'inactive' => 'inactive'], null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->

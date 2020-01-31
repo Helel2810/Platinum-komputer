@@ -51,10 +51,7 @@
 
                           <label class="title">Enter Your Coupon code:</label>
 
-                          <input type="text" class="form-control">
-
-                          <button type="submit" class="btn-apply">Apply</button>
-
+                          <input type="text" class="form-control" name="coupon">
                       </div>
 
                   </div>

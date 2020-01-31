@@ -88,6 +88,12 @@ class Order extends Model
         return $this->belongsTo('App\Models\Address');
     }
 
+    public function coupon()
+    {
+        return $this->belongsTo('App\Models\Coupon');
+    }
+
+
 
 
 

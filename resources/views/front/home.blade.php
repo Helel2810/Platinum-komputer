@@ -130,7 +130,7 @@
 
                                               <div class="thumb-inner">
 
-                                                  <a href=""><img src="{{$product->image1}}" alt="p1"></a>
+                                                  <a href="{{route('productDetail', $product->id)}}"><img src="{{$product->image1}}" alt="p1"></a>
 
                                               </div>
 
@@ -138,7 +138,7 @@
 
                                           <div class="product-innfo">
 
-                                              <div class="product-name"><a href="">{{$product->name}}</a></div>
+                                              <div class="product-name"><a href="{{route('productDetail', $product->id)}}">{{$product->name}}</a></div>
 
                                               <span class="price">
 
@@ -351,7 +351,7 @@
 
                                                 <div class="thumb-inner">
 
-                                                    <a href=""><img src="{{$product->image1}}" alt="f5"></a>
+                                                    <a href="{{route('productDetail', $product->id)}}"><img src="{{$product->image1}}" alt="f5"></a>
 
                                                 </div>
 
@@ -363,7 +363,7 @@
 
                                             <div class="product-innfo">
 
-                                                <div class="product-name"><a href="">{{$product->name}}</a></div>
+                                                <div class="product-name"><a href="{{route('productDetail', $product->id)}}">{{$product->name}}</a></div>
 
                                                 <span class="price price-dark">
 
@@ -961,7 +961,7 @@
 
                                             <div class="thumb-inner">
 
-                                                <a href=""><img src="{{$product->image1}}" alt="b3"></a>
+                                                <a href="{{route('productDetail', $product->id)}}"><img src="{{$product->image1}}" alt="b3"></a>
 
                                             </div>
 
@@ -969,7 +969,7 @@
 
                                         <div class="product-innfo">
 
-                                            <div class="product-name"><a href="">{{$product->name}}</a></div>
+                                            <div class="product-name"><a href="{{route('productDetail', $product->id)}}">{{$product->name}}</a></div>
 
                                             <span class="price">
 

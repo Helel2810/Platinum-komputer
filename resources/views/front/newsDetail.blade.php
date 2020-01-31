@@ -71,20 +71,6 @@
 
                                 </div>
 
-                                <div class="post-authur">
-
-                                    <div class="avata"><a href=""><img src="{{asset('images/blog/avata-admin.jpg')}}" alt="avata-admin"></a></div>
-
-                                    <div class="des">
-
-                                        <strong>Admin</strong>
-
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries...</p>
-
-                                    </div>
-
-                                </div>
-
                             </div>
 
                         </div>
@@ -98,30 +84,6 @@
                             <div class="block-content">
 
                                 <form>
-
-                                    <div class="form-group col-md-6 padding-left">
-
-                                        <label class="title">Name*</label>
-
-                                        <input type="text" class="form-control" id="forName" >
-
-                                    </div>
-
-                                    <div class="form-group col-md-6 padding-right">
-
-                                        <label class="title">Email*</label>
-
-                                        <input type="email" class="form-control" id="forEmail" >
-
-                                    </div>
-
-                                    <div class="form-group">
-
-                                        <label class="title">Website</label>
-
-                                        <input type="text" class="form-control" id="forWebsite">
-
-                                    </div>
 
                                     <div class="form-group">
 
@@ -138,6 +100,18 @@
                             </div>
 
                         </div>
+
+                        @foreach($news->newsComments as $newsComment)
+                        <div class="rows">
+                          <div class="">
+                            <span class="bold">{{$newsComment->customer->user_name}}</span>
+                          </div>
+                          <div class="">
+                            {{$newsComment->content}}
+                          </div>
+                        </div>
+                        @endforeach
+
 
                     </div>
 

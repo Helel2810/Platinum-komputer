@@ -37,6 +37,8 @@
 
                                   <li><a href="">Change Password</a></li>
 
+                                  <li><a href="">Address</a></li>
+
                                   <li><a href="">Orders</a></li>
 
                               </ul>

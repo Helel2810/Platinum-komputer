@@ -21,7 +21,7 @@ class Coupon extends Model
     use SoftDeletes;
 
     public $table = 'coupons';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -61,5 +61,10 @@ class Coupon extends Model
         'status' => 'required'
     ];
 
-    
+    public function orders()
+    {
+        return $this->hasMany('App\Models\Order');
+    }
+
+
 }
