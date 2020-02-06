@@ -67,5 +67,16 @@ class News extends Model
         'news_category_id' => 'required',
     ];
 
+    public function newsComments()
+    {
+      return $this->hasMany('App\Models\NewsComment');
+    }
+
+    public function newsCategory()
+    {
+      return $this->belongsTo('App\Models\NewsCategory');
+    }
+
+
 
 }

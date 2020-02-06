@@ -9,46 +9,8 @@
 
           <div class="row">
 
-             <div class="col-md-3 col-sm-4 site-main-sidebar">
+            @include('front.layouts.profileSideBar')
 
-                      <div id="box-vertical-megamenus" class="box-vertical-megamenus style2">
-
-                          <h4 class="title active">
-
-                              <span class="btn-open-mobile home-page">
-
-                                  <span></span>
-
-                                  <span></span>
-
-                                  <span></span>
-
-                              </span>
-
-                              <span class="title-menu">Profile</span>
-
-                          </h4>
-
-                          <div class="vertical-menu-content" >
-                              <span class="btn-close hidden-md"><i class="fa fa-times" aria-hidden="true"></i></span>
-
-                              <ul class="vertical-menu-list">
-
-                                  <li><a href="">Profile</a></li>
-
-                                  <li><a href="">Change Password</a></li>
-
-                                  <li><a href="">Address</a></li>
-
-                                  <li><a href="">Orders</a></li>
-
-                              </ul>
-
-                          </div>
-
-                      </div>
-
-                  </div>
 
                   <div class="col-md-9 col-sm-8">
                   <div class="row">
@@ -116,7 +78,9 @@
                   												</tr>
                   											</thead>
                   											<tbody>
+                                          <?php $subtotal = 0; ?>
                                           @foreach($order->products as $key => $product)
+                                          <?php $subtotal += $product->pivot->qty*$product->price ?>
                   												<tr>
                   													<td>{{$key+1}}</td>
                   													<td class="text-center"><strong>{{$product->name}}</strong></td>
@@ -128,12 +92,12 @@
                   												<tr>
                   													<td colspan="3"></td>
                   													<td class="text-right"><strong>Shipping</strong></td>
-                  													<td class="text-right"><strong>N/A</strong></td>
+                  													<td class="text-right">Rp. {{$order->ShippingCost->price}}</td>
                   												</tr>
                   												<tr>
                   													<td colspan="3">
                   													</td><td class="text-right"><strong>Total</strong></td>
-                  													<td class="text-right"><strong>Rp. 7650000</strong></td>
+                  													<td class="text-right"><strong>Rp. {{$subtotal+$order->ShippingCost->price}}</strong></td>
                   												</tr>
                   											</tbody>
                   										</table>
@@ -191,6 +155,14 @@
                                         </div>
                                       </form>
                                       </div>
+                                      @elseif($order->deliveryOrder()->exists())
+                                        @if($order->deliveryOrder->status == "Shipped")
+                                        <div class="row">
+                                          <div class="col-md-12 float-right">
+                                            <a class="btn btn-primary float-right" href="{{route('postConfirmReceive', $order->payment->id)}}">Received</a>
+                                          </div>
+                                        </div>
+                                        @endif
                                     @endif
                                   @endif
                   							</div>

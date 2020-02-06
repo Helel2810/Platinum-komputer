@@ -23,12 +23,13 @@ Route::get('/front/news/{news}', "FrontController@newsDetail")->name('frontNewsD
 
 Route::get('/front/profile/', "FrontController@newsDetail")->name('frontProfile');
 Route::get('/front/profile/edit', "FrontController@editProfileForm")->name('frontProfileEditForm');
-Route::post('/front/profile/edit', "FrontController@newsDetail")->name('frontProfileEdit');
+Route::post('/front/profile/edit', "FrontController@postEditProfile")->name('frontProfileEdit');
 Route::get('/front/profile/address', "FrontController@addressForm")->name('frontAddressForm');
 Route::post('/front/profile/address', "FrontController@postAddress")->name('frontAddressAdd');
 Route::get('/front/profile/orders', "FrontController@getOrders")->name('getOrders');
 Route::get('/front/profile/orders/{id}', "FrontController@getOrderDetail")->name('getOrderDetail');
 Route::post('/front/profile/orders/{id}/confirm-payment', "FrontController@postPaymentProof")->name('postPaymentProof');
+Route::get('/front/profile/orders/{id}/confirm-receive', "FrontController@postConfirmReceive")->name('postConfirmReceive');
 
 Route::get('/front/products', "FrontController@category")->name('categoryProducts');
 Route::get('/front/products/{product}', "FrontController@product")->name('productDetail');
@@ -41,6 +42,7 @@ Route::get('/front/logout', "Auth\CustomerAuthController@logout")->name('cutomer
 
 Route::get('/front/cart/', "FrontController@getCart")->name('cart');
 Route::post('/front/cart/', "FrontController@addToCart")->name('addToCart');
+Route::get('/front/cart/clear', "FrontController@clearCart")->name('clearCart');
 
 Route::get('/front/checkout/', "FrontController@getCheckout")->name('getCheckout');
 Route::post('/front/checkout/', "FrontController@postCheckout")->name('postCheckout');

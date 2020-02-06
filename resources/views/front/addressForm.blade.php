@@ -20,87 +20,96 @@
 
           <div class="container">
 
-              <form action="{{route('frontAddressAdd')}}" class="checkout" method="post" name="checkout">
-                @csrf
+            <div class="row">
+              @include('front.layouts.profileSideBar')
 
-                  <h4 class="title-checkout">Address</h4>
+              <div class="col-sm-9 border-before">
+                <form action="{{route('frontAddressAdd')}}" class="checkout" method="post" name="checkout">
+                  @csrf
 
-                  <div class="row">
+                    <h4 class="title-checkout">Address</h4>
 
-                      <div class="form-group col-md-6">
+                    <div class="row">
 
-                          <label class="title">Recipient Name</label>
+                        <div class="form-group col-md-6">
 
-                          <input type="text" class="form-control" name="recipient_name" id="forFName" placeholder="Your name" >
+                            <label class="title">Recipient Name</label>
 
-                      </div>
+                            <input type="text" class="form-control" name="recipient_name" id="forFName" placeholder="Your name" >
 
-                      <div class="form-group col-md-6">
+                        </div>
 
-                          <label class="title">Phone numbber*</label>
+                        <div class="form-group col-md-6">
 
-                          <input type="tel" class="form-control" name="phone" placeholder="08114566654">
+                            <label class="title">Phone numbber*</label>
 
-                      </div>
+                            <input type="tel" class="form-control" name="phone" placeholder="08114566654">
 
-                      <div class="form-group col-md-12">
+                        </div>
 
-                          <label class="title">Address:</label>
+                        <div class="form-group col-md-12">
 
-                          <input type="text" class="form-control" name="address" placeholder="Street at apartment number">
+                            <label class="title">Address:</label>
 
-                      </div>
+                            <input type="text" class="form-control" name="address" placeholder="Street at apartment number">
 
-                      <div class="form-group col-md-12">
+                        </div>
 
-                      </div>
+                        <div class="form-group col-md-12">
 
-                      <div class="form-group col-md-6">
+                        </div>
 
-                          <label class="title">Province*</label>
+                        <div class="form-group col-md-6">
 
-                          <select class="form-control" name="" id="province_list" onchange="getCity()">
-                            @foreach($provinces as $province)
-                              <option value="{{$province->id}}">{{$province->name}}</option>
-                            @endforeach
-                          </select>
+                            <label class="title">Province*</label>
 
-                      </div>
+                            <select class="form-control" name="" id="province_list" onchange="getCity()">
+                              @foreach($provinces as $province)
+                                <option value="{{$province->id}}">{{$province->name}}</option>
+                              @endforeach
+                            </select>
 
-                      <div class="form-group col-md-6">
+                        </div>
 
-                          <label class="title">Town / City*</label>
+                        <div class="form-group col-md-6">
 
-                          <select class="form-control" name="" id="cities_list" onchange="getDistrict()">
-                          </select>
+                            <label class="title">Town / City*</label>
 
-                      </div>
+                            <select class="form-control" name="" id="cities_list" onchange="getDistrict()">
+                            </select>
 
-
-                      <div class="form-group col-md-6">
-
-                          <label class="title">District*</label>
-
-                          <select class="form-control" name="district_id" id="districts_list">
-                          </select>
-
-                      </div>
+                        </div>
 
 
-                      <div class="form-group col-md-6">
+                        <div class="form-group col-md-6">
 
-                          <label class="title">Postcode / ZIP:</label>
+                            <label class="title">District*</label>
 
-                          <input type="text" name="post_code" class="form-control" placeholder="Your postal code">
+                            <select class="form-control" name="district_id" id="districts_list">
+                            </select>
 
-                      </div>
-
-                      <button type="submit" class="btn-order">Add Address</button>
+                        </div>
 
 
-                  </div>
+                        <div class="form-group col-md-6">
 
-              </form>
+                            <label class="title">Postcode / ZIP:</label>
+
+                            <input type="text" name="post_code" class="form-control" placeholder="Your postal code">
+
+                        </div>
+
+                        <button type="submit" class="btn-order">Add Address</button>
+
+
+                    </div>
+
+                </form>
+              </div>
+
+            </div>
+
+
 
           </div>
 

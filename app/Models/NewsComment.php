@@ -19,7 +19,7 @@ class NewsComment extends Model
     use SoftDeletes;
 
     public $table = 'news_comments';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -48,8 +48,13 @@ class NewsComment extends Model
      * @var array
      */
     public static $rules = [
-        
+
     ];
 
-    
+    public function news()
+    {
+      return $this->belongsTo('App\Models\news');
+    }
+
+
 }

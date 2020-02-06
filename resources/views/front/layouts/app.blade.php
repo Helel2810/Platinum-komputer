@@ -303,7 +303,7 @@
 
                                                <a class="btn btn-viewcart" href="{{route('cart')}}">View cart</a>
 
-                                               <a class="btn btn-checkout" href="">Checkout</a>
+                                               <a class="btn btn-checkout" href="{{route('getCheckout')}}">Checkout</a>
 
                                            </div>
 

@@ -17,7 +17,7 @@ class NewsCategory extends Model
     use SoftDeletes;
 
     public $table = 'news_categories';
-    
+
 
     protected $dates = ['deleted_at'];
 
@@ -45,5 +45,10 @@ class NewsCategory extends Model
         'name' => 'required'
     ];
 
-    
+    public function news()
+    {
+      return $this->hasMany('App\Models\News');
+    }
+
+
 }

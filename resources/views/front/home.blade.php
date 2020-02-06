@@ -114,7 +114,7 @@
 
               <div class="block-latest-roducts">
 
-                        <div class="block-title">Latest Products</div>
+                    <div class="block-title">Latest Products</div>
 
                         <div class="block-latest-roducts-content">
 
@@ -198,7 +198,7 @@
 
                           <div class="post-item-info">
 
-                              <h3 class="post-name"><a href="">Lorem Ipsum</a></h3>
+                              <h3 class="post-name"><a href="">{{$one_news->title}}</a></h3>
 
                               <div class="post-metas">
 
@@ -906,7 +906,7 @@
                                             </div>
                                         </div>
 
-                                    </div>
+                              </div>
 
                           </div>
 

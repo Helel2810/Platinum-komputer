@@ -9,51 +9,13 @@
 
           <div class="row">
 
-            <div class="col-md-3 col-sm-4 site-main-sidebar">
+            @include('front.layouts.profileSideBar')
 
-                      <div id="box-vertical-megamenus" class="box-vertical-megamenus style2">
-
-                          <h4 class="title active">
-
-                              <span class="btn-open-mobile home-page">
-
-                                  <span></span>
-
-                                  <span></span>
-
-                                  <span></span>
-
-                              </span>
-
-                              <span class="title-menu">All Departments</span>
-
-                          </h4>
-
-                          <div class="vertical-menu-content" >
-                              <span class="btn-close hidden-md"><i class="fa fa-times" aria-hidden="true"></i></span>
-
-                              <ul class="vertical-menu-list">
-
-                                  <li><a href="">Profile</a></li>
-
-                                  <li><a href="">Change Password</a></li>
-
-                                  <li><a href="">Address</a></li>
-
-                                  <li><a href="">Orders</a></li>
-
-                              </ul>
-
-                          </div>
-
-                      </div>
-
-                  </div>
-                  <div class="col-sm-9 border-before">
+            <div class="col-sm-9 border-before">
 
                       <h5 class="title-login">Personal Account</h5>
 
-                      <form class="register" method="post" action="{{route("cutomerRegister")}}">
+                      <form class="register" method="post" action="{{route("frontProfileEdit")}}">
                           @csrf
                           <div class="row">
                             <p class="form-row form-row-wide col-md-6">
@@ -99,6 +61,8 @@
                           @if($errors->any())
                             {!! implode('', $errors->all('<div>:message</div>')) !!}
                           @endif
+
+                          
 
 
                       </form>

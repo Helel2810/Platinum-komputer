@@ -10,6 +10,7 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\News;
+use App\Models\NewsCategory;
 use App\Models\Order;
 use App\Models\Coupon;
 use App\Models\Payment;
@@ -51,7 +52,15 @@ class FrontController extends Controller
     {
       $news = News::all();
 
-      return view('front.news')->with('news', $news);
+      $newsCategories = NewsCategory::all();
+
+      $data =
+      [
+        'news' => $news,
+        'newsCategories' => $newsCategories
+      ];
+
+      return view('front.news')->with($data);
     }
 
     public function newsDetail(News $news)
@@ -80,7 +89,13 @@ class FrontController extends Controller
         $products = $products->where('brand_id', $request->brand_id);
       }
 
-      return view('front.categoryProducts')->with('products', $products);
+      $data =
+      [
+        "products" => $products,
+        "latest_products" => Product::orderBy('created_at', 'desc')->take(Product::all()->count() < 12 ? Product::all()->count() : 12)->get(),
+      ];
+
+      return view('front.categoryProducts')->with($data);
     }
 
     public function product(Product $product)
@@ -127,6 +142,14 @@ class FrontController extends Controller
 
       return back();
     }
+
+    public function clearCart(Request $request)
+    {
+      Cart::clear();
+
+      return back();
+    }
+
 
     public function getCheckout()
     {
@@ -188,6 +211,30 @@ class FrontController extends Controller
       return view('front.profileForm')->with('user', $user);
     }
 
+    public function postEditProfile(Request $request)
+    {
+
+      $this->validate($request, [
+        'user_name' => 'string',
+        'email' => 'string|email',
+        'telephone' => 'string',
+        'full_name' => 'string',
+      ]);
+
+      $user = Auth::user();
+
+      $user->update([
+        'user_name' => $request->user_name,
+        'email' => $request->email,
+        'telephone' => $request->telephone,
+        'full_name' => $request->full_name
+      ]);
+
+
+      return redirect(route('frontProfileEditForm'));
+    }
+
+
 
     public function addressForm(Request $request)
     {
@@ -230,6 +277,19 @@ class FrontController extends Controller
       ]);
       return redirect()->back();
     }
+
+    public function postConfirmReceive(Request $request, $id)
+    {
+      $order = Order::find($id);
+      $order->update([
+        "status" => "Done"
+      ]);
+      $order->deliveryOrder()->update([
+          "status" => "Received"
+      ]);
+      return redirect()->back();
+    }
+
 
 
 }

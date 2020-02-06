@@ -63,11 +63,7 @@
 
                                     <span>Tags:</span>
 
-                                    <a href="">Best,</a>
-
-                                    <a href="">Gaming,</a>
-
-                                    <a href="">Laptop</a>
+                                    <a href="">{{$news->newsCategory}}</a>
 
                                 </div>
 

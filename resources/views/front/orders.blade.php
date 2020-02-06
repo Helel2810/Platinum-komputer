@@ -8,46 +8,8 @@
 
           <div class="row">
 
-            <div class="col-md-3 col-sm-4 site-main-sidebar">
+            @include('front.layouts.profileSideBar')
 
-                      <div id="box-vertical-megamenus" class="box-vertical-megamenus style2">
-
-                          <h4 class="title active">
-
-                              <span class="btn-open-mobile home-page">
-
-                                  <span></span>
-
-                                  <span></span>
-
-                                  <span></span>
-
-                              </span>
-
-                              <span class="title-menu">All Departments</span>
-
-                          </h4>
-
-                          <div class="vertical-menu-content" >
-                              <span class="btn-close hidden-md"><i class="fa fa-times" aria-hidden="true"></i></span>
-
-                              <ul class="vertical-menu-list">
-
-                                  <li><a href="">Profile</a></li>
-
-                                  <li><a href="">Change Password</a></li>
-
-                                  <li><a href="">Address</a></li>
-
-                                  <li><a href="">Orders</a></li>
-
-                              </ul>
-
-                          </div>
-
-                      </div>
-
-                  </div>
             <div class="col-md-9 col-sm-8 table-responsive">
               <table class="table">
                 <thead>
@@ -61,11 +23,18 @@
                 </thead>
                 <tbody>
                   @foreach($orders as $order)
+                  <?php
+                    $subtotal = 0;
+                    foreach ($order->products as $key => $product)
+                    {
+                      $subtotal += $product->pivot->qty*$product->price;
+                    }
+                   ?>
                   <tr>
                     <td>{{$order->id}}</td>
                     <td>{{$order->status}}</td>
                     <td>{{$order->created_at->format('d/m/Y')}}</td>
-                    <td>Rp. 500000</td>
+                    <td>{{$subtotal+$order->ShippingCost->price}}</td>
                     <td>
                       <a href="{{route('getOrderDetail', $order->id)}}">view</a>
                     </td>
