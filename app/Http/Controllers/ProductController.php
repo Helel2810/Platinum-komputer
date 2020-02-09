@@ -57,7 +57,7 @@ class ProductController extends AppBaseController
     public function create()
     {
         $categories = $this->categoryRepository->all();
-        $subCategories1 = $this->subCategoryRepository->all();
+        $subCategories = $this->subCategoryRepository->all();
         $brands = $this->brandRepository->all();
         $data =
         [
@@ -81,21 +81,21 @@ class ProductController extends AppBaseController
 
         if ($files = $request->file('image1')) {
             $destinationPath = public_path('images'); // upload path
-            $profileImage2 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+            $profileImage1 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
             $files->move($destinationPath, $profileImage1);
             $input['image1'] = asset('images/'.$profileImage1);
          }
 
          if ($files = $request->file('image2')) {
              $destinationPath = public_path('images'); // upload path
-             $profileImage3 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+             $profileImage2 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
              $files->move($destinationPath, $profileImage2);
              $input['image2'] = asset('images/'.$profileImage0);
           }
 
           if ($files = $request->file('image3')) {
               $destinationPath = public_path('images'); // upload path
-              $profileImage = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+              $profileImage3 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
               $files->move($destinationPath, $profileImage3);
               $input['image3'] = asset('images/'.$profileImage3);
            }

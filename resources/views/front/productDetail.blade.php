@@ -59,11 +59,6 @@
                                         <img src="{{$product->image4}}" data-large-image="{{$product->image4}}" alt="i1">
 
                                     </a>
-                                    <a href="#" data-image="{{$product->image5}}" data-zoom-image="{{$product->image5}}">
-
-                                        <img src="{{$product->image5}}" data-large-image="{{$product->image5}}" alt="i1">
-
-                                    </a>
 
                                 </div>
 
@@ -78,22 +73,6 @@
                         <div class="product-info-main">
 
                             <div class="product-name"><a href="">{{$product->name}}</a></div>
-
-                            <span class="star-rating">
-
-                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                <span class="review">5 Review(s)</span>
-
-                            </span>
 
                             <div class="product-infomation">
 

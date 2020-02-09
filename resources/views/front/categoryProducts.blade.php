@@ -202,124 +202,124 @@
 
               <div class="col-md-3 col-sm-4">
 
-                  <div class="col-sidebar">
+                    <div class="col-sidebar">
 
-                      <div class="filter-options">
+                        <div class="filter-options">
+                          <form action="{{route('categoryProducts')}}">
+                            <div class="block-title">Shop by</div>
 
-                          <div class="block-title">Shop by</div>
+                            <div class="block-content">
 
-                          <div class="block-content">
+                                <div class="filter-options-item filter-categori">
 
-                              <div class="filter-options-item filter-categori">
+                                    <div class="filter-options-title">Categories</div>
 
-                                  <div class="filter-options-title">Categories</div>
+                                    <div class="filter-options-content">
 
-                                  <div class="filter-options-content">
+                                        <ul>
+                                            @foreach($categories as $category)
+                                              <li><label class="inline" ><input type="checkbox" name="category_id[]" value="{{$category->id}}"><span class="input"></span>{{$category->name}}</label></li>
+                                            @endforeach
+                                        </ul>
 
-                                      <ul>
-                                          @foreach($categories as $category)
-                                            <li><label class="inline" ><input type="checkbox" value="{{$category->id}}"><span class="input"></span>{{$category->name}}</label></li>
-                                          @endforeach
-                                      </ul>
-
-                                  </div>
-
-                              </div>
-
-                              <div class="filter-options-item filter-brand">
-
-                                  <div class="filter-options-title">Brands</div>
-
-                                  <div class="filter-options-content">
-
-                                      <ul>
-                                          @foreach($brands as $brand)
-                                            <li><label class="inline" ><input type="checkbox" value="{{$brand->id}}"><span class="input"></span>{{$brand->name}}</label></li>
-                                          @endforeach
-                                      </ul>
-
-                                  </div>
-
-                              </div>
-
-                          </div>
-
-                      </div>
-
-                      <div class="block-banner-sidebar">
-
-                          <a href=""><img src="{{asset("images/product/banner-sidebar.jpg")}}" alt="banner-sidebar"></a>
-
-                      </div>
-
-                      <div class="block-title">Latest Products</div>
-
-                          <div class="block-latest-roducts-content">
-
-                              <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
-                                @foreach($latest_products->chunk(4) as $chunk)
-                                <div class="owl-ones-row">
-                                    @foreach($chunk as $product)
-                                      <div class="product-item style1">
-
-                                        <div class="product-inner">
-
-                                            <div class="product-thumb">
-
-                                                <div class="thumb-inner">
-
-                                                    <a href="{{route('productDetail', $product->id)}}"><img src="{{$product->image1}}" alt="p1"></a>
-
-                                                </div>
-
-                                            </div>
-
-                                            <div class="product-innfo">
-
-                                                <div class="product-name"><a href="{{route('productDetail', $product->id)}}">{{$product->name}}</a></div>
-
-                                                <span class="price">
-
-                                                  @if($product->promotion()->exists())
-                                                  <ins>Rp. {{$product->promotion->nominal}}</ins>
-                                                  <del>Rp. {{$product->price}}</del>
-                                                  @else
-                                                  <ins>Rp. {{$product->price}}</ins>
-                                                  @endif
-
-
-                                                </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
-
-                                                </span>
-
-                                            </div>
-
-                                        </div>
                                     </div>
-                                    @endforeach
+
                                 </div>
-                                @endforeach
-                              </div>
 
-                          </div>
+                                <div class="filter-options-item filter-brand">
 
-                      </div>
-                  </div>
+                                    <div class="filter-options-title">Brands</div>
 
+                                    <div class="filter-options-content">
+
+                                        <ul>
+                                            @foreach($brands as $brand)
+                                              <li><label class="inline" ><input type="checkbox" name="brand_id[]" value="{{$brand->id}}"><span class="input"></span>{{$brand->name}}</label></li>
+                                            @endforeach
+                                        </ul>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+                            <button type="submit">Filter</button>
+                          </form>
+                        </div>
+
+                        <div class="block-banner-sidebar">
+
+                            <a href=""><img src="{{asset("images/product/banner-sidebar.jpg")}}" alt="banner-sidebar"></a>
+
+                        </div>
+
+                        <div class="block-title">Latest Products</div>
+
+                            <div class="block-latest-roducts-content">
+
+                                <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
+                                  @foreach($latest_products->chunk(4) as $chunk)
+                                  <div class="owl-ones-row">
+                                      @foreach($chunk as $product)
+                                        <div class="product-item style1">
+
+                                          <div class="product-inner">
+
+                                              <div class="product-thumb">
+
+                                                  <div class="thumb-inner">
+
+                                                      <a href="{{route('productDetail', $product->id)}}"><img src="{{$product->image1}}" alt="p1"></a>
+
+                                                  </div>
+
+                                              </div>
+
+                                              <div class="product-innfo">
+
+                                                  <div class="product-name"><a href="{{route('productDetail', $product->id)}}">{{$product->name}}</a></div>
+
+                                                  <span class="price">
+
+                                                    @if($product->promotion()->exists())
+                                                    <ins>Rp. {{$product->promotion->nominal}}</ins>
+                                                    <del>Rp. {{$product->price}}</del>
+                                                    @else
+                                                    <ins>Rp. {{$product->price}}</ins>
+                                                    @endif
+
+
+                                                  </span>
+
+                                                  <span class="star-rating">
+
+                                                      <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                      <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                      <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                      <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                      <i class="fa fa-star" aria-hidden="true"></i>
+
+                                                      <span class="review">5 Review(s)</span>
+
+                                                  </span>
+
+                                              </div>
+
+                                          </div>
+                                      </div>
+                                      @endforeach
+                                  </div>
+                                  @endforeach
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
               </div>
 
           </div>

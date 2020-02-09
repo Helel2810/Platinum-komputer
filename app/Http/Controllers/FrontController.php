@@ -100,11 +100,11 @@ class FrontController extends Controller
       $products = Product::all();
       if($request->has('category_id'))
       {
-        $products = $products->where('category_id', $request->category_id);
+        $products = $products->whereIn('category_id', $request->category_id);
       }
       if($request->has('brand_id'))
       {
-        $products = $products->where('brand_id', $request->brand_id);
+        $products = $products->whereIn('brand_id', $request->brand_id);
       }
 
       $data =
