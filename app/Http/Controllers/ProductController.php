@@ -57,7 +57,7 @@ class ProductController extends AppBaseController
     public function create()
     {
         $categories = $this->categoryRepository->all();
-        $subCategories = $this->subCategoryRepository->all();
+        $subCategories1 = $this->subCategoryRepository->all();
         $brands = $this->brandRepository->all();
         $data =
         [
@@ -81,30 +81,30 @@ class ProductController extends AppBaseController
 
         if ($files = $request->file('image1')) {
             $destinationPath = public_path('images'); // upload path
-            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $profileImage);
-            $input['image1'] = asset('images/'.$profileImage);
+            $profileImage2 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage1);
+            $input['image1'] = asset('images/'.$profileImage1);
          }
 
          if ($files = $request->file('image2')) {
              $destinationPath = public_path('images'); // upload path
-             $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-             $files->move($destinationPath, $profileImage);
-             $input['image2'] = asset('images/'.$profileImage);
+             $profileImage3 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+             $files->move($destinationPath, $profileImage2);
+             $input['image2'] = asset('images/'.$profileImage0);
           }
 
           if ($files = $request->file('image3')) {
               $destinationPath = public_path('images'); // upload path
-              $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-              $files->move($destinationPath, $profileImage);
-              $input['image3'] = asset('images/'.$profileImage);
+              $profileImage = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+              $files->move($destinationPath, $profileImage3);
+              $input['image3'] = asset('images/'.$profileImage3);
            }
 
            if ($files = $request->file('image4')) {
                $destinationPath = public_path('images'); // upload path
-               $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-               $files->move($destinationPath, $profileImage);
-               $input['image4'] = asset('images/'.$profileImage);
+               $profileImage4 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+               $files->move($destinationPath, $profileImage4);
+               $input['image4'] = asset('images/'.$profileImage4);
             }
 
         $input['admin_id'] = Auth::guard('admin')->user()->id;
@@ -190,31 +190,32 @@ class ProductController extends AppBaseController
 
         if ($files = $request->file('image1')) {
             $destinationPath = public_path('images'); // upload path
-            $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-            $files->move($destinationPath, $profileImage);
-            $input['image1'] = asset('images/'.$profileImage);
+            $profileImage1 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage1);
+            $input['image1'] = asset('images/'.$profileImage1);
          }
 
          if ($files = $request->file('image2')) {
              $destinationPath = public_path('images'); // upload path
-             $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-             $files->move($destinationPath, $profileImage);
-             $input['image2'] = asset('images/'.$profileImage);
+             $profileImage2 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+             $files->move($destinationPath, $profileImage2);
+             $input['image2'] = asset('images/'.$profileImage2);
           }
 
           if ($files = $request->file('image3')) {
               $destinationPath = public_path('images'); // upload path
-              $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-              $files->move($destinationPath, $profileImage);
-              $input['image3'] = asset('images/'.$profileImage);
+              $profileImage3 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+              $files->move($destinationPath, $profileImage3);
+              $input['image3'] = asset('images/'.$profileImage3);
            }
 
            if ($files = $request->file('image4')) {
                $destinationPath = public_path('images'); // upload path
-               $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-               $files->move($destinationPath, $profileImage);
-               $input['image4'] = asset('images/'.$profileImage);
+               $profileImage4 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+               $files->move($destinationPath, $profileImage4);
+               $input['image4'] = asset('images/'.$profileImage4);
             }
+
 
         $input['admin_id'] = Auth::guard('admin')->user()->id;
         $product = $this->productRepository->update($input, $id);
