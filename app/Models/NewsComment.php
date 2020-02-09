@@ -53,8 +53,14 @@ class NewsComment extends Model
 
     public function news()
     {
-      return $this->belongsTo('App\Models\news');
+      return $this->belongsTo('App\Models\News');
     }
+
+    public function customer()
+    {
+      return $this->belongsTo('App\Models\Customer');
+    }
+
 
 
 }

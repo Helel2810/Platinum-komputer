@@ -3,9 +3,9 @@
         <thead>
             <tr>
                 <th>Price</th>
-        <th>Shipping Method Id</th>
-        <th>Courier Id</th>
-        <th>District Id</th>
+        <th>Shipping Method</th>
+        <th>Courier</th>
+        <th>District</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -13,9 +13,9 @@
         @foreach($shippingCosts as $shippingCost)
             <tr>
                 <td>{!! $shippingCost->price !!}</td>
-            <td>{!! $shippingCost->shipment_method_id !!}</td>
-            <td>{!! $shippingCost->courier_id !!}</td>
-            <td>{!! $shippingCost->district_id !!}</td>
+            <td>{!! $shippingCost->shipmentMethod->name !!}</td>
+            <td>{!! $shippingCost->courier->name !!}</td>
+            <td>{!! $shippingCost->district->name !!}</td>
                 <td>
                     {!! Form::open(['route' => ['shippingCosts.destroy', $shippingCost->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

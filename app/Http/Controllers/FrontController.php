@@ -65,7 +65,15 @@ class FrontController extends Controller
 
     public function newsDetail(News $news)
     {
-      return view('front.newsDetail')->with('news', $news);
+      $latestNews = News::orderBy('created_at', 'desc')->take(News::all()->count() < 4 ? News::all()->count() : 4)->get();
+      $newsCategories = NewsCategory::all();
+      $data =
+      [
+        'latestNews' => $latestNews,
+        'newsCategories' => $newsCategories,
+        'news' => $news
+      ];
+      return view('front.newsDetail')->with($data);
     }
 
     public function newsPostComment(News $news, Request $request)
@@ -79,6 +87,16 @@ class FrontController extends Controller
 
     public function category(Request $request)
     {
+      if($request->new_arrivals)
+      {
+        $data =
+        [
+          "products" => Product::orderBy('created_at', 'desc')->take(Product::all()->count() < 24 ? Product::all()->count() : 24)->get(),
+          "latest_products" => Product::orderBy('created_at', 'desc')->take(Product::all()->count() < 12 ? Product::all()->count() : 12)->get(),
+        ];
+
+        return view('front.categoryProducts')->with($data);
+      }
       $products = Product::all();
       if($request->has('category_id'))
       {

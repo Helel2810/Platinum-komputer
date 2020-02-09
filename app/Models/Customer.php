@@ -91,6 +91,12 @@ class Customer extends Authenticatable
         return $this->hasMany('App\Models\Order');
     }
 
+    public function newsComments()
+    {
+        return $this->hasMany('App\Models\NewsComment');
+    }
+
+
 
 
 

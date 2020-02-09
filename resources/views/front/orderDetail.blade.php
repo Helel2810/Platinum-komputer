@@ -89,6 +89,16 @@
                   													<td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
                   												</tr>
                                           @endforeach
+                                          @if($order->coupon()->exists())
+                                          <tr>
+                                            <td colspan="3"></td>
+                                            <td class="text-right"><strong>Coupon</strong></td>
+                                            <td class="text-right">Rp. {{$order->coupon->nominal}}</td>
+                                          </tr>
+                                          <?php
+                                            $subtotal -= $order->coupon->nominal;
+                                          ?>
+                                          @endif
                   												<tr>
                   													<td colspan="3"></td>
                   													<td class="text-right"><strong>Shipping</strong></td>
@@ -112,7 +122,7 @@
                                     </div>
 
                                     <div class="modal fade" id="myModal" role="dialog">
-                                      <form method="post" enctype="multipart/form-data" action="{{route('postPaymentProof', $order->payment->id)}}">
+                                      <form method="post" enctype="multipart/form-data" action="{{route('postPaymentProof', $order->id)}}">
                                         {{csrf_field()}}
                                         <div class="modal-dialog">
                                           <!-- Modal content-->

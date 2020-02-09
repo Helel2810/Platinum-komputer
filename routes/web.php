@@ -20,6 +20,8 @@ Route::get('/front', "FrontController@home")->name('front');
 Route::get('/front/contact-us', "FrontController@contactUs")->name('contactUs');
 Route::get('/front/news', "FrontController@news")->name('frontNews');
 Route::get('/front/news/{news}', "FrontController@newsDetail")->name('frontNewsDetail');
+Route::post('/front/news/{news}/comment', "FrontController@newsPostComment")->name('newsPostComment');
+
 
 Route::get('/front/profile/', "FrontController@newsDetail")->name('frontProfile');
 Route::get('/front/profile/edit', "FrontController@editProfileForm")->name('frontProfileEditForm');

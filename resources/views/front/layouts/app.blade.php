@@ -12,7 +12,7 @@
 
    <meta charset="UTF-8">
 
-   <title>Platinum</title>
+   <title>Gravity</title>
 
    <link rel="shortcut icon" type="image/x-icon" href="{{asset("images/favicon.png")}}"/>
 
@@ -74,7 +74,7 @@
 
                    <ul class="nav-top-left" >
 
-                       <li><a href="">Welcome to Platinum</a></li>
+                       <li><a href="">Welcome to Gravity</a></li>
 
                    </ul><!-- hotline -->
 
@@ -153,7 +153,7 @@
 
                            <strong class="logo">
 
-                               <a href=""><img src="{{asset("images/logo.jpg")}}" alt="logo"></a>
+                               <a href="{{route('front')}}"><img src="{{asset("images/logo.jpg")}}" alt="logo"></a>
 
                            </strong><!-- logo -->
 
@@ -390,32 +390,9 @@
 
                                    </li>
 
-                                   <li class="menu-item-has-children arrow">
-
-                                       <a href="#" class="dropdown-toggle">Sub Menu</a>
-
-                                       <span class="toggle-submenu hidden-md"></span>
-
-                                       <ul class="submenu parent-megamenu">
-                                           <li class="menu-item">
-                                               <a href="checkout.html">Checkout</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="shopping-cart.html">Shopping Cart</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="contact-us.html">Contact Us</a>
-                                           </li>
-                                           <li class="menu-item">
-                                               <a href="login.html">Login</a>
-                                           </li>
-                                       </ul>
-
-                                   </li>
-
                                    <li>
 
-                                       <a href="contact-us.html" class="dropdown-toggle">Contact Us</a>
+                                       <a href="{{route('contactUs')}}" class="dropdown-toggle">Contact Us</a>
 
                                        <span class="toggle-submenu hidden-md"></span>
 
@@ -441,8 +418,6 @@
                                </ul>
 
                            </div>
-
-                           <a href="" class="title-template transport hidden-sm"><i class="fa fa-truck" aria-hidden="true"></i>Free Shipping on orders $99</a>
 
                        </div>
 
@@ -568,7 +543,7 @@
 
                         <div class="copyright-right">
 
-                           © Copyright 2019<span> Tyrion</span>. All Rights Reserved.
+                           © Copyright 2020<span> Gravity</span>. All Rights Reserved.
 
                        </div>
 

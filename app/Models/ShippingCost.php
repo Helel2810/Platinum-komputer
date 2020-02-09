@@ -62,5 +62,23 @@ class ShippingCost extends Model
       return $this->hasMany('App\Models\Order');
     }
 
+    public function courier()
+    {
+      return $this->belongsTo('App\Models\Courier');
+    }
+
+    public function shipmentMethod()
+    {
+      return $this->belongsTo('App\Models\ShipmentMethod');
+    }
+
+    public function district()
+    {
+      return $this->belongsTo('App\Models\District');
+    }
+
+
+
+
 
 }

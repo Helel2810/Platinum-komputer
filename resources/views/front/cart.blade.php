@@ -80,11 +80,7 @@
                           <span class="order-left">Subtotal:<span>Rp. {{Cart::getTotal()}}</span></span>
                           <span class="order-left">Shipping:<span>Free Shipping</span></span>
                           <span class="order-left">Total:<span>Rp. {{Cart::getTotal()}}</span></span>
-                          <ul>
-                              <li><label class="inline"><input type="checkbox"><span class="input"></span>I have promo
-                                  code</label></li>
-                          </ul>
-                          <button type="submit" class="btn-checkout">
+                          <button type="submit" onclick="location.href='{{route('getCheckout')}}';" class="btn-checkout">
                               Check Out
                           </button>
                       </div>

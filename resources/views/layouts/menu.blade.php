@@ -34,22 +34,6 @@
     </li>
   </ul>
 </li>
-<li class="treeview {{Request::is('suppliers*', 'purchaseInvoices*') ? 'active menu-open' : ''}}">
-  <a href="#"><i class="fa fa-link"></i> <span>Warehouse</span>
-        <span class="pull-right-container">
-          <i class="fa fa-angle-left pull-right"></i>
-        </span>
-      </a>
-  <ul class="treeview-menu">
-    <li class="{{ Request::is('suppliers*') ? 'active' : '' }}">
-        <a href="{!! route('suppliers.index') !!}"><i class="fa fa-edit"></i><span>Supplier</span></a>
-    </li>
-    <li class="{{ Request::is('purchaseInvoices*') ? 'active' : '' }}">
-        <a href="{!! route('purchaseInvoices.index') !!}"><i class="fa fa-edit"></i><span>Purchase</span></a>
-    </li>
-
-  </ul>
-</li>
 <li class="treeview {{Request::is('newsCategories*', 'news*') ? 'active menu-open' : ''}}">
   <a href="#"><i class="fa fa-link"></i> <span>News</span>
         <span class="pull-right-container">
@@ -105,4 +89,3 @@
 <li class="{{ Request::is('productComments*') ? 'active' : '' }}">
     <a href="{{ route('productComments.index') }}"><i class="fa fa-edit"></i><span>Product Comments</span></a>
 </li>
-

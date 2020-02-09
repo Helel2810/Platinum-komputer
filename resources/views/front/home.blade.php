@@ -217,55 +217,6 @@
 
                       <div class="blog-item">
 
-                          <div class="post-thumb">
-
-                              <a href=""><img src="{{asset("images/home3/blog.jpg")}}" alt="blog"></a>
-
-                          </div>
-
-                          <div class="post-item-info">
-
-                              <h3 class="post-name"><a href="">Whole grain home</a></h3>
-
-                              <div class="post-metas">
-
-                                  <span class="author">Post by: <span>Admin</span></span>
-
-                                  <span class="comment"><i class="fa fa-comment" aria-hidden="true"></i>36 Comments</span>
-
-                              </div>
-                                    <div>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing, elit integer urna donec...
-                                    </div>
-                          </div>
-
-                      </div>
-
-                      <div class="blog-item">
-
-                          <div class="post-thumb">
-
-                              <a href=""><img src="{{asset("images/home3/blog1.jpg")}}" alt="blog"></a>
-
-                          </div>
-
-                          <div class="post-item-info">
-
-                              <h3 class="post-name"><a href="">It’s all about the bread</a></h3>
-
-                              <div class="post-metas">
-
-                                  <span class="author">Post by: <span>Admin</span></span>
-
-                                  <span class="comment"><i class="fa fa-comment" aria-hidden="true"></i>36 Comments</span>
-
-                              </div>
-                                    <div>
-                                        Lorem ipsum dolor sit amet consectetur adipiscing, elit integer urna donec...
-                                    </div>
-
-                          </div>
-
                       </div>
 
                   </div>
@@ -355,7 +306,10 @@
 
                                                 </div>
 
-                                                <span class="onsale">-50%</span>
+                                                @if($product->promotion()->exists())
+                                                <span class="onsale">-{{ 100 * $product->promotion->nominal/$product->price }} %</span>
+                                                @endif
+
 
                                                 <a href="" class="quick-view">Quick View</a>
 

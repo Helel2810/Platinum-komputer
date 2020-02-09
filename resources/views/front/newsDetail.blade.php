@@ -63,7 +63,7 @@
 
                                     <span>Tags:</span>
 
-                                    <a href="">{{$news->newsCategory}}</a>
+                                    <a href="">{{$news->newsCategory->name}}</a>
 
                                 </div>
 
@@ -75,17 +75,15 @@
 
                             <div class="block-title">Leave a Reply</div>
 
-                            <p>Your email address will not be published. Required fields are marked *</p>
-
                             <div class="block-content">
 
-                                <form>
-
+                                <form method="post" action="{{route('newsPostComment', $news->id)}}">
+                                    @csrf
                                     <div class="form-group">
 
                                         <label class="title">Comment</label>
 
-                                        <textarea class="form-control" id="forContent" rows="9" ></textarea>
+                                        <textarea class="form-control" name="content" id="forContent" rows="9" ></textarea>
 
                                     </div>
 
@@ -98,12 +96,14 @@
                         </div>
 
                         @foreach($news->newsComments as $newsComment)
+                        <br>
+
                         <div class="rows">
-                          <div class="">
-                            <span class="bold">{{$newsComment->customer->user_name}}</span>
-                          </div>
-                          <div class="">
-                            {{$newsComment->content}}
+                          <div class="card">
+                            <div class="card-body">
+                              <h5 class="card-title">{{$newsComment->customer->user_name}}</h5>
+                              <p class="card-text">{{$newsComment->content}}</p>
+                            </div>
                           </div>
                         </div>
                         @endforeach
@@ -117,21 +117,7 @@
 
                     <div class="sidebar-left">
 
-                        <div class="block-search-blog">
-
-                            <form class="searchform">
-
-                                <div class="control">
-
-                                    <input type="text" placeholder="Enter Keywords..." name="text" class="input-subscribe">
-
-                                    <button type="submit" class="btn-searchform"><i class="fa fa-search" aria-hidden="true"></i></button>
-
-                                </div>
-
-                            </form>
-
-                        </div>
+                        <br>
 
                         <div class="block-recent-post-blog">
 
@@ -139,13 +125,9 @@
 
                             <ul>
 
-                                <li class="recent-post-item"><a href="">Gallery Post with Supported Animation</a></li>
-
-                                <li class="recent-post-item"><a href="">Announcement – Standard Post without Image</a></li>
-
-                                <li class="recent-post-item"><a href="">We’re the best Designers from UK</a></li>
-
-                                <li class="recent-post-item"><a href="">A Beautiful Day – Standard Post with Image</a></li>
+                                @foreach($latestNews as $item)
+                                <li class="recent-post-item"><a href="{{route('frontNewsDetail', $item->id)}}">{{$item->title}}</a></li>
+                                @endforeach
 
                             </ul>
 
@@ -157,406 +139,11 @@
 
                             <ul>
 
-                                <li class="categories-item"><a href="">All about Digital</a></li>
-
-                                <li class="categories-item"><a href="">Smartphone & Tablet</a></li>
-
-                                <li class="categories-item"><a href="">Laptop & Computer</a></li>
-
-                                <li class="categories-item"><a href="">Printer & ink</a></li>
-
-                                <li class="categories-item"><a href="">Cameras</a></li>
+                              @foreach($newsCategories as $newsCategory)
+                              <li class="categories-item"><a href="">{{$newsCategory->name}}</a></li>
+                              @endforeach
 
                             </ul>
-
-                        </div>
-
-                        <div class="block-latest-roducts">
-
-                            <div class="block-title">Latest Products</div>
-
-                            <div class="block-latest-roducts-content">
-
-                                <div class="owl-carousel nav-style2" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"600":{"items":1},"1000":{"items":1}}'>
-                                    <div class="owl-ones-row">
-
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p1.jpg')}}" alt="p1"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">Leather Chelsea Boots</a></div>
-
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p2.jpg')}}" alt="p2"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">2750 Cotu Classic Sneakers</a></div>
-
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p3.jpg')}}" alt="p3"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                    <span class="price price-dark">
-
-                                                            <ins>$229.00</ins>
-
-                                                        </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p4.jpg')}}" alt="p4"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">Pullover Hoodie - Mens</a></div>
-
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                    <div class="owl-ones-row">
-
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p1.jpg')}}" alt="p1"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">Leather Chelsea Boots</a></div>
-
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p2.jpg')}}" alt="p2"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">2750 Cotu Classic Sneakers</a></div>
-
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p3.jpg')}}" alt="p3"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                    <span class="price price-dark">
-
-                                                            <ins>$229.00</ins>
-
-                                                        </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-
-                                        <div class="product-item style1">
-
-                                            <div class="product-inner">
-
-                                                <div class="product-thumb">
-
-                                                    <div class="thumb-inner">
-
-                                                        <a href=""><img src="{{asset('images/blog/p4.jpg')}}" alt="p4"></a>
-
-                                                    </div>
-
-                                                </div>
-
-                                                <div class="product-innfo">
-
-                                                    <div class="product-name"><a href="">Pullover Hoodie - Mens</a></div>
-
-                                                    <span class="price">
-
-                                                        <ins>$229.00</ins>
-
-                                                        <del>$259.00</del>
-
-                                                    </span>
-
-                                                    <span class="star-rating">
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                        <span class="review">5 Review(s)</span>
-
-                                                    </span>
-
-                                                </div>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-
-                                </div>
-
-                            </div>
 
                         </div>
 
