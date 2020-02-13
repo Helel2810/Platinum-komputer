@@ -90,7 +90,7 @@ class ProductController extends AppBaseController
              $destinationPath = public_path('images'); // upload path
              $profileImage2 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
              $files->move($destinationPath, $profileImage2);
-             $input['image2'] = asset('images/'.$profileImage0);
+             $input['image2'] = asset('images/'.$profileImage2);
           }
 
           if ($files = $request->file('image3')) {
