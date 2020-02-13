@@ -26,8 +26,10 @@ Route::post('/front/news/{news}/comment', "FrontController@newsPostComment")->na
 Route::get('/front/profile/', "FrontController@newsDetail")->name('frontProfile');
 Route::get('/front/profile/edit', "FrontController@editProfileForm")->name('frontProfileEditForm');
 Route::post('/front/profile/edit', "FrontController@postEditProfile")->name('frontProfileEdit');
-Route::get('/front/profile/address', "FrontController@addressForm")->name('frontAddressForm');
-Route::post('/front/profile/address', "FrontController@postAddress")->name('frontAddressAdd');
+Route::get('/front/profile/address', "FrontController@addressList")->name('frontAddressList');
+Route::delete('/front/profile/address/{address}', "FrontController@deleteAddress")->name('frontDeleteAddress');
+Route::get('/front/profile/address/add', "FrontController@addressForm")->name('frontAddressForm');
+Route::post('/front/profile/address/add', "FrontController@postAddress")->name('frontAddressAdd');
 Route::get('/front/profile/orders', "FrontController@getOrders")->name('getOrders');
 Route::get('/front/profile/orders/{id}', "FrontController@getOrderDetail")->name('getOrderDetail');
 Route::post('/front/profile/orders/{id}/confirm-payment', "FrontController@postPaymentProof")->name('postPaymentProof');
@@ -115,118 +117,3 @@ Route::resource('sliders', 'SliderController');
 Route::resource('payments', 'PaymentController');
 
 Route::resource('productComments', 'ProductCommentController');
-
-
-
-Route::get('/ongkir-isi', function(){
-
-  $auth_data =
-  [
-    "grant_type"=>"password",
-    "client_id"=>"id1",
-    "client_secret"=>"secret1",
-    "username"=>"shipping01",
-    "password"=>"secret"
-  ];
-
-
-
-  $auth = Curl::to('http://172.104.182.116/index.php/oauth/access_token')
-  ->withData( $auth_data )
-  ->asJson()
-  ->post();
-
-
-
-  $provinces = Curl::to('http://172.104.182.116/index.php/province')
-  ->asJson()
-  ->get();
-
-  foreach ($provinces->data as $key => $province) {
-
-    $city = Curl::to('http://172.104.182.116/index.php/city/province/'.$province->id)
-    ->asJson()
-    ->get();
-
-    $propinsi = new App\Models\Province();
-
-    $propinsi->name = $province->name;
-
-    $propinsi->save();
-
-    foreach ($city->data as $key => $value)
-    {
-
-      $kabupaten = new App\Models\City();
-
-      $kabupaten->name = $value->name;
-
-      $kabupaten->provinsi_id = $propinsi->id;
-
-      $kabupaten->save();
-
-
-      $data2 =
-      [
-        "access_token"=> $auth->access_token,
-        "carrier"=>1,
-        "service"=>2,
-        "origin"=>151,
-        "destination"=>$value->id,
-        "view"=>"minimal"
-      ];
-
-      $data3 =
-      [
-        "access_token"=> $auth->access_token,
-        "carrier"=>1,
-        "service"=>1,
-        "origin"=>151,
-        "destination"=>$value->id,
-        "view"=>"minimal"
-      ];
-
-        $temp = Curl::to('http://172.104.182.116/index.php/ongkir')
-        ->withData($data2)
-        ->post();
-
-        $temp2 = Curl::to('http://172.104.182.116/index.php/ongkir')
-        ->withData($data3)
-        ->post();
-
-        $price = json_decode($temp, true);
-        $price2 = json_decode($temp2, true);
-
-
-        var_dump($price);
-
-
-        if(!empty($price['data'][0]))
-        {
-          $value->price = $price['data'][0]['price'];
-          $kabupaten->shipping_methods()->attach(1, ['shipping_cost' => $price['data'][0]['price']]);
-        }
-        else
-        {
-          $value->price = 0;
-          $kabupaten->shipping_methods()->attach(1, ['shipping_cost' => 0 ]);
-        }
-
-        if(!empty($price2['data'][0]))
-        {
-          $kabupaten->shipping_methods()->attach(2, ['shipping_cost' => $price2['data'][0]['price']]);
-        }
-        else
-        {
-          $kabupaten->shipping_methods()->attach(2, ['shipping_cost' => 0]);
-        }
-    }
-
-    $province->cities = $city;
-
-
-  }
-
-  return json_encode($provinces);
-
-});

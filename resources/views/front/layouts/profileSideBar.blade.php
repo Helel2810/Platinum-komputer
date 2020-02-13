@@ -25,7 +25,7 @@
 
                       <li><a href="{{route('frontProfileEditForm')}}">Profile</a></li>
 
-                      <li><a href="{{route('frontAddressForm')}}">Address</a></li>
+                      <li><a href="{{route('frontAddressList')}}">Address</a></li>
 
                       <li><a href="{{route('getOrders')}}">Orders</a></li>
 

@@ -3,7 +3,6 @@
         <thead>
             <tr>
                 <th>Name</th>
-        <th>Image</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -11,7 +10,6 @@
         @foreach($brands as $brand)
             <tr>
                 <td>{!! $brand->name !!}</td>
-            <td>{!! $brand->image !!}</td>
                 <td>
                     {!! Form::open(['route' => ['brands.destroy', $brand->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

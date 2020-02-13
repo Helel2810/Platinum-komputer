@@ -98,17 +98,15 @@
 
                             </div>
 
-                            <div class="transportation">
-
-                                <span>item with Free Delivery</span>
-
-                            </div>
-
                             <span class="price">
-
+                              
                               @if($product->promotion()->exists())
-                              <ins>Rp. {{$product->promotion->nominal}}</ins>
-                              <del>Rp. {{$product->price}}</del>
+                                @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                <ins>Rp. {{$product->promotion->nominal}}</ins>
+                                <del>Rp. {{$product->price}}</del>
+                                @else
+                                <ins>Rp. {{$product->price}}</ins>
+                                @endif
                               @else
                               <ins>Rp. {{$product->price}}</ins>
                               @endif

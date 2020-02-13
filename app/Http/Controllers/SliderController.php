@@ -71,9 +71,23 @@ class SliderController extends AppBaseController
     {
         $input = $request->all();
 
-        $slider = $this->sliderRepository->create($input);
+        if ($files = $request->file('image1')) {
+            $destinationPath = public_path('images/home3'); // upload path
+            $profileImage1 = 'slide1.jpg';
+            $files->move($destinationPath, $profileImage1);
+         }
 
-        Flash::success('Slider saved successfully.');
+         if ($files = $request->file('image2')) {
+             $destinationPath = public_path('images/home3'); // upload path
+             $profileImage2 = 'slide2.jpg';
+             $files->move($destinationPath, $profileImage2);
+          }
+
+          if ($files = $request->file('image3')) {
+              $destinationPath = public_path('images/home3'); // upload path
+              $profileImage3 = 'slide3.jpg';
+              $files->move($destinationPath, $profileImage3);
+           }
 
         return redirect(route('sliders.index'));
     }

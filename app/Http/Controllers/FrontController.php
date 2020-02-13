@@ -48,9 +48,14 @@ class FrontController extends Controller
       return view('front.contactUs');
     }
 
-    public function news()
+    public function news(Request $request)
     {
       $news = News::all();
+
+      if($request->has('category_id'))
+      {
+        $news = $news->where('news_category_id', $request->category_id);
+      }
 
       $newsCategories = NewsCategory::all();
 
@@ -87,14 +92,15 @@ class FrontController extends Controller
 
     public function category(Request $request)
     {
+      $brand_images = array();
       if($request->new_arrivals)
       {
         $data =
         [
           "products" => Product::orderBy('created_at', 'desc')->take(Product::all()->count() < 24 ? Product::all()->count() : 24)->get(),
+          "brand_images" => $brand_images,
           "latest_products" => Product::orderBy('created_at', 'desc')->take(Product::all()->count() < 12 ? Product::all()->count() : 12)->get(),
         ];
-
         return view('front.categoryProducts')->with($data);
       }
       $products = Product::all();
@@ -105,11 +111,13 @@ class FrontController extends Controller
       if($request->has('brand_id'))
       {
         $products = $products->whereIn('brand_id', $request->brand_id);
+        $brand_images = Brand::all()->whereIn('id', $request->brand_id)->pluck('image');
       }
 
       $data =
       [
         "products" => $products,
+        "brand_images" => $brand_images,
         "latest_products" => Product::orderBy('created_at', 'desc')->take(Product::all()->count() < 12 ? Product::all()->count() : 12)->get(),
       ];
 
@@ -252,6 +260,10 @@ class FrontController extends Controller
       return redirect(route('frontProfileEditForm'));
     }
 
+    public function addressList(Request $request)
+    {
+      return view('front.addressList');
+    }
 
 
     public function addressForm(Request $request)
@@ -272,6 +284,13 @@ class FrontController extends Controller
       ]);
       return redirect()->back();
     }
+
+    public function deleteAddress(Address $address)
+    {
+      $address->delete();
+      return redirect()->back();
+    }
+
 
     public function postPaymentProof(Request $request, $id)
     {

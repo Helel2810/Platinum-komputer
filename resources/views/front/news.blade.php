@@ -109,7 +109,7 @@
                               <ul>
 
                                   @foreach($newsCategories as $newscategory)
-                                    <li class="categories-item"><a href="">{{$newscategory->name}}</a></li>
+                                    <li class="categories-item"><a href="{{route('frontNews', ['category_id' => $newscategory->id])}}">{{$newscategory->name}}</a></li>
                                   @endforeach
 
                               </ul>

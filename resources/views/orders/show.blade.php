@@ -86,12 +86,26 @@
                       <td class="text-right">Rp. {{$product->price}}</td>
                       <td class="text-right">
                         @if($product->promotion()->exists())
-                        Rp. {{$product->promotion->nominal}}
+                          @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                          Rp. {{$product->promotion->nominal}}
+                          @else
+                          -
+                          @endif
                         @else
                         -
                         @endif
                       </td>
+                      @if($product->promotion()->exists())
+                        @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                        <?php $subtotal -= $product->pivot->qty*$product->promotion->nominal ?>
+                        <td class="text-right">Rp. {{$product->pivot->qty*$product->price - $product->pivot->qty*$product->promotion->nominal}}</td>
+                        @else
+                        <td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
+                        @endif
+                      @else
                       <td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
+                      @endif
+
                     </tr>
                     @endforeach
                     <tr>

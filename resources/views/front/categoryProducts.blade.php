@@ -30,11 +30,13 @@
 
                   <div class="main-content">
 
-                      <div class="promotion-banner style-3">
+                    @foreach($brand_images as $brand_image)
+                    <div class="promotion-banner style-3">
 
-                          <a href="" class="banner-img"><img src="{{asset("images/product/banner-product.jpg")}}" alt="banner-product"></a>
+                        <a href="" class="banner-img"><img src="{{$brand_image}}" alt="banner-product"></a>
 
-                      </div>
+                    </div>
+                    @endforeach
 
                       <div class="toolbar-products">
 
@@ -99,32 +101,16 @@
                                   <a href="{{route('productDetail', $product->id)}}"><img src="{{$product->image1}}" alt="p1"></a>
 
                                   @if($product->promotion()->exists())
-                                  <span class="onsale">-{{ 100 * $product->promotion->nominal/$product->price }} %</span>
+                                    @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                    <span class="onsale">-{{ 100 * $product->price-$product->promotion->nominal/$product->price }} %</span>
+                                    @endif
                                   @endif
-
-                                  <a href="" class="quick-view">Quick View</a>
 
                               </div>
 
                               <div class="product-info">
 
                                   <div class="product-name"><a href="{{route('productDetail', $product->id)}}">{{$product->name}}</a></div>
-
-                                  <span class="star-rating">
-
-                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                      <span class="review">5 Review(s)</span>
-
-                                  </span>
 
                                   <div class="product-infomation">
 
@@ -149,8 +135,12 @@
                                   <span class="price">
 
                                     @if($product->promotion()->exists())
-                                    <ins>Rp. {{$product->promotion->nominal}}</ins>
-                                    <del>Rp. {{$product->price}}</del>
+                                      @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                      <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
+                                      <del>Rp. {{$product->price}}</del>
+                                      @else
+                                      <ins>Rp. {{$product->price}}</ins>
+                                    @endif
                                     @else
                                     <ins>Rp. {{$product->price}}</ins>
                                     @endif
@@ -165,10 +155,6 @@
                                         <input type="hidden" name="id" value="{{$product->id}}">
                                         <button href="" type="submit" class="btn-add-to-cart">Add to cart</button>
                                       </form>
-
-                                      <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
-
-                                      <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
 
                                   </div>
 
@@ -282,28 +268,16 @@
                                                   <span class="price">
 
                                                     @if($product->promotion()->exists())
-                                                    <ins>Rp. {{$product->promotion->nominal}}</ins>
-                                                    <del>Rp. {{$product->price}}</del>
+                                                      @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                                      <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
+                                                      <del>Rp. {{$product->price}}</del>
+                                                      @else
+                                                      <ins>Rp. {{$product->price}}</ins>
+                                                      @endif
                                                     @else
                                                     <ins>Rp. {{$product->price}}</ins>
                                                     @endif
 
-
-                                                  </span>
-
-                                                  <span class="star-rating">
-
-                                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                      <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                      <span class="review">5 Review(s)</span>
 
                                                   </span>
 

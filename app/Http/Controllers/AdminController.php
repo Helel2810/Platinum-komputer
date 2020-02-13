@@ -8,6 +8,9 @@ use App\Repositories\AdminRepository;
 use App\Repositories\AdminRoleRepository;
 use App\Http\Controllers\AppBaseController;
 use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\Hash;
+
 use Flash;
 use Response;
 
@@ -59,6 +62,8 @@ class AdminController extends AppBaseController
     public function store(CreateAdminRequest $request)
     {
         $input = $request->all();
+
+        $input['password'] = Hash::make($request->password);
 
         $admin = $this->adminRepository->create($input);
 

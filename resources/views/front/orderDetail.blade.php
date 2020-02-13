@@ -85,8 +85,27 @@
                   													<td>{{$key+1}}</td>
                   													<td class="text-center"><strong>{{$product->name}}</strong></td>
                   													<td class="text-center">{{$product->pivot->qty}}</td>
-                  													<td class="text-right">Rp. {{$product->price}}</td>
-                  													<td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
+
+                                            @if($product->promotion()->exists())
+                                              @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                              <td class="text-right">Rp. {{$product->price - $product->promotion->nominal}}</td>
+                                              @else
+                                              <td class="text-right">Rp. {{$product->price}}</td>
+                                              @endif
+                                            @else
+                                            <td class="text-right">Rp. {{$product->price}}</td>
+                                            @endif
+
+                                            @if($product->promotion()->exists())
+                                              @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                              <?php $subtotal -= $product->pivot->qty*$product->promotion->nominal ?>
+                                              <td class="text-right">Rp. {{$product->pivot->qty*$product->price - $product->pivot->qty*$product->promotion->nominal}}</td>
+                                              @else
+                                              <td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
+                                              @endif
+                                            @else
+                                            <td class="text-right">Rp. {{$product->pivot->qty*$product->price}}</td>
+                                            @endif
                   												</tr>
                                           @endforeach
                                           @if($order->coupon()->exists())

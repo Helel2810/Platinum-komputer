@@ -25,7 +25,7 @@
 
                 </div>
 
-                <form class="form-contact" action="#" method="post">
+                <form class="form-contact" action="#">
 
                     <div class="col-md-5">
 
@@ -88,17 +88,17 @@
                     <div class="contacts-info ">
                         <div class="contact-icon"><i class="fa fa-envelope" aria-hidden="true"></i></div>
                         <h4 class="title-info">Email</h4>
-                        <div class="info-detail"> Support1@Techmini.com</div>
+                        <div class="info-detail"> Support@Gravity.com</div>
                     </div>
                     <div class="contacts-info ">
                         <div class="contact-icon"><i class="fa fa-phone" aria-hidden="true"></i></div>
                         <h4 class="title-info">Phone</h4>
-                        <div class="info-detail">0123-465-789-111</div>
+                        <div class="info-detail">(+62) 8190 8340 874</div>
                     </div>
                     <div class="contacts-info ">
                         <div class="contact-icon"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
                         <h4 class="title-info">Mail Office</h4>
-                        <div class="info-detail">Sed ut perspiciatis unde omnis Street Name, Los Angeles</div>
+                        <div class="info-detail">Jl. Bawal Raya No. 6, Jakarta</div>
                     </div>
 
                 </div>

@@ -85,7 +85,7 @@
                             <span class="btn-close hidden-md"><i class="fa fa-times" aria-hidden="true"></i></span>
 
                             <ul class="vertical-menu-list">
-                                <li><a href="">New Arrivals</a></li>
+                                <li><a href="{{route('categoryProducts', ['new_arrivals' => 1])}}">New Arrivals</a></li>
                             </ul>
 
                         </div>
@@ -143,28 +143,15 @@
                                               <span class="price">
 
                                                 @if($product->promotion()->exists())
-                                                <ins>Rp. {{$product->promotion->nominal}}</ins>
-                                                <del>Rp. {{$product->price}}</del>
+                                                  @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                                  <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
+                                                  <del>Rp. {{$product->price}}</del>
+                                                  @else
+                                                  <ins>Rp. {{$product->price}}</ins>
+                                                @endif
                                                 @else
                                                 <ins>Rp. {{$product->price}}</ins>
                                                 @endif
-
-
-                                              </span>
-
-                                              <span class="star-rating">
-
-                                                  <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                  <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                  <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                  <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                  <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                  <span class="review">5 Review(s)</span>
 
                                               </span>
 
@@ -278,11 +265,11 @@
                       <ul class="box-tabs nav-tab">
 
                           <li class="active"><a data-animated="" data-toggle="tab" href="#tab-1">All Products </a></li>
-
+                          <!--
                           <li><a data-animated="fadeInLeft" data-toggle="tab" href="#tab-2">TV & Audio</a></li>
 
-                          <li><a data-animated="fadeInDownBig" data-toggle="tab" href="#tab-1">Game & Consoles</a></li>
-
+                          <li><a data-animated="fadeInDownBig" data-toggle="tab" href="#tab-3">Game & Consoles</a></li>
+                          -->
                       </ul>
 
                       <div class="tab-content">
@@ -307,11 +294,10 @@
                                                 </div>
 
                                                 @if($product->promotion()->exists())
-                                                <span class="onsale">-{{ 100 * $product->promotion->nominal/$product->price }} %</span>
+                                                  @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                                  <span class="onsale">-{{ 100 * $product->price-$product->promotion->nominal/$product->price }} %</span>
+                                                  @endif
                                                 @endif
-
-
-                                                <a href="" class="quick-view">Quick View</a>
 
                                             </div>
 
@@ -322,29 +308,16 @@
                                                 <span class="price price-dark">
 
                                                   @if($product->promotion()->exists())
-                                                  <ins>Rp. {{$product->promotion->nominal}}</ins>
-                                                  <del>Rp. {{$product->price}}</del>
+                                                    @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                                    <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
+                                                    <del>Rp. {{$product->price}}</del>
+                                                    @else
+                                                    <ins>Rp. {{$product->price}}</ins>
+                                                  @endif
                                                   @else
                                                   <ins>Rp. {{$product->price}}</ins>
                                                   @endif
 
-
-
-                                                </span>
-
-                                                <span class="star-rating">
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                    <span class="review">5 Review(s)</span>
 
                                                 </span>
 
@@ -352,11 +325,7 @@
 
                                                     <div class="inner">
 
-                                                        <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
                                                         <a href="" class="add-to-cart">Add to cart</a>
-
-                                                        <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
 
                                                     </div>
 
@@ -374,491 +343,6 @@
                               </div>
 
                               <div id="tab-2" class="tab-panel">
-
-                                        <div class="owl-carousel nav-style2 border-background equal-container" data-nav="true" data-autoplay="false" data-dots="false" data-loop="true" data-margin="0" data-responsive='{"0":{"items":1},"480":{"items":2},"640":{"items":3},"768":{"items":2},"1000":{"items":4}}'>
-                                            <div class="owl-one-row">
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f1.jpg")}}" alt="f1"></a>
-
-                                                            </div>
-
-                                                            <a href="" class="quick-view">Quick View</a>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="">Thule Chasm Sport Duffel Bag</a></div>
-
-                                                            <span class="price price-dark">
-
-                                                                <ins>$229.00</ins>
-
-                                                            </span>
-
-                                                            <span class="star-rating">
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <span class="review">5 Review(s)</span>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f5.jpg")}}" alt="f5"></a>
-
-                                                            </div>
-
-                                                            <span class="onsale">-50%</span>
-
-                                                            <a href="" class="quick-view">Quick View</a>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="">Leather Cortez Sneakers</a></div>
-
-                                                            <span class="price price-dark">
-
-                                                                <ins>$229.00</ins>
-
-                                                            </span>
-
-                                                            <span class="star-rating">
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <span class="review">5 Review(s)</span>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="owl-one-row">
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f2.jpg")}}" alt="f2"></a>
-
-                                                            </div>
-
-                                                             <span class="onsale">-50%</span>
-
-                                                             <a href="" class="quick-view">Quick View</a>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="">Knitted Melange T-Shirt</a></div>
-
-                                                            <span class="price">
-
-                                                                <ins>$229.00</ins>
-
-                                                                <del>$259.00</del>
-
-                                                            </span>
-
-                                                            <span class="star-rating">
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <span class="review">5 Review(s)</span>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f6.jpg")}}" alt="f6"></a>
-
-                                                            </div>
-
-                                                            <a href="" class="quick-view">Quick View</a>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="">Trucker Hat with Patches </a></div>
-
-                                                            <span class="price">
-
-                                                                <ins>$229.00</ins>
-
-                                                                <del>$259.00</del>
-
-                                                            </span>
-
-                                                            <span class="star-rating">
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <span class="review">5 Review(s)</span>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="owl-one-row">
-
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f3.jpg")}}" alt="f3"></a>
-
-                                                            </div>
-
-                                                             <a href="" class="quick-view">Quick View</a>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="">Trucker Hat with Patches </a></div>
-
-                                                            <span class="price">
-
-                                                                <ins>$229.00</ins>
-
-                                                                <del>$259.00</del>
-
-                                                            </span>
-
-                                                            <span class="star-rating">
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <span class="review">5 Review(s)</span>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f7.jpg")}}" alt="f7"></a>
-
-                                                            </div>
-
-                                                            <a href="" class="quick-view">Quick View</a>
-
-                                                            <span class="onsale">-50%</span>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-
-
-                                                            <div class="product-name"><a href="">Pullover Hoodie - Mens</a></div>
-
-                                                            <span class="price">
-
-                                                                <ins>$229.00</ins>
-
-                                                                <del>$259.00</del>
-
-                                                            </span>
-
-                                                            <span class="star-rating">
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                                <span class="review">5 Review(s)</span>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-
-                                                </div>
-                                            </div>
-                                            <div class="owl-one-row">
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f4.jpg")}}" alt="f4"></a>
-
-                                                            </div>
-
-                                                            <span class="onsale">-50%</span>
-
-                                                            <a href="" class="quick-view">Quick View</a>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="">2750 Cotu Classic Sneakers</a></div>
-
-                                                            <span class="price">
-
-                                                                <ins>$229.00</ins>
-
-                                                                <del>$259.00</del>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-
-                                                <div class="product-item style1">
-
-                                                    <div class="product-inner equal-elem">
-
-                                                        <div class="product-thumb">
-
-                                                            <div class="thumb-inner">
-
-                                                                <a href=""><img src="{{asset("images/home3/f8.jpg")}}" alt="f8"></a>
-
-                                                            </div>
-
-                                                            <a href="" class="quick-view">Quick View</a>
-
-                                                        </div>
-
-                                                        <div class="product-innfo">
-
-                                                            <div class="product-name"><a href="">Leather Chelsea Boots</a></div>
-
-                                                            <span class="price">
-
-                                                                <ins>$229.00</ins>
-
-                                                                <del>$259.00</del>
-
-                                                            </span>
-
-                                                            <div class="group-btn-hover">
-
-                                                                <div class="inner">
-
-                                                                    <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i></a>
-
-                                                                    <a href="" class="add-to-cart">Add to cart</a>
-
-                                                                    <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i></a>
-
-                                                                </div>
-
-                                                            </div>
-
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
 
                               </div>
 
@@ -928,30 +412,15 @@
                                             <span class="price">
 
                                               @if($product->promotion()->exists())
-                                              <ins>Rp. {{$product->promotion->nominal}}</ins>
-                                              <del>Rp. {{$product->price}}</del>
+                                                @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                                <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
+                                                <del>Rp. {{$product->price}}</del>
+                                                @else
+                                                <ins>Rp. {{$product->price}}</ins>
+                                              @endif
                                               @else
                                               <ins>Rp. {{$product->price}}</ins>
                                               @endif
-
-
-                                                <span class="onnew">new</span>
-
-                                            </span>
-
-                                            <span class="star-rating">
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <i class="fa fa-star" aria-hidden="true"></i>
-
-                                                <span class="review">5 Review(s)</span>
 
                                             </span>
 

@@ -3,8 +3,8 @@
         <thead>
             <tr>
                 <th>Status</th>
-        <th>Customer Id</th>
-        <th>Admin Id</th>
+        <th>Customer User Name</th>
+        <th>Customer Email</th>
                 <th colspan="3">Action</th>
             </tr>
         </thead>
@@ -12,8 +12,8 @@
         @foreach($orders as $order)
             <tr>
                 <td>{!! $order->status !!}</td>
-            <td>{!! $order->customer_id !!}</td>
-            <td>{!! $order->admin_id !!}</td>
+            <td>{!! $order->customer->user_name !!}</td>
+            <td>{!! $order->customer->email !!}</td>
                 <td>
                     {!! Form::open(['route' => ['orders.destroy', $order->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

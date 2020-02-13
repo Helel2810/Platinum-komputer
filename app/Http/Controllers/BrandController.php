@@ -56,6 +56,14 @@ class BrandController extends AppBaseController
     {
         $input = $request->all();
 
+        if ($files = $request->file('image')) {
+            $destinationPath = public_path('images'); // upload path
+            $profileImage1 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage1);
+            $input['image'] = asset('images/'.$profileImage1);
+         }
+
+
         $brand = $this->brandRepository->create($input);
 
         Flash::success('Brand saved successfully.');
@@ -121,7 +129,16 @@ class BrandController extends AppBaseController
             return redirect(route('brands.index'));
         }
 
-        $brand = $this->brandRepository->update($request->all(), $id);
+        $input = $request->all();
+
+        if ($files = $request->file('image')) {
+            $destinationPath = public_path('images'); // upload path
+            $profileImage1 = date('YmdHisu') .rand(10, 100). "." . $files->getClientOriginalExtension();
+            $files->move($destinationPath, $profileImage1);
+            $input['image'] = asset('images/'.$profileImage1);
+         }
+
+        $brand = $this->brandRepository->update($input, $id);
 
         Flash::success('Brand updated successfully.');
 

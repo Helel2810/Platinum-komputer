@@ -54,11 +54,6 @@ class Slider extends Model
      * @var array
      */
     public static $rules = [
-        'image' => 'required',
-        'start_date' => 'required',
-        'end_date' => 'required',
-        'product_id' => 'required',
-        'brand_id' => 'required'
     ];
 
 
