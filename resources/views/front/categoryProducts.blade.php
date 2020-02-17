@@ -58,20 +58,6 @@
 
                               </div>
 
-                              <div class="toolbar-per">
-
-                                  <select class="chosen-select limiter-options form-control" >
-
-                                      <option selected="selected" value="6">20 per page</option>
-
-                                      <option value="15">15</option>
-
-                                      <option value="30">30</option>
-
-                                  </select>
-
-                              </div>
-
                               <div class="modes">
 
                                   <a href="grid-product.html" class="modes-mode  mode-grid" title="Grid"><i class="flaticon-squares"></i>
@@ -164,6 +150,7 @@
                           @endforeach
                       </div>
 
+<!--
                       <div class="pagination">
 
                           <ul class="nav-links">
@@ -181,6 +168,8 @@
                           <span class="show-resuilt">Showing 1-8 of 12 result</span>
 
                       </div>
+
+                    -->
 
                   </div>
 

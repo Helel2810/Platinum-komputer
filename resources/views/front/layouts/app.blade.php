@@ -43,7 +43,7 @@
 
 
    <div class="wrapper">
-
+<!--
        <form id="block-search-mobile" method="get" class="block-search-mobile">
            <div class="form-content">
                <div class="control">
@@ -55,7 +55,7 @@
                </div>
            </div>
        </form>
-
+-->
        <!-- HEADER -->
 
        <header class="site-header header-opt-1">
@@ -160,11 +160,7 @@
                        </div>
 
                        <div class="col-md-8 nav-mind">
-
-
-
-                           <!-- block search -->
-
+<!--
                            <div class="block-search">
 
                                <div class="block-content">
@@ -196,8 +192,8 @@
 
                                </div>
 
-                           </div><!-- block search -->
-
+                           </div>
+-->
                        </div>
 
                        <div class="col-md-2 nav-right">
@@ -397,7 +393,7 @@
                                        <span class="toggle-submenu hidden-md"></span>
 
                                    </li>
-
+                                   @if(Auth::check())
                                    <li>
 
                                        <a href="{{route('getOrders')}}" class="dropdown-toggle">Profile</a>
@@ -405,7 +401,7 @@
                                        <span class="toggle-submenu hidden-md"></span>
 
                                    </li>
-
+                                   @endif
 
                                    <li>
 
