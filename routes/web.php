@@ -61,7 +61,7 @@ Route::post('/login', "Auth\AdminAuthController@loginAdmin")->name('adminLogin')
 Route::get('/register', "Auth\AdminAuthController@showRegisterForm")->name('adminRegisterForm');
 Route::post('/register', "Auth\AdminAuthController@create")->name('adminRegister');
 
-Route::get('/logut', 'Auth\AdminAuthController@logout')->name('adminLogout');
+Route::post('/logout', 'Auth\AdminAuthController@logout')->name('adminLogout');
 
 Route::get('/orders/{id}/approve', "OrderController@approveOrder")->name('approveOrder');
 Route::get('/orders/{id}/reject', "OrderController@rejectOrder")->name('rejectOrder');

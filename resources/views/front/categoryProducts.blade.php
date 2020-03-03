@@ -46,31 +46,12 @@
 
                               <div class="toolbar-sort">
 
-                                  <select class="chosen-select sorter-options form-control" >
 
-                                      <option selected="selected" value="position">Sort by popularity</option>
-
-                                      <option value="name">Name</option>
-
-                                      <option value="price">Price</option>
-
-                                  </select>
 
                               </div>
 
                               <div class="modes">
 
-                                  <a href="grid-product.html" class="modes-mode  mode-grid" title="Grid"><i class="flaticon-squares"></i>
-
-                                      <span>Grid</span>
-
-                                  </a>
-
-                                  <a href="list-product.html" title="List" class="active modes-mode mode-list"><i class="flaticon-interface"></i>
-
-                                      <span>List</span>
-
-                                  </a>
 
                               </div>
 

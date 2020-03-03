@@ -104,6 +104,12 @@ class FrontController extends Controller
         return view('front.categoryProducts')->with($data);
       }
       $products = Product::all();
+      /*
+      if($request->has('search'))
+      {
+        $products = $products->where('name', 'LIKE' , '%'.$request->search.'%');
+      }
+      */
       if($request->has('category_id'))
       {
         $products = $products->whereIn('category_id', $request->category_id);

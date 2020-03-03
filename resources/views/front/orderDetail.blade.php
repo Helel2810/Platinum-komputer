@@ -188,7 +188,7 @@
                                         @if($order->deliveryOrder->status == "Shipped")
                                         <div class="row">
                                           <div class="col-md-12 float-right">
-                                            <a class="btn btn-primary float-right" href="{{route('postConfirmReceive', $order->payment->id)}}">Received</a>
+                                            <a class="btn btn-primary float-right" href="{{route('postConfirmReceive', $order->id)}}">Received</a>
                                           </div>
                                         </div>
                                         @endif
