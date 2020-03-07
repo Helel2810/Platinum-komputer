@@ -15,7 +15,9 @@
       <div class="container">
           <div class="row">
               <div class="col-md-9">
-                  <form class="form-cart">
+                  <form class="form-cart" action="{{route('updateCart')}}" method="post">
+                    @csrf
+                    @method('PUT')
                       <div class="table-cart">
                           <table class="table">
                               <thead>
@@ -29,7 +31,7 @@
                               </tr>
                               </thead>
                               <tbody>
-                              @foreach($cart as $item)
+                              @foreach($cart as $key => $item)
                               <tr>
                                   <td class="tb-image"><a href="" class="item-photo"><img src="{{$item->attributes['image']}}"alt="cart"></a>
                                   <td class="tb-product">
@@ -41,10 +43,8 @@
                                   <td class="tb-qty">
                                       <div class="quantity">
                                           <div class="buttons-added">
-                                              <input type="text" value="{{$item->quantity}}" title="Qty" class="input-text qty text"
+                                              <input type="text" value="{{$item->quantity}}" name="quantity[{{$key}}]" title="Qty" class="input-text qty text"
                                                      size="1">
-                                              <a href="#" class="sign plus"><i class="fa fa-plus"></i></a>
-                                              <a href="#" class="sign minus"><i class="fa fa-minus"></i></a>
                                           </div>
                                       </div>
                                   </td>
@@ -52,8 +52,7 @@
                                       <span class="price">Rp. {{$item->getPriceSum()}}</span>
                                   </td>
                                   <td class="tb-remove">
-                                      <a href="" class="action-remove"><span><i class="fa fa-times"
-                                                                                aria-hidden="true"></i></span></a>
+                                      <button type="button" onclick="location.href='{{route('removeFromCart', $item->id)}}';" class="action-remove"><span><i class="fa fa-times" aria-hidden="true"></i></span></button>
                                   </td>
                               </tr>
                               @endforeach
@@ -78,11 +77,12 @@
                       <h4 class="title-shopping-cart">Order Summary</h4>
                       <div class="checkout-element-content">
                           <span class="order-left">Subtotal:<span>Rp. {{Cart::getTotal()}}</span></span>
-                          <span class="order-left">Shipping:<span>Free Shipping</span></span>
                           <span class="order-left">Total:<span>Rp. {{Cart::getTotal()}}</span></span>
+                          @if(Auth::check())
                           <button type="submit" onclick="location.href='{{route('getCheckout')}}';" class="btn-checkout">
                               Check Out
                           </button>
+                          @endif()
                       </div>
                   </div>
               </div>

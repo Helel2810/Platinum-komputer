@@ -299,7 +299,11 @@
 
                                                <a class="btn btn-viewcart" href="{{route('cart')}}">View cart</a>
 
+                                               @if(Auth::check())
+
                                                <a class="btn btn-checkout" href="{{route('getCheckout')}}">Checkout</a>
+
+                                               @endif()
 
                                            </div>
 

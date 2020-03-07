@@ -23,7 +23,7 @@
                   									<div class="row">
                   										<div class="col-xs-12">
                   											<h2>invoice<br>
-                  											<span class="small">order #1</span></h2>
+                  											<span class="small">order Grv{{$order->id}}</span></h2>
                   										</div>
                   									</div>
                                     <div class="row">
@@ -31,7 +31,8 @@
                                         <h3>Order Status: {{$order->status}}</h3>
                                         @if($order->status == "Approved")
                                           @if($order->payment->status == "Approved")
-                                            Delivery Status: {{$order->deliveryOrder->status}}
+                                            Delivery Status: {{$order->deliveryOrder->status}} <br>
+                                            Tracking Code: {{$order->deliveryOrder->tracking_code}}
                                           @endif
                                         @endif
                                       </div>

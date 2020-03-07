@@ -46,7 +46,9 @@ Route::get('/front/logout', "Auth\CustomerAuthController@logout")->name('cutomer
 
 Route::get('/front/cart/', "FrontController@getCart")->name('cart');
 Route::post('/front/cart/', "FrontController@addToCart")->name('addToCart');
+Route::put('/front/cart/update', "FrontController@updateCart")->name('updateCart');
 Route::get('/front/cart/clear', "FrontController@clearCart")->name('clearCart');
+Route::get('/front/cart/delete/{id}', "FrontController@removeFromCart")->name('removeFromCart');
 
 Route::get('/front/checkout/', "FrontController@getCheckout")->name('getCheckout');
 Route::post('/front/checkout/', "FrontController@postCheckout")->name('postCheckout');
@@ -69,7 +71,7 @@ Route::get('/orders/{id}/reject', "OrderController@rejectOrder")->name('rejectOr
 Route::get('/payments/{id}/approve', "PaymentController@approvePayment")->name('approvePayment');
 Route::get('/payments/{id}/reject', "PaymentController@rejectPayment")->name('rejectPayment');
 
-Route::get('/delivery/{id}/send', "DeliveryOrderController@sendDeliveryOrder")->name('sendDeliveryOrder');
+Route::post('/delivery/{id}/send', "DeliveryOrderController@sendDeliveryOrder")->name('sendDeliveryOrder');
 
 
 Route::resource('adminRoles', 'AdminRoleController');

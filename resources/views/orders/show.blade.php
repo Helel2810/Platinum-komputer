@@ -17,7 +17,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas "></i> Platinum.
+                    <i class="fas "></i> Gravity.
                     <small class="float-right">Date: {{$order->created_at}}</small>
                   </h4>
                 </div>
@@ -28,11 +28,11 @@
                 <div class="col-sm-4 invoice-col">
                   From
                   <address>
-                    <strong>Platinum, Inc.</strong><br>
-                    795 Folsom Ave, Suite 600<br>
-                    San Francisco, CA 94107<br>
-                    Phone: (804) 123-5432<br>
-                    Email: info@almasaeedstudio.com
+                    <strong>Gravity, Inc.</strong><br>
+                    Jl. Bawal Raya No. 6<br>
+                    Tanjung Priok, Jakut 14350<br>
+                    Phone: +6281908340874<br>
+                    Email: Support@Gravity.com
                   </address>
                 </div>
                 <!-- /.col -->
@@ -155,10 +155,16 @@
                 @if($order->status == "Pending")
                   <a href="{{route('approveOrder', $order->id)}}" class="btn btn-default"><i class="fas fa-print"></i>Approve</a>
                   <a href="{{route('rejectOrder', $order->id)}}" class="btn btn-default"><i class="fas fa-print"></i>Reject</a>
+                @elseif($order->status == "Rejected")
+                Status: Rejected
                 @elseif($order->status == "Done")
-                  <a href="invoice-print.html" target="_blank" class="btn btn-default"><i class="fas fa-print"></i> Print</a>
+                  <button onclick="window.print();return false;" class="btn btn-default"><i class="fas fa-print"></i> Print</button>
                 @elseif($order->payment->status == "Approved")
-                  <a href="{{route('sendDeliveryOrder', $order->deliveryOrder->id)}}" target="_blank" class="btn btn-default"><i class="fas fa-print"></i>Send</a>
+                <form class="" action="{{route('sendDeliveryOrder', $order->deliveryOrder->id)}}" method="post">
+                  @csrf
+                  <input type="text" name="tracking_code" value="">
+                  <button type="submit" class="btn btn-default"><i class="fas fa-print"></i>Send</button>
+                </form>
                   <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#paymentView"><i class="far fa-credit-card" ></i> View Payment</button>
                   <div class="modal fade" id="paymentView" role="dialog">
                     <div class="modal-dialog">
@@ -185,6 +191,7 @@
                   </div>
                 @elseif($order->status == "Approved")
                   <button type="button" class="btn btn-success float-right" data-toggle="modal" data-target="#paymentView"><i class="far fa-credit-card"></i> View Payment</button>
+                  <a href="{{route('rejectOrder', $order->id)}}" class="btn btn-default"><i class="fas fa-print"></i>Reject</a>
 
                   <div class="modal fade" id="paymentView" role="dialog">
                     <div class="modal-dialog">

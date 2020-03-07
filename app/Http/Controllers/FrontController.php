@@ -182,6 +182,29 @@ class FrontController extends Controller
       return back();
     }
 
+    public function removeFromCart($id)
+    {
+      Cart::remove($id);
+
+      return back();
+    }
+
+    public function updateCart(Request $request)
+    {
+      foreach ($request->quantity as $key => $quantity) {
+        Cart::update($key,
+        [
+          'quantity' => [
+              'relative' => false,
+              'value' => $quantity
+          ],
+        ]
+        );
+      }
+      return back();
+    }
+
+
 
     public function getCheckout()
     {

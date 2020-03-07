@@ -37,7 +37,7 @@
 
                                 <label>Name<span class="required">*</span></label>
 
-                                <input type="text" value="" name="text" placeholder="Fist name" class="input-text">
+                                <input type="text" value="" name="text" placeholder="Name" class="input-text">
 
                             </p>
 
@@ -45,15 +45,15 @@
 
                                 <label>Email<span class="required">*</span></label>
 
-                                <input type="email" value="" name="text" placeholder="Fist name" class="input-text">
+                                <input type="email" value="" name="text" placeholder="Email" class="input-text">
 
                             </p>
 
                             <p class="form-row form-row-wide">
 
-                                <label>Number Phone<span class="required"></span></label>
+                                <label>Phone Number<span class="required"></span></label>
 
-                                <input type="text" value="" name="text" placeholder="Fist name" class="input-text">
+                                <input type="text" value="" name="text" placeholder="+62811555681" class="input-text">
 
                             </p>
 

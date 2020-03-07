@@ -99,7 +99,7 @@
                             </div>
 
                             <span class="price">
-                              
+
                               @if($product->promotion()->exists())
                                 @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
                                 <ins>Rp. {{$product->promotion->nominal}}</ins>
@@ -130,13 +130,17 @@
                               </div>
 
                               <div class="single-add-to-cart">
+                                @if($product->stock > 0)
                                   @csrf
                                   <input type="hidden" name="id" value="{{$product->id}}">
                                   <button href="" type="submit" class="btn-add-to-cart">Add to cart</button>
-
+                                @else
+                                <button href="" type="submit" class="btn-add-to-cart" disabled>Add to cart</button>
+                                @endif
                                   <a href="" class="compare"><i class="flaticon-refresh-square-arrows"></i>Compare</a>
 
                                   <a href="" class="wishlist"><i class="fa fa-heart-o" aria-hidden="true"></i>Wishlist</a>
+
 
                               </div>
                             </form>

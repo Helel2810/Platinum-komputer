@@ -156,7 +156,7 @@ class DeliveryOrderController extends AppBaseController
         return redirect(route('deliveryOrders.index'));
     }
 
-    public function sendDeliveryOrder($id)
+    public function sendDeliveryOrder(Request $request, $id)
     {
         $deliveryOrder = DeliveryOrder::find($id);
 
@@ -167,6 +167,7 @@ class DeliveryOrderController extends AppBaseController
         }
 
         $deliveryOrder->status = "Shipped";
+        $deliveryOrder->tracking_code = $request->tracking_code;
         $deliveryOrder->send_date = \Carbon\Carbon::now();
         $deliveryOrder->save();
 

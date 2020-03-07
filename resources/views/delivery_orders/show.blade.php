@@ -17,7 +17,7 @@
               <div class="row">
                 <div class="col-12">
                   <h4>
-                    <i class="fas "></i> Platinum.
+                    <i class="fas "></i> Gravity.
                     <small class="float-right">Date: {{$deliveryOrder->order->created_at}}</small>
                   </h4>
                 </div>
@@ -28,7 +28,7 @@
                 <div class="col-sm-4 invoice-col">
                   From
                   <address>
-                    <strong>Platinum, Inc.</strong><br>
+                    <strong>Gravity, Inc.</strong><br>
                     795 Folsom Ave, Suite 600<br>
                     San Francisco, CA 94107<br>
                     Phone: (804) 123-5432<br>
@@ -48,7 +48,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  <b>Order ID:</b> Plt{{$deliveryOrder->order->id}}<br>
+                  <b>Order ID:</b> Grv{{$deliveryOrder->order->id}}<br>
                 </div>
                 <!-- /.col -->
               </div>

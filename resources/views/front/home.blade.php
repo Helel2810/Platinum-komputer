@@ -324,9 +324,16 @@
                                                 <div class="group-btn-hover">
 
                                                     <div class="inner">
-
-                                                        <a href="" class="add-to-cart">Add to cart</a>
-
+                                                      @if($product->stock > 0)
+                                                      <form class="" action="{{route("addToCart")}}" method="post">
+                                                        <input type="hidden" value="1" name="qty">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{$product->id}}">
+                                                        <button href="" type="submit" class="btn-add-to-cart">Add to cart</button>
+                                                      </form>
+                                                      @else
+                                                        <button href="" type="submit" class="btn-add-to-cart" disabled>Add to cart</button>
+                                                      @endif
                                                     </div>
 
                                                 </div>
@@ -423,8 +430,16 @@
                                               @endif
 
                                             </span>
-
-                                            <a href="" class="btn-add-to-cart">Add to cart</a>
+                                            @if($product->stock > 0)
+                                            <form class="" action="{{route("addToCart")}}" method="post">
+                                              <input type="hidden" value="1" name="qty">
+                                              @csrf
+                                              <input type="hidden" name="id" value="{{$product->id}}">
+                                              <button href="" type="submit" class="btn-add-to-cart">Add to cart</button>
+                                            </form>
+                                            @else
+                                              <button href="" type="submit" class="btn-add-to-cart" disabled>Add to cart</button>
+                                            @endif
 
                                         </div>
 
