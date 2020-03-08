@@ -68,7 +68,7 @@
                                   <a href="{{route('productDetail', $product->id)}}"><img src="{{$product->image1}}" alt="p1"></a>
 
                                   @if($product->promotion()->exists())
-                                    @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                    @if($product->promotion->start_date < Carbon\Carbon::now() && $product->promotion->end_date > Carbon\Carbon::now())
                                     <span class="onsale">-{{ 100 * $product->price-$product->promotion->nominal/$product->price }} %</span>
                                     @endif
                                   @endif
@@ -102,7 +102,7 @@
                                   <span class="price">
 
                                     @if($product->promotion()->exists())
-                                      @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                      @if($product->promotion->start_date < Carbon\Carbon::now() && $product->promotion->end_date > Carbon\Carbon::now())
                                       <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
                                       <del>Rp. {{$product->price}}</del>
                                       @else
@@ -252,7 +252,7 @@
                                                   <span class="price">
 
                                                     @if($product->promotion()->exists())
-                                                      @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                                      @if($product->promotion->start_date < Carbon\Carbon::now() && $product->promotion->end_date > Carbon\Carbon::now())
                                                       <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
                                                       <del>Rp. {{$product->price}}</del>
                                                       @else

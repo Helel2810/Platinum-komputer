@@ -101,11 +101,11 @@
                             <span class="price">
 
                               @if($product->promotion()->exists())
-                                @if($product->promotion->start_date > Carbon\Carbon::now() && $product->promotion->end_date < Carbon\Carbon::now())
+                                @if($product->promotion->start_date < Carbon\Carbon::now() && $product->promotion->end_date > Carbon\Carbon::now())
                                 <ins>Rp. {{$product->promotion->nominal}}</ins>
                                 <del>Rp. {{$product->price}}</del>
                                 @else
-                                <ins>Rp. {{$product->price}}</ins>
+                                <ins>Rp. {{$product->price}}</ins> <br>
                                 @endif
                               @else
                               <ins>Rp. {{$product->price}}</ins>
