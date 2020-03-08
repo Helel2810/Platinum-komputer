@@ -295,7 +295,7 @@
 
                                                 @if($product->promotion()->exists())
                                                   @if($product->promotion->start_date < Carbon\Carbon::now() && $product->promotion->end_date > Carbon\Carbon::now())
-                                                  <span class="onsale">-{{ 100 * $product->promotion->nominal/$product->price }} %</span>
+                                                  <span class="onsale">-{{ number_format(100 * $product->promotion->nominal/$product->price, 2, '.', '') }} %</span>
                                                   @endif
                                                 @endif
 
