@@ -222,33 +222,33 @@
 
                       <div class="block-top-categori-item">
 
-                          <a href=""><img src="{{asset("images/home3/h1.jpg")}}" alt="h1"></a>
+                          <a href="{{route('categoryProducts', ['category_id' => 1])}}"><img src="{{asset("images/home3/h1.jpg")}}" alt="h1"></a>
 
-                          <div class="block-top-categori-title">Accessories</div>
-
-                      </div>
-
-                      <div class="block-top-categori-item">
-
-                          <a href=""><img src="{{asset("images/home3/h2.jpg")}}" alt="h2"></a>
-
-                          <div class="block-top-categori-title">Fashions Jacket</div>
+                          <div class="block-top-categori-title">Motherboard Intel</div>
 
                       </div>
 
                       <div class="block-top-categori-item">
 
-                          <a href=""><img src="{{asset("images/home3/h3.jpg")}}" alt="h3"></a>
+                          <a href="{{route('categoryProducts', ['category_id' => 3])}}"><img src="{{asset("images/home3/h2.jpg")}}" alt="h2"></a>
 
-                          <div class="block-top-categori-title">Audio & Theater Sport</div>
+                          <div class="block-top-categori-title">Processor Intel</div>
 
                       </div>
 
                       <div class="block-top-categori-item">
 
-                          <a href=""><img src="{{asset("images/home3/h4.jpg")}}" alt="h4"></a>
+                          <a href="{{route('categoryProducts', ['category_id' => 8])}}"><img src="{{asset("images/home3/h3.jpg")}}" alt="h3"></a>
 
-                          <div class="block-top-categori-title">Tablets</div>
+                          <div class="block-top-categori-title">VGA</div>
+
+                      </div>
+
+                      <div class="block-top-categori-item">
+
+                          <a href="{{route('categoryProducts', ['category_id' => 7])}}"><img src="{{asset("images/home3/h4.jpg")}}" alt="h4"></a>
+
+                          <div class="block-top-categori-title">Casing</div>
 
                       </div>
 

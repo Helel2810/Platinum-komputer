@@ -31,9 +31,15 @@
                         <div class="form-group col-md-6">
                           @if(count(Auth::user()->addresses)>0)
                             @foreach(Auth::user()->addresses as $address)
+                              @if($loop->first)
                             <div class="radio">
                               <label><input type="radio" name="address" onclick="getShippingCost()" value="{{$address->id}}" checked>{{$address->address}}<br>{{$address->recipient_name}}<br>{{$address->phone}}</label>
                             </div>
+                              @else
+                            <div class="radio">
+                              <label><input type="radio" name="address" onclick="getShippingCost()" value="{{$address->id}}">{{$address->address}}<br>{{$address->recipient_name}}<br>{{$address->phone}}</label>
+                            </div>
+                              @endif
                             @endforeach
                           @else
                           <a href="{{route('frontAddressForm')}}" class="button">Add new address</a>
@@ -45,7 +51,11 @@
 
                           <h4 class="title-checkout">Shipping method</h4>
                           @foreach($shipmentMethods as $shipmentMethod)
-                          <label><input type="radio" name="shipmentMethod" onclick="getShippingCost()" value="{{$shipmentMethod->id}}">{{$shipmentMethod->name}}</label>
+                          @if($loop->first)
+                            <label><input type="radio" name="shipmentMethod" onclick="getShippingCost()" value="{{$shipmentMethod->id}}" checked>{{$shipmentMethod->name}}</label>
+                          @else
+                            <label><input type="radio" name="shipmentMethod" onclick="getShippingCost()" value="{{$shipmentMethod->id}}">{{$shipmentMethod->name}}</label>
+                          @endif
                           @endforeach
                           <h4 class="discount">Discount Codes</h4>
 
@@ -60,7 +70,7 @@
                     <div class="form-group payment col-md-6">
 
                         <span class="grand-total">Sub total<span id="subtotal">Rp. {{Cart::getTotal()}}</span></span> <br>
-                        <span class="grand-total">Shipping<span id="shipping_cost">Rp. 0</span></span> <br>
+                        <span class="grand-total">Shipping<span id="shipping_cost">Rp. {{$shippingCost->price}}</span></span> <br>
                         <span class="grand-total">Grand Total<span id="total_cost">Rp. {{Cart::getTotal()}}</span></span>
 
                         <button type="submit" class="btn-order">Place Order Now</button>

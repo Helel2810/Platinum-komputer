@@ -209,10 +209,12 @@ class FrontController extends Controller
     public function getCheckout()
     {
       $shipmentMethods = ShipmentMethod::all();
+      $shippingCost = ShippingCost::where('district_id', Auth::user()->addresses[0]->district_id)->where('shipment_method_id', $shipmentMethods[0]->id)->first();
       $products = Cart::getContent();
 
       $data = [
         "shipmentMethods" => $shipmentMethods,
+        "shippingCost" => $shippingCost,
         "products" => $products
       ];
       return view('front.checkout')->with($data);
