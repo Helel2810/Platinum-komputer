@@ -357,6 +357,7 @@ class FrontController extends Controller
       $order->payment()->update([
         "proof" => $proof,
         "bank_account" => $request->bank_account,
+        "account_owner" => $request->account_owner,
         "payment_date"=> $request->payment_date,
       ]);
       return redirect()->back();

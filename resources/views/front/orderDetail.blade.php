@@ -165,7 +165,7 @@
                                                   <div class="col-md-6">
                                                     <div class="form-group">
                                                       <label for="name">Account Owner</label>
-                                                      <input type="text" class="form-control" id="name" name="bank" placeholder="Enter refrence">
+                                                      <input type="text" class="form-control" id="name" name="account_owner" placeholder="Enter refrence">
                                                     </div>
                                                   </div>
 

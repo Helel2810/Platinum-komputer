@@ -210,7 +210,8 @@
                             <img src="{{$order->payment->proof}}" class="img-fluid img-thumbnail" alt="">
                           </div>
                           <div class="row">
-                            Account Number: {{$order->payment->bank_account}}
+                            Account Number: {{$order->payment->bank_account}} <br>
+                            Account Owner: {{$order->payment->account_owner}}
                           </div>
                           <div class="row">
                             <a href="{{route('approvePayment', $order->payment->id)}}" class="btn btn-default"><i class="fas fa-print"></i>Approve</a>
