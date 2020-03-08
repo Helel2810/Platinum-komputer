@@ -17,7 +17,7 @@
             <td>{!! $payment->status !!}</td>
             <td>{!! $payment->payment_method !!}</td>
             <td>{!! $payment->bank_account !!}</td>
-            <td>Plt{!! $payment->order_id !!}</td>
+            <td>GRV{!! $payment->order_id !!}</td>
                 <td>
                     {!! Form::open(['route' => ['payments.destroy', $payment->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>
