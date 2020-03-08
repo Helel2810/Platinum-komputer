@@ -30,7 +30,9 @@
                                       <div class="col-xs-12">
                                         <h3>Order Status: {{$order->status}}</h3>
                                         @if($order->status == "Approved")
-                                          @if($order->payment->status == "Approved")
+                                          @if($order->payment->status == "Rejected")
+                                            <h4>Payment Rejected, please check your payment and contact us</h4>
+                                          @elseif($order->payment->status == "Approved")
                                             Delivery Status: {{$order->deliveryOrder->status}} <br>
                                             Tracking Code: {{$order->deliveryOrder->tracking_code}}
                                           @endif

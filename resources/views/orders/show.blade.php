@@ -48,7 +48,7 @@
                 </div>
                 <!-- /.col -->
                 <div class="col-sm-4 invoice-col">
-                  <b>Order ID:</b> Plt{{$order->id}}<br>
+                  <b>Order ID:</b> GRV{{$order->id}}<br>
                   <b>Payment Due:</b> {{$order->created_at->addDay(3)->format('d/m/Y')}}<br>
                   <b>Account:</b> 968-34567
                 </div>

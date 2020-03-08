@@ -257,7 +257,7 @@ class FrontController extends Controller
 
       Cart::clear();
 
-      return redirect(route('front'));
+      return redirect(route('getOrderDetail', $order->id));
     }
 
     public function editProfileForm(Request $request)

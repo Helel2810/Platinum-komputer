@@ -196,6 +196,8 @@ class OrderController extends AppBaseController
         $order->status = "Rejected";
         $order->save();
 
+        Flash::success('Order Rejected.');
+
         return redirect(route('orders.show', $id));
     }
 
