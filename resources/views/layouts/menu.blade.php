@@ -1,4 +1,4 @@
-<li class="treeview {{Request::is('products*', 'categories*', 'subCategories*', 'brands*') ? 'active menu-open' : ''}}">
+<li class="treeview {{Request::is('products*', 'categories*', 'subCategories*', 'brands*', 'promotions*', 'coupons*') ? 'active menu-open' : ''}}">
   <a href="#"><i class="fa fa-link"></i> <span>Catalouges</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
@@ -17,9 +17,15 @@
     <li class="{{ Request::is('brands*') ? 'active' : '' }}">
         <a href="{!! route('brands.index') !!}"><i class="fa fa-edit"></i><span>Brands</span></a>
     </li>
+    <li class="{{ Request::is('promotions*') ? 'active' : '' }}">
+        <a href="{!! route('promotions.index') !!}"><i class="fa fa-edit"></i><span>Promotions</span></a>
+    </li>
+    <li class="{{ Request::is('coupons*') ? 'active' : '' }}">
+        <a href="{!! route('coupons.index') !!}"><i class="fa fa-edit"></i><span>Coupons</span></a>
+    </li>
   </ul>
 </li>
-<li class="treeview {{Request::is('admins*', 'customers*') ? 'active menu-open' : ''}}">
+<li class="treeview {{Request::is('admins*', 'customers*, addresses*') ? 'active menu-open' : ''}}">
   <a href="#"><i class="fa fa-link"></i> <span>Users</span>
         <span class="pull-right-container">
           <i class="fa fa-angle-left pull-right"></i>
@@ -31,6 +37,9 @@
     </li>
     <li class="{{ Request::is('customers*') ? 'active' : '' }}">
         <a href="{!! route('customers.index') !!}"><i class="fa fa-edit"></i><span>Customer</span></a>
+    </li>
+    <li class="{{ Request::is('addresses*') ? 'active' : '' }}">
+        <a href="{!! route('addresses.index') !!}"><i class="fa fa-edit"></i><span>Addresses</span></a>
     </li>
   </ul>
 </li>
@@ -50,40 +59,49 @@
 
   </ul>
 </li>
-<li class="{{ Request::is('couriers*') ? 'active' : '' }}">
-    <a href="{!! route('couriers.index') !!}"><i class="fa fa-edit"></i><span>Couriers</span></a>
-</li>
-<li class="{{ Request::is('addresses*') ? 'active' : '' }}">
-    <a href="{!! route('addresses.index') !!}"><i class="fa fa-edit"></i><span>Addresses</span></a>
-</li>
-<li class="{{ Request::is('orders*') ? 'active' : '' }}">
-    <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Orders</span></a>
+<li class="treeview {{Request::is('couriers*', 'shipmentMethods*', 'shippingCosts*') ? 'active menu-open' : ''}}">
+  <a href="#"><i class="fa fa-link"></i> <span>Shipment Area And Method</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+  <ul class="treeview-menu">
+    <li class="{{ Request::is('couriers*') ? 'active' : '' }}">
+        <a href="{!! route('couriers.index') !!}"><i class="fa fa-edit"></i><span>Couriers</span></a>
+    </li>
+    <li class="{{ Request::is('shipmentMethods*') ? 'active' : '' }}">
+        <a href="{!! route('shipmentMethods.index') !!}"><i class="fa fa-edit"></i><span>Shipment Methods</span></a>
+    </li>
+
+    <li class="{{ Request::is('shippingCosts*') ? 'active' : '' }}">
+        <a href="{!! route('shippingCosts.index') !!}"><i class="fa fa-edit"></i><span>Shipping Costs</span></a>
+    </li>
+  </ul>
 </li>
 
-<li class="{{ Request::is('promotions*') ? 'active' : '' }}">
-    <a href="{!! route('promotions.index') !!}"><i class="fa fa-edit"></i><span>Promotions</span></a>
+<li class="treeview {{Request::is('orders*', 'payments*', 'deliveryOrders*') ? 'active menu-open' : ''}}">
+  <a href="#"><i class="fa fa-link"></i> <span>Orders</span>
+        <span class="pull-right-container">
+          <i class="fa fa-angle-left pull-right"></i>
+        </span>
+      </a>
+  <ul class="treeview-menu">
+    <li class="{{ Request::is('orders*') ? 'active' : '' }}">
+        <a href="{!! route('orders.index') !!}"><i class="fa fa-edit"></i><span>Orders</span></a>
+    </li>
+
+    <li class="{{ Request::is('payments*') ? 'active' : '' }}">
+        <a href="{!! route('payments.index') !!}"><i class="fa fa-edit"></i><span>Payments</span></a>
+    </li>
+
+    <li class="{{ Request::is('deliveryOrders*') ? 'active' : '' }}">
+        <a href="{!! route('deliveryOrders.index') !!}"><i class="fa fa-edit"></i><span>Delivery Orders</span></a>
+    </li>
+  </ul>
 </li>
 
-<li class="{{ Request::is('shipmentMethods*') ? 'active' : '' }}">
-    <a href="{!! route('shipmentMethods.index') !!}"><i class="fa fa-edit"></i><span>Shipment Methods</span></a>
-</li>
-
-<li class="{{ Request::is('shippingCosts*') ? 'active' : '' }}">
-    <a href="{!! route('shippingCosts.index') !!}"><i class="fa fa-edit"></i><span>Shipping Costs</span></a>
-</li>
-
-<li class="{{ Request::is('deliveryOrders*') ? 'active' : '' }}">
-    <a href="{!! route('deliveryOrders.index') !!}"><i class="fa fa-edit"></i><span>Delivery Orders</span></a>
-</li>
-
-<li class="{{ Request::is('coupons*') ? 'active' : '' }}">
-    <a href="{!! route('coupons.index') !!}"><i class="fa fa-edit"></i><span>Coupons</span></a>
-</li>
 <li class="{{ Request::is('sliders*') ? 'active' : '' }}">
     <a href="{!! route('sliders.index') !!}"><i class="fa fa-edit"></i><span>Sliders</span></a>
-</li>
-<li class="{{ Request::is('payments*') ? 'active' : '' }}">
-    <a href="{!! route('payments.index') !!}"><i class="fa fa-edit"></i><span>Payments</span></a>
 </li>
 
 <li class="{{ Request::is('productComments*') ? 'active' : '' }}">

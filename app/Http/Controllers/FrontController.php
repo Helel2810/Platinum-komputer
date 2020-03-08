@@ -358,7 +358,7 @@ class FrontController extends Controller
         "proof" => $proof,
         "bank_account" => $request->bank_account,
         "account_owner" => $request->account_owner,
-        "payment_date"=> $request->payment_date,
+        "payment_date"=> Carbon::now(),
       ]);
       return redirect()->back();
     }

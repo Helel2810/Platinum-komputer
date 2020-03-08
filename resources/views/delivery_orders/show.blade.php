@@ -29,10 +29,10 @@
                   From
                   <address>
                     <strong>Gravity, Inc.</strong><br>
-                    795 Folsom Ave, Suite 600<br>
-                    San Francisco, CA 94107<br>
-                    Phone: (804) 123-5432<br>
-                    Email: info@almasaeedstudio.com
+                    Jl. Bawal Raya No. 6<br>
+                    Tanjung Priok, Jakut 14350<br>
+                    Phone: +6281908340874<br>
+                    Email: Support@Gravity.com
                   </address>
                 </div>
                 <!-- /.col -->
