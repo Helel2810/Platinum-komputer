@@ -157,15 +157,15 @@
                                                 <div class="row">
                                                   <div class="col-md-6">
                                                     <div class="form-group">
-                                                      <label for="sku">Account</label>
-                                                      <input type="text" class="form-control" id="sku" name="bank_account" placeholder="Enter account">
+                                                      <label for="sku">Account Number</label>
+                                                      <input type="text" class="form-control" id="sku" name="bank_account" placeholder="Enter account number">
                                                     </div>
                                                   </div>
 
                                                   <div class="col-md-6">
                                                     <div class="form-group">
                                                       <label for="name">Account Owner</label>
-                                                      <input type="text" class="form-control" id="name" name="account_owner" placeholder="Enter refrence">
+                                                      <input type="text" class="form-control" id="name" name="account_owner" placeholder="Enter owner name">
                                                     </div>
                                                   </div>
 
