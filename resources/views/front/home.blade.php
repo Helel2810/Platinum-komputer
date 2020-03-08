@@ -179,13 +179,13 @@
 
                           <div class="post-thumb">
 
-                              <a href=""><img src="{{$one_news->image}}" alt="blog"></a>
+                              <a href="{{route('frontNewsDetail', $one_news->id)}}"><img src="{{$one_news->image}}" alt="blog"></a>
 
                           </div>
 
                           <div class="post-item-info">
 
-                              <h3 class="post-name"><a href="">{{$one_news->title}}</a></h3>
+                              <h3 class="post-name"><a href="{{route('frontNewsDetail', $one_news->id)}}">{{$one_news->title}}</a></h3>
 
                               <div class="post-metas">
 
