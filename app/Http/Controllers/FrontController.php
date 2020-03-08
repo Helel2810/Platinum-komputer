@@ -172,8 +172,22 @@ class FrontController extends Controller
     public function addToCart(Request $request)
     {
       $product = Product::find($request->id);
-      Cart::add($product->id, $product->name, $product->price, $request->qty, ["image" => $product->image1]);
+      if($product->promotion()->exists())
+      {
+        if($product->promotion->start_date < Carbon::now() && $product->promotion->end_date > Carbon::now())
+        {
+          Cart::add($product->id, $product->name, $product->price - $product->promotion->nominal, $request->qty, ["image" => $product->image1]);
+        }
+        else
+        {
+          Cart::add($product->id, $product->name, $product->price, $request->qty, ["image" => $product->image1]);
+        }
+      }
+      else
+      {
+        Cart::add($product->id, $product->name, $product->price, $request->qty, ["image" => $product->image1]);
 
+      }
       return back();
     }
 

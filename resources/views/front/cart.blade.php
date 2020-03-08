@@ -38,7 +38,7 @@
                                       <div class="product-name"><a href="">{{$item->name}}</a></div>
                                   </td>
                                   <td class="tb-price">
-                                      <span class="price">Rp. {{$item->price}}</span>
+                                    <span class="price">Rp. {{$item->price}}</span>
                                   </td>
                                   <td class="tb-qty">
                                       <div class="quantity">
@@ -49,7 +49,7 @@
                                       </div>
                                   </td>
                                   <td class="tb-total">
-                                      <span class="price">Rp. {{$item->getPriceSum()}}</span>
+                                      <span class="price">Rp. {{$item->getPriceSum() }}</span>
                                   </td>
                                   <td class="tb-remove">
                                       <button type="button" onclick="location.href='{{route('removeFromCart', $item->id)}}';" class="action-remove"><span><i class="fa fa-times" aria-hidden="true"></i></span></button>
