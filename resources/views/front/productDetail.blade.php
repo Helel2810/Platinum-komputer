@@ -92,7 +92,7 @@
 
                                 <div class="stock available">
 
-                                    <span class="label-stock">Availability: </span>In Stock
+                                    <span class="label-stock">Availability: </span>{{$product->stock}}
 
                                 </div>
 
@@ -102,7 +102,7 @@
 
                               @if($product->promotion()->exists())
                                 @if($product->promotion->start_date < Carbon\Carbon::now() && $product->promotion->end_date > Carbon\Carbon::now())
-                                <ins>Rp. {{$product->promotion->nominal}}</ins>
+                                <ins>Rp. {{$product->price-$product->promotion->nominal}}</ins>
                                 <del>Rp. {{$product->price}}</del>
                                 @else
                                 <ins>Rp. {{$product->price}}</ins> <br>
