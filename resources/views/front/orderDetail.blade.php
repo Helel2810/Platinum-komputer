@@ -192,6 +192,7 @@
                                         <div class="row">
                                           <div class="col-md-12 float-right">
                                             <a class="btn btn-primary float-right" href="{{route('postConfirmReceive', $order->id)}}">Received</a>
+                                            <a class="btn btn-primary float-right" href="{{route('postReturnItem', $order->id)}}">Return</a>
                                           </div>
                                         </div>
                                         @endif

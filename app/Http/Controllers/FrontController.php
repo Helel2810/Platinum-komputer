@@ -371,9 +371,20 @@ class FrontController extends Controller
       ]);
       $order->deliveryOrder()->update([
           "status" => "Received"
+          "receive_date" => Carbon::now()
       ]);
       return redirect()->back();
     }
+
+    public function postReturnItem(Request $request, $id)
+    {
+      $order = Order::find($id);
+      $order->deliveryOrder()->update([
+          "status" => "Returned"
+      ]);
+      return redirect()->back();
+    }
+
 
 
 
