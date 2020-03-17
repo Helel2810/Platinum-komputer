@@ -370,7 +370,7 @@ class FrontController extends Controller
         "status" => "Done"
       ]);
       $order->deliveryOrder()->update([
-          "status" => "Received"
+          "status" => "Received",
           "receive_date" => Carbon::now()
       ]);
       return redirect()->back();

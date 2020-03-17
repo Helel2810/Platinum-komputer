@@ -34,6 +34,7 @@ Route::get('/front/profile/orders', "FrontController@getOrders")->name('getOrder
 Route::get('/front/profile/orders/{id}', "FrontController@getOrderDetail")->name('getOrderDetail');
 Route::post('/front/profile/orders/{id}/confirm-payment', "FrontController@postPaymentProof")->name('postPaymentProof');
 Route::get('/front/profile/orders/{id}/confirm-receive', "FrontController@postConfirmReceive")->name('postConfirmReceive');
+Route::get('/front/profile/orders/{id}/return-item', "FrontController@postReturnItem")->name('postReturnItem');
 
 Route::get('/front/products', "FrontController@category")->name('categoryProducts');
 Route::get('/front/products/{product}', "FrontController@product")->name('productDetail');
